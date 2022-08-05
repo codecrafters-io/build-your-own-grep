@@ -10,7 +10,7 @@
       target: Pipfile
     - source: starter_templates/python/Pipfile.lock
       target: Pipfile.lock
-    - source: starter_templates/.gitignore
+    - source: starter_templates/python/.gitignore
       target: .gitignore
     - source: starter_templates/python/your_grep.sh
       target: your_grep.sh

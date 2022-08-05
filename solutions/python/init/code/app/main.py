@@ -13,14 +13,10 @@ if sys.argv[1] != "-E":
 pattern = sys.argv[2]
 input = sys.stdin.read()
 
-# You can use print statements as follows for debugging, they'll be visible when running tests.
-print("Logs from your program will appear here!")
-
 if len(pattern) == 1:
-    # Uncomment this block to pass the first stage
-    # if input.count(pattern) > 0:
-    #     os.exit(0)
-    # else:
-    #     os.exit(1)
+    if input.count(pattern) > 0:
+        os.exit(0)
+    else:
+        os.exit(1)
 else:
     print(f"Unhandled pattern: {pattern}")
