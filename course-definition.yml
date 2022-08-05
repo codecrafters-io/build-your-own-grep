@@ -1,0 +1,188 @@
+slug: "grep"
+name: "Build your own grep"
+short_name: "grep"
+release_status: "alpha"
+
+description_md: |
+  [Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (Regexes, for short) are patterns used to 
+  match character combinations in strings. [`grep`](https://en.wikipedia.org/wiki/Grep) is a CLI tool for searching 
+  using Regexes.
+  
+  In this challenge you'll build your own implementation of `grep`. Along the way we'll learn about Regex syntax, how 
+  parsers/lexers work, and how regular expressions are evaluated.
+
+short_description_md: |
+  Learn how regular expressions work, including character classes, quantifiers and more
+
+completion_percentage: 30
+
+early_access_languages: []
+supported_languages: ["python"]
+
+starter_repos:
+  python: https://github.com/codecrafters-io/grep-starter-python
+
+marketing:
+  difficulty: medium
+  testimonials:
+    - author_name: "Ananthalakshmi Sankar"
+      author_description: "Automation Engineer at Apple"
+      author_avatar: "https://codecrafters.io/images/testimonials/ananthalakshmi_sankar.jpeg"
+      link: "https://github.com/anu294"
+      text: "There are few sites I like as much that have a step by step guide. The real-time feedback is so good, it's creepy!"
+
+    - author_name: "Patrick Burris"
+      author_description: "Senior Software Developer, CenturyLink"
+      author_avatar: "https://codecrafters.io/images/testimonials/patrick_burris.jpeg"
+      link: "https://github.com/Jumballaya"
+      text: |
+        I think the instant feedback right there in the git push is really cool.
+        Didn't even know that was possible!
+
+stages:
+  - slug: "init"
+    name: "Match a literal character"
+    difficulty: very_easy
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll handle the simplest regex possible: a single character. 
+      
+      **Example:**
+      
+      `a` should match "apple", but not "dog".
+
+  - slug: "match_digit"
+    name: "Match digits"
+    difficulty: very_easy
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll implement support for the `\d` 
+      [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
+      
+      `\d` matches any digit. 
+      
+      **Example:**
+      
+      `\d` should match "1", but not "a".
+
+  - slug: "match_alphanumeric"
+    name: "Match alphanumeric characters"
+    difficulty: very_easy
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll implement support for the `\w` 
+      [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
+      
+      `\w` matches any alphanumeric character (`a-z`, `A-Z`, `0-9`, `_`).
+      
+      **Example:**
+      
+      `\w` should match "foo101", but not "$!?".
+
+  - slug: "positive_character_groups"
+    name: "Positive Character Groups"
+    difficulty: medium
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll add support for [positive character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#positive-character-group--).
+      
+      Positive character groups match any character that is present within a pair of square brackets.
+      
+      **Example:**
+      
+      `[abc]` should match "apple", but not "dog".
+
+  - slug: "negative_character_groups"
+    name: "Negative Character Groups"
+    difficulty: medium
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll add support for [negative character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#negative-character-group-).
+      
+      Positive character groups match any character that is not present within a pair of square brackets.
+      
+      **Example:**
+      
+      `[^abc]` should match "dog", but not "apple" (since it contains "a").
+
+  - slug: "start_of_string_anchor"
+    name: "Start of string anchor"
+    difficulty: medium
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll add support for `^`, the [Start of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-). 
+      
+      `^` doesn't match a character, it matches the start of a line.
+      
+      **Example:**
+      
+      `^log` should match "log", but not "slog".
+
+  - slug: "end_of_string_anchor"
+    name: "End of string anchor"
+    difficulty: medium
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll add support for `$`, the [End of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-).
+      
+      `$` doesn't match a character, it matches the end of a line.
+      
+      **Example:**
+      
+      `dog$` should match "dog", but not "dogs".
+
+  - slug: "one_or_more_quantifier"
+    name: "Match one or more times"
+    difficulty: hard
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll add support for `+`, the [one or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier.
+      
+      **Example**: 
+      
+      - `a+` should match "apple" and "SaaS", but not "dog".
+
+  - slug: "zero_or_one_quantifier"
+    name: "Match zero or one times"
+    difficulty: hard
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll add support for `?`, the [zero or one](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier (also known as the "optional" quantifier).
+      
+      **Example**: 
+      
+      - `dogs?` should match "dogs" and "dog", but not "cat".
+
+  - slug: "wildcard"
+    name: "Wildcard"
+    difficulty: medium
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll add support for `.`, which matches any character.
+      
+      **Example**: 
+      
+      - `d.g` should match "dog", but not "cog".
+      
+
+  - slug: "alternation"
+    name: "Alternation"
+    difficulty: hard
+    description_md: |
+      TBD.
+    marketing_md: |
+      In this stage, we'll add support for the `|` keyword, which allows combining multiple patterns in an either/or fashion.
+      
+      **Example**: 
+      
+      - `(cat|dog)` should match "dog" and "cat", but not "apple".
