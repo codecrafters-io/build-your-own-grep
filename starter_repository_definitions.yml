@@ -1,0 +1,19 @@
+- language: python
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/python/app/main.py
+      target: app/main.py
+    - source: starter_templates/python/Pipfile
+      target: Pipfile
+    - source: starter_templates/python/Pipfile.lock
+      target: Pipfile.lock
+    - source: starter_templates/.gitignore
+      target: .gitignore
+    - source: starter_templates/python/your_grep.sh
+      target: your_grep.sh
+  template_attributes:
+    required_executable: "python (3.10)"
+    user_editable_file: "app/main.py"
