@@ -5,9 +5,9 @@ Study and uncomment the relevant code:
 ```python
 # Uncomment this block to pass the first stage
 if input.count(pattern) > 0:
-    os.exit(0)
+    exit(0)
 else:
-    os.exit(1)
+    exit(1)
 ```
 
 Push your changes to pass the first stage:

@@ -1,5 +1,4 @@
 import sys
-import os
 
 from dataclasses import dataclass
 
@@ -8,7 +7,7 @@ from dataclasses import dataclass
 
 if sys.argv[1] != "-E":
     print("Expected first argument to be '-E'")
-    os.exit(1)
+    exit(1)
 
 pattern = sys.argv[2]
 input = sys.stdin.read()
@@ -19,8 +18,8 @@ print("Logs from your program will appear here!")
 if len(pattern) == 1:
     # Uncomment this block to pass the first stage
     # if input.count(pattern) > 0:
-    #     os.exit(0)
+    #     exit(0)
     # else:
-    #     os.exit(1)
+    #     exit(1)
 else:
     print(f"Unhandled pattern: {pattern}")
