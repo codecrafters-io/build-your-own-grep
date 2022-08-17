@@ -19,3 +19,4 @@ if len(pattern) == 1:
         exit(1)
 else:
     print(f"Unhandled pattern: {pattern}")
+    exit(1)
