@@ -23,3 +23,4 @@ print("Logs from your program will appear here!")
 #         exit(1)
 # else:
 #     print(f"Unhandled pattern: {pattern}")
+#     exit(1)
