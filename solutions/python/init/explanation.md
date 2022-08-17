@@ -4,10 +4,13 @@ Study and uncomment the relevant code:
 
 ```python
 # Uncomment this block to pass the first stage
-if input.count(pattern) > 0:
-    exit(0)
+if len(pattern) == 1:
+    if input.count(pattern) > 0:
+        exit(0)
+    else:
+        exit(1)
 else:
-    exit(1)
+    print(f"Unhandled pattern: {pattern}")
 ```
 
 Push your changes to pass the first stage:
