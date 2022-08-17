@@ -4,13 +4,9 @@ Study and uncomment the relevant code:
 
 ```python
 # Uncomment this block to pass the first stage
-if len(pattern) == 1:
-    if input.count(pattern) > 0:
-        exit(0)
-    else:
-        exit(1)
+if match_pattern(input_line, pattern):
+    exit(0)
 else:
-    print(f"Unhandled pattern: {pattern}")
     exit(1)
 ```
 
