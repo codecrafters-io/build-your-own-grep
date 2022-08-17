@@ -8,8 +8,14 @@ def match_single_character(input_line, character):
     return input_line.count(character) > 0
 
 
+def match_digit(input_line):
+    return any(character.isdigit() for character in input_line)
+
+
 def match_pattern(input_line, pattern):
-    if len(pattern) == 1:
+    if pattern == "\\d":
+        return match_digit(input_line)
+    elif len(pattern) == 1:
         return match_single_character(input_line, pattern)
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
