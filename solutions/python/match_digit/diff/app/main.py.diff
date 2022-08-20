@@ -6,9 +6,10 @@
 
 
  def match_pattern(input_line, pattern):
+-    if len(pattern) == 1:
 +    if pattern == "\\d":
 +        return any(character.isdigit() for character in input_line)
-     if len(pattern) == 1:
++    elif len(pattern) == 1:
          return pattern in input_line
      else:
          raise RuntimeError(f"Unhandled pattern: {pattern}")
