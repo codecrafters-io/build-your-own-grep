@@ -4,19 +4,11 @@ import sys
 # import lark - available if you need it!
 
 
-def match_single_character(input_line, character):
-    return input_line.count(character) > 0
-
-
-def match_digit(input_line):
-    return any(character.isdigit() for character in input_line)
-
-
 def match_pattern(input_line, pattern):
     if pattern == "\\d":
-        return match_digit(input_line)
-    elif len(pattern) == 1:
-        return match_single_character(input_line, pattern)
+        return any(character.isdigit() for character in input_line)
+    if len(pattern) == 1:
+        return pattern in input_line
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
 
