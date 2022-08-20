@@ -4,13 +4,9 @@ import sys
 # import lark - available if you need it!
 
 
-def match_single_character(input_line, character):
-    return input_line.count(character) > 0
-
-
 def match_pattern(input_line, pattern):
     if len(pattern) == 1:
-        return match_single_character(input_line, pattern)
+        return pattern in input_line
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
 

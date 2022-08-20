@@ -8,8 +8,8 @@ description_md: |
   match character combinations in strings. [`grep`](https://en.wikipedia.org/wiki/Grep) is a CLI tool for searching 
   using Regexes.
   
-  In this challenge you'll build your own implementation of `grep`. Along the way we'll learn about Regex syntax, how 
-  parsers/lexers work, and how regular expressions are evaluated.
+  In this challenge you'll build your own implementation of `grep`. Along the way we'll learn about Regex syntax and 
+  how Regexes are evaluated. 
 
 short_description_md: |
   Learn how regular expressions work, including character classes, quantifiers and more
@@ -44,7 +44,20 @@ stages:
     name: "Match a literal character"
     difficulty: very_easy
     description_md: |
-      TBD.
+      In this stage, we'll handle the simplest regex possible: a single character. 
+      
+      **Example:** `a` should match "apple", but not "dog".
+      
+      Your program will be executed like this: 
+      
+      ```bash
+      $ echo "apple" | ./your_grep.sh -E "a"
+      ```
+      
+      The `-E` flag instructs `grep` to interprets patterns as extended regular expressions (with support 
+      for metacharacters like `+`, `?` etc.). We'll use this flag in all stages.
+      
+      You program must [exit](https://en.wikipedia.org/wiki/Exit_status) with 0 if the character is found, and 1 if not.
     marketing_md: |
       In this stage, we'll handle the simplest regex possible: a single character. 
       
@@ -56,7 +69,20 @@ stages:
     name: "Match digits"
     difficulty: very_easy
     description_md: |
-      TBD.
+      In this stage, we'll implement support for the `\d` 
+      [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
+      
+      `\d` matches any digit. 
+      
+      **Example:** `\d` should match "3", but not "c".
+      
+      Your program will be executed like this: 
+      
+      ```bash
+      $ echo "apple123" | ./your_grep.sh -E "\d"
+      ```
+      
+      You program must exit with 0 if a digit is found in the string, and 1 if not.
     marketing_md: |
       In this stage, we'll implement support for the `\d` 
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
@@ -71,7 +97,20 @@ stages:
     name: "Match alphanumeric characters"
     difficulty: very_easy
     description_md: |
-      TBD.
+      In this stage, we'll implement support for the `\w` 
+      [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
+      
+      `\w` matches any alphanumeric character (`a-z`, `A-Z`, `0-9`, `_`).
+      
+      **Example:** `\w` should match "foo101", but not "$!?".
+      
+      Your program will be executed like this: 
+      
+      ```bash
+      $ echo "alpha-num3ric" | ./your_grep.sh -E "\w"
+      ```
+      
+      You program must exit with 0 if an alphanumeric character is found in the string, and 1 if not.
     marketing_md: |
       In this stage, we'll implement support for the `\w` 
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
@@ -86,7 +125,19 @@ stages:
     name: "Positive Character Groups"
     difficulty: medium
     description_md: |
-      TBD.
+      In this stage, we'll add support for [positive character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#positive-character-group--).
+      
+      Positive character groups match any character that is present within a pair of square brackets.
+      
+      **Example:** `[abc]` should match "apple", but not "dog".
+      
+      Your program will be executed like this: 
+      
+      ```bash
+      $ echo "apple" | ./your_grep.sh -E "[abc]"
+      ```
+      
+      You program must exit with 0 if an any of the characters are found in the string, and 1 if not.
     marketing_md: |
       In this stage, we'll add support for [positive character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#positive-character-group--).
       
@@ -100,21 +151,84 @@ stages:
     name: "Negative Character Groups"
     difficulty: medium
     description_md: |
-      TBD.
+      In this stage, we'll add support for [negative character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#negative-character-group-).
+      
+      Negative character groups match any character that is not present within a pair of square brackets.
+      
+      **Example:** `[^abc]` should match "dog", but not "cab" (since all characters are either "a", "b" or "c").
+      
+      Your program will be executed like this: 
+      
+      ```bash
+      $ echo "apple" | ./your_grep.sh -E "[^abc]"
+      ```
+      
+      You program must exit with 0 if the input contains characters that aren't part of the negative character group, and 1 if not.
     marketing_md: |
       In this stage, we'll add support for [negative character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#negative-character-group-).
       
-      Positive character groups match any character that is not present within a pair of square brackets.
+      Negative character groups match any character that is not present within a pair of square brackets.
       
       **Example:**
       
-      `[^abc]` should match "dog", but not "apple" (since it contains "a").
+      `[^abc]` should match "dog", but not "cab" (since all characters are either "a", "b" or "c").
+
+  - slug: "combining_character_classes"
+    name: "Combining Character Classes"
+    difficulty: medium
+    description_md: |
+      In this stage, we'll add support for patterns that combine the character classes we've seen so far. 
+      
+      This is where your regex matcher will start to _feel_ useful. 
+      
+      Keep in mind that this stage is harder than the previous ones. You'll likely need to rework your 
+      implementation to process user input character-by-character instead of the whole line at once. 
+      
+      We recommend taking a look at the example code in ["A Regular Expression Matcher"](https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html) 
+      by Rob Pike to guide your implementation.
+      
+      **Examples:** 
+      
+      - `\d apple` should match "1 apple", but not "1 orange".
+      - `\d\d\d apple` should match "100 apples", but not "1 apple".
+      - `\d \w\w\ws` should match "3 dogs" and "4 cats" but not "1 dog" (because the "s" is not present at the end).
+      
+      Your program will be executed like this: 
+      
+      ```bash
+      $ echo "1 apple" | ./your_grep.sh -E "\d apple"
+      ```
+      
+      You program must exit with 0 if the pattern matches the input, and 1 if not.
+    marketing_md: |
+      In this stage, we'll support patterns that combine the character classes we've seen so far. 
+      
+      **Examples:** 
+      
+      - `\d apple` should match "1 apple", but not "1 orange".
+      - `\d\d\d apple` should match "100 apples", but not "1 apple".
+      - `\d \w\w\ws` should match "3 dogs" and "4 cats" but not "1 dog" (because the "s" is not present at the end).
+      
+      This stage is significantly harder than the previous ones. You'll likely need to rework your 
+      implementation to process user input character-by-character instead of the whole line at once. 
 
   - slug: "start_of_string_anchor"
     name: "Start of string anchor"
     difficulty: medium
     description_md: |
-      TBD.
+      In this stage, we'll add support for `^`, the [Start of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-). 
+      
+      `^` doesn't match a character, it matches the start of a line.
+      
+      **Example:** `^log` should match "log", but not "slog".
+      
+      Your program will be executed like this: 
+      
+      ```bash
+      $ echo "log" | ./your_grep.sh -E "^log"
+      ```
+      
+      You program must exit with 0 if the input starts with the given pattern, and 1 if not.
     marketing_md: |
       In this stage, we'll add support for `^`, the [Start of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-). 
       
@@ -128,7 +242,13 @@ stages:
     name: "End of string anchor"
     difficulty: medium
     description_md: |
-      TBD.
+      In this stage, we'll add support for `$`, the [End of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-).
+      
+      `$` doesn't match a character, it matches the end of a line.
+      
+      **Example:**
+      
+      `dog$` should match "dog", but not "dogs".
     marketing_md: |
       In this stage, we'll add support for `$`, the [End of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-).
       
@@ -142,7 +262,11 @@ stages:
     name: "Match one or more times"
     difficulty: hard
     description_md: |
-      TBD.
+      In this stage, we'll add support for `+`, the [one or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier.
+      
+      **Example**: 
+      
+      - `a+` should match "apple" and "SaaS", but not "dog".
     marketing_md: |
       In this stage, we'll add support for `+`, the [one or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier.
       
@@ -154,7 +278,11 @@ stages:
     name: "Match zero or one times"
     difficulty: hard
     description_md: |
-      TBD.
+      In this stage, we'll add support for `?`, the [zero or one](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier (also known as the "optional" quantifier).
+      
+      **Example**: 
+      
+      - `dogs?` should match "dogs" and "dog", but not "cat".
     marketing_md: |
       In this stage, we'll add support for `?`, the [zero or one](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier (also known as the "optional" quantifier).
       
@@ -166,7 +294,11 @@ stages:
     name: "Wildcard"
     difficulty: medium
     description_md: |
-      TBD.
+      In this stage, we'll add support for `.`, which matches any character.
+      
+      **Example**: 
+      
+      - `d.g` should match "dog", but not "cog".
     marketing_md: |
       In this stage, we'll add support for `.`, which matches any character.
       
@@ -179,7 +311,11 @@ stages:
     name: "Alternation"
     difficulty: hard
     description_md: |
-      TBD.
+      In this stage, we'll add support for the `|` keyword, which allows combining multiple patterns in an either/or fashion.
+      
+      **Example**: 
+      
+      - `(cat|dog)` should match "dog" and "cat", but not "apple".
     marketing_md: |
       In this stage, we'll add support for the `|` keyword, which allows combining multiple patterns in an either/or fashion.
       
