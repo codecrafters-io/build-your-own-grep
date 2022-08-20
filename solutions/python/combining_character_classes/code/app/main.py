@@ -47,9 +47,6 @@ def match_here(remaining_input, pattern):
 
 
 def match_pattern(input_line, pattern):
-    if pattern[0] == "^":
-        return match_here(input_line, pattern[1:])
-
     if match_here(input_line, pattern):
         return True
     else:
