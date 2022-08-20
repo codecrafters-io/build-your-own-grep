@@ -6,7 +6,7 @@ import sys
 
 def match_pattern(input_line, pattern):
     if len(pattern) == 1:
-        return character in input_line
+        return pattern in input_line
     else:
         raise RuntimeError(f"Unhandled pattern: {pattern}")
 
