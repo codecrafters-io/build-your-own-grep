@@ -12,4 +12,4 @@ jobs:
   sync_repos:
     uses: codecrafters-io/course-definition-tester/.github/workflows/sync-starter-repositories.yml@main
     secrets:
-      REPOSITORY_SYNCER_GITHUB_TOKEN: ${{ secrets.REPOSITORY_SYNCER_GITHUB_TOKEN }}
+      REPOSITORY_SYNCER_GITHUB_TOKEN: ${{ secrets.STARTER_REPOSITORY_SYNCER_GITHUB_TOKEN }}
