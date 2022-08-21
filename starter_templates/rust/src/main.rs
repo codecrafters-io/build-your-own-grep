@@ -4,10 +4,8 @@ use std::io;
 
 fn match_pattern(input_line: &str, pattern: &str) -> bool {
     if pattern.chars().count() == 1 {
-        // Is pattern present in input_line?
         return input_line.contains(pattern)
     } else {
-        // Raise exception
         panic!("Unhandled pattern: {}", pattern)
     }
 }
