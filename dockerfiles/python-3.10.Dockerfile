@@ -1,7 +1,5 @@
 FROM python:3.10-alpine
 
-ENV CODECRAFTERS_DEPENDENCY_FILE_PATHS="Pipfile,Pipfile.lock"
-
 RUN pip install pipenv
 
 COPY Pipfile /app/Pipfile
@@ -15,3 +13,6 @@ RUN pipenv install
 
 # Force environment creation
 RUN pipenv run python3 -c "1+1"
+
+ENV CODECRAFTERS_DEPENDENCY_FILE_PATHS="Pipfile,Pipfile.lock"
+
