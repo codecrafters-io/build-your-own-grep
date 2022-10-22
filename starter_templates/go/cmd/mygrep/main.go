@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-
 	// Uncomment this to pass the first stage
 	// "bytes"
 	"fmt"

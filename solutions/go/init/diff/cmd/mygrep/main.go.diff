@@ -1,9 +1,8 @@
-@@ -1,66 +1,61 @@
+@@ -1,65 +1,60 @@
  package main
 
  import (
  	"bufio"
-
 -	// Uncomment this to pass the first stage
 -	// "bytes"
 +	"bytes"
