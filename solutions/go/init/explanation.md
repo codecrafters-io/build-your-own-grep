@@ -9,7 +9,11 @@ Study and uncomment the relevant code:
 
 ```go
 // Uncomment this to pass the first stage
-ok = bytes.IndexAny(text, pattern) != -1
+line := s.Bytes()
+
+if bytes.IndexAny(line, pattern) != -1 {
+	ok = true
+}
 ```
 
 Push your changes to pass the first stage:

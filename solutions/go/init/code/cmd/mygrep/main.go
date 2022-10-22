@@ -1,10 +1,11 @@
 package main
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"io"
 	"os"
-	"bytes"
 )
 
 // Usage: echo <input_text> | your_grep.sh -E <pattern>
@@ -16,13 +17,7 @@ func main() {
 
 	pattern := os.Args[2]
 
-	text, err := io.ReadAll(os.Stdin)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "error: read input text: %v\n", err)
-		os.Exit(3)
-	}
-
-	ok, err := match(text, pattern)
+	ok, err := match(os.Stdin, pattern)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error: %v\n", err)
 		os.Exit(4)
@@ -37,10 +32,21 @@ func main() {
 	os.Exit(code)
 }
 
-func match(text []byte, pattern string) (bool, error) {
+func match(r io.Reader, pattern string) (bool, error) {
 	var ok bool
+	s := bufio.NewScanner(r)
 
-	ok = bytes.IndexAny(text, pattern) != -1
+	for s.Scan() {
+		line := s.Bytes()
+
+		if bytes.IndexAny(line, pattern) != -1 {
+			ok = true
+		}
+	}
+
+	if err := s.Err(); err != nil {
+		return false, fmt.Errorf("scan input: %w", err)
+	}
 
 	return ok, nil
 }
