@@ -1,8 +1,9 @@
-@@ -1,57 +1,52 @@
+@@ -1,66 +1,61 @@
  package main
 
  import (
  	"bufio"
+
 -	// Uncomment this to pass the first stage
 -	// "bytes"
 +	"bytes"
@@ -43,17 +44,11 @@
  	s := bufio.NewScanner(r)
 
  	for s.Scan() {
--		// Uncomment this to pass the first stage
--		// line := s.Bytes()
--		//
--		// if bytes.IndexAny(line, pattern) != -1 {
--		// 	ok = true
--		// }
-+		line := s.Bytes()
-+
-+		if bytes.IndexAny(line, pattern) != -1 {
-+			ok = true
-+		}
+ 		line := s.Bytes()
+
+ 		if matchLine(line, pattern) {
+ 			ok = true
+ 		}
  	}
 
  	if err := s.Err(); err != nil {
@@ -61,4 +56,14 @@
  	}
 
  	return ok, nil
+ }
+
+ func matchLine(line []byte, pattern string) bool {
+ 	var ok bool
+
+-	// Uncomment this to pass the first stage
+-	// ok = bytes.ContainsAny(line, pattern)
++	ok = bytes.ContainsAny(line, pattern)
+
+ 	return ok
  }

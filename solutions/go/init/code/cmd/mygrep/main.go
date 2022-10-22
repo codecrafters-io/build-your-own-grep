@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+
 	"bytes"
 	"fmt"
 	"io"
@@ -39,7 +40,7 @@ func match(r io.Reader, pattern string) (bool, error) {
 	for s.Scan() {
 		line := s.Bytes()
 
-		if bytes.IndexAny(line, pattern) != -1 {
+		if matchLine(line, pattern) {
 			ok = true
 		}
 	}
@@ -49,4 +50,12 @@ func match(r io.Reader, pattern string) (bool, error) {
 	}
 
 	return ok, nil
+}
+
+func matchLine(line []byte, pattern string) bool {
+	var ok bool
+
+	ok = bytes.ContainsAny(line, pattern)
+
+	return ok
 }
