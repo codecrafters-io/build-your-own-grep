@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"fmt"
 	"io"
@@ -17,44 +16,21 @@ func main() {
 
 	pattern := os.Args[2]
 
-	ok, err := match(os.Stdin, pattern)
+	line, err := io.ReadAll(os.Stdin) // suppose it is only one line
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "error: %v\n", err)
-		os.Exit(4)
+		fmt.Fprintf(os.Stderr, "error: read input text: %v\n", err)
+		os.Exit(2)
 	}
 
-	code := 0
+	_, _ = pattern, line
 
-	if !ok {
-		code = 1
-	}
-
-	os.Exit(code)
-}
-
-func match(r io.Reader, pattern string) (bool, error) {
-	var ok bool
-	s := bufio.NewScanner(r)
-
-	for s.Scan() {
-		line := s.Bytes()
-
-		if matchLine(line, pattern) {
-			ok = true
-		}
-	}
-
-	if err := s.Err(); err != nil {
-		return false, fmt.Errorf("scan input: %w", err)
-	}
-
-	return ok, nil
-}
-
-func matchLine(line []byte, pattern string) bool {
 	var ok bool
 
 	ok = bytes.ContainsAny(line, pattern)
 
-	return ok
+	if !ok {
+		os.Exit(1)
+	}
+
+	os.Exit(0)
 }
