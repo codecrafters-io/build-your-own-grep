@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"unicode/utf8"
 )
 
 // Usage: echo <input_text> | your_grep.sh -E <pattern>
@@ -23,7 +24,23 @@ func main() {
 		os.Exit(2)
 	}
 
-	_, _ = pattern, line
+	ok, err := match(line, pattern)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error: %v\n", err)
+		os.Exit(2)
+	}
+
+	if !ok {
+		os.Exit(1)
+	}
+
+	// default exit code is 0 which means success
+}
+
+func match(line []byte, pattern string) (bool, error) {
+	if utf8.RuneCountInString(pattern) != 1 {
+		return false, fmt.Errorf("unsupported pattern: %q", pattern)
+	}
 
 	var ok bool
 
@@ -33,9 +50,5 @@ func main() {
 	// Uncomment this to pass the first stage
 	// ok = bytes.ContainsAny(line, pattern)
 
-	if !ok {
-		os.Exit(1)
-	}
-
-	os.Exit(0)
+	return ok, nil
 }
