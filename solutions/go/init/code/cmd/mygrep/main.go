@@ -17,13 +17,13 @@ func main() {
 
 	pattern := os.Args[2]
 
-	line, err := io.ReadAll(os.Stdin) // suppose it is only one line
+	line, err := io.ReadAll(os.Stdin) // assume we're only dealing with a single line
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error: read input text: %v\n", err)
 		os.Exit(2)
 	}
 
-	ok, err := match(line, pattern)
+	ok, err := matchLine(line, pattern)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error: %v\n", err)
 		os.Exit(2)
@@ -36,7 +36,7 @@ func main() {
 	// default exit code is 0 which means success
 }
 
-func match(line []byte, pattern string) (bool, error) {
+func matchLine(line []byte, pattern string) (bool, error) {
 	if utf8.RuneCountInString(pattern) != 1 {
 		return false, fmt.Errorf("unsupported pattern: %q", pattern)
 	}
