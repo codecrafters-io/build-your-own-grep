@@ -39,6 +39,10 @@ func main() {
 }
 
 func matchLine(line []byte, pattern string) (bool, error) {
+	if pattern == "" {
+		return true, nil
+	}
+
 	for i := range string(line) { // range over string handles multibyte utf-8 characters correctly
 		// try for every starting position
 		ok, err := matchHere(line[i:], pattern)

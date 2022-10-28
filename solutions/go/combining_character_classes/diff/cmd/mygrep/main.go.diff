@@ -1,4 +1,4 @@
-@@ -17,56 +17,110 @@
+@@ -17,56 +17,114 @@
  		os.Exit(2) // 1 means no lines were selected, >1 means error
  	}
 
@@ -27,9 +27,13 @@
 -	switch {
 -	case pattern == `\d`:
 -		for _, char := range string(line) { // ranging over string handles utf-8 multibyte characters correctly
--			if unicode.IsDigit(char) { // char is rune not byte
+-			if unicode.IsDigit(char) {
 -				return true, nil
 -			}
++	if pattern == "" {
++		return true, nil
++	}
++
 +	for i := range string(line) { // range over string handles multibyte utf-8 characters correctly
 +		// try for every starting position
 +		ok, err := matchHere(line[i:], pattern)
@@ -73,10 +77,7 @@
 +		if !unicode.IsLetter(char) {
 +			return false, nil
 +		}
-
--		return !bytes.ContainsAny(line, charset), nil
--	case strings.HasPrefix(pattern, "[") && strings.IndexByte(pattern, ']') == len(pattern)-1: // first is '[' and the ']' is the last
--		charset := pattern[1 : len(pattern)-1]
++
 +		return matchHere(line[size:], pattern[2:])
 +
 +	case strings.HasPrefix(pattern, "[^"):
@@ -84,7 +85,10 @@
 +		if end == -1 {
 +			return false, fmt.Errorf("unclosed negative character group: %q", pattern)
 +		}
-+
+
+-		return !bytes.ContainsAny(line, charset), nil
+-	case strings.HasPrefix(pattern, "[") && strings.IndexByte(pattern, ']') == len(pattern)-1: // first is '[' and the ']' is the last
+-		charset := pattern[1 : len(pattern)-1]
 +		charset := pattern[2:end]
 +
 +		char, size := utf8.DecodeRune(line)
