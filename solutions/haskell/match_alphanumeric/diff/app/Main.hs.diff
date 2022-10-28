@@ -1,0 +1,18 @@
+--- match_digit/code/app/Main.hs	2022-10-28 09:11:46.110662955 +0200
++++ match_alphanumeric/code/app/Main.hs	2022-10-28 09:12:30.254351985 +0200
+@@ -9,9 +9,12 @@
+   if pat == "\\d"
+     then any isDigit input
+     else
+-      if length pat == 1
+-        then head pat `elem` input
+-        else error $ "Unhandled pattern: " ++ pat
++      if pat == "\\w"
++        then any (\c -> isAlphaNum c || c == '_') input
++        else
++          if length pat == 1
++            then head pat `elem` input
++            else error $ "Unhandled pattern: " ++ pat
+ 
+ main :: IO ()
+ main = do

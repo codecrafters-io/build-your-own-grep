@@ -1,13 +1,17 @@
 module Main where
 
+import Data.Char
 import System.Environment
 import System.Exit
 
 matchPattern :: String -> String -> Bool
 matchPattern pat input = do
-  if length pat == 1
-    then head pat `elem` input
-    else error $ "Unhandled pattern: " ++ pat
+  if pat == "\\d"
+    then any isDigit input
+    else
+      if length pat == 1
+        then head pat `elem` input
+        else error $ "Unhandled pattern: " ++ pat
 
 main :: IO ()
 main = do
@@ -19,9 +23,7 @@ main = do
     then do
       putStrLn "Expected first argument to be '-E'"
       exitFailure
-    else do putStrLn "Logs from your program will appear here!"
-            -- Uncomment this to pass stage 1
-            -- if matchPattern pat input_line
-            --   then exitSuccess
-            --   else exitFailure
-
+    else
+      if matchPattern pat input_line
+        then exitSuccess
+        else exitFailure

@@ -19,9 +19,7 @@ main = do
     then do
       putStrLn "Expected first argument to be '-E'"
       exitFailure
-    else do putStrLn "Logs from your program will appear here!"
-            -- Uncomment this to pass stage 1
-            -- if matchPattern pat input_line
-            --   then exitSuccess
-            --   else exitFailure
-
+    else
+      if matchPattern pat input_line
+        then exitSuccess
+        else exitFailure

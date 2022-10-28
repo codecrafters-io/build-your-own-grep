@@ -1,0 +1,23 @@
+--- init/code/app/Main.hs	2022-10-28 09:10:24.643339837 +0200
++++ match_digit/code/app/Main.hs	2022-10-28 09:11:46.110662955 +0200
+@@ -1,13 +1,17 @@
+ module Main where
+ 
++import Data.Char
+ import System.Environment
+ import System.Exit
+ 
+ matchPattern :: String -> String -> Bool
+ matchPattern pat input = do
+-  if length pat == 1
+-    then head pat `elem` input
+-    else error $ "Unhandled pattern: " ++ pat
++  if pat == "\\d"
++    then any isDigit input
++    else
++      if length pat == 1
++        then head pat `elem` input
++        else error $ "Unhandled pattern: " ++ pat
+ 
+ main :: IO ()
+ main = do

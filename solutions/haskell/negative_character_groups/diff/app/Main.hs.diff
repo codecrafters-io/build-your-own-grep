@@ -1,0 +1,33 @@
+--- positive_character_groups/code/app/Main.hs	2022-10-28 09:14:09.321816906 +0200
++++ negative_character_groups/code/app/Main.hs	2022-10-28 09:17:56.957037918 +0200
+@@ -9,6 +9,9 @@
+ getAllowedCharacters :: String -> String
+ getAllowedCharacters s = take (length s - 2) $ tail s
+ 
++getNotAllowedCharacters :: String -> String
++getNotAllowedCharacters s = take (length s - 3) $ tail $ tail s
++
+ matchPattern :: String -> String -> Bool
+ matchPattern pat input = do
+   if pat == "\\d"
+@@ -17,12 +20,15 @@
+       if pat == "\\w"
+         then any (\c -> isAlphaNum c || c == '_') input
+         else
+-          if head pat == '['
+-            then or $ fmap (`elem` input) (getAllowedCharacters pat)
++          if take 2 pat == "[^"
++            then elem False $ fmap (`elem` input) (getNotAllowedCharacters pat)
+             else
+-              if length pat == 1
+-                then head pat `elem` input
+-                else error $ "Unhandled pattern: " ++ pat
++              if head pat == '['
++                then or $ fmap (`elem` input) (getAllowedCharacters pat)
++                else
++                  if length pat == 1
++                    then head pat `elem` input
++                    else error $ "Unhandled pattern: " ++ pat
+ 
+ main :: IO ()
+ main = do
