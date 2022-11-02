@@ -50,10 +50,14 @@ def match_pattern(input_line, pattern):
     if pattern[0] == "^":
         return match_here(input_line, pattern[1:])
 
+    # Base case: if there's no input remaining, the match failed
+    if input_line == "":
+        return False
+
     if match_here(input_line, pattern):
         return True
     else:
-        return match_here(input_line[1:], pattern)
+        return match_pattern(input_line[1:], pattern)
 
 
 def main():

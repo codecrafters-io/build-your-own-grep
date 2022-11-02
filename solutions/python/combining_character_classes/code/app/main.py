@@ -47,10 +47,14 @@ def match_here(remaining_input, pattern):
 
 
 def match_pattern(input_line, pattern):
+    # Base case: if there's no input remaining, the match failed
+    if input_line == "":
+        return False
+
     if match_here(input_line, pattern):
         return True
     else:
-        return match_here(input_line[1:], pattern)
+        return match_pattern(input_line[1:], pattern)
 
 
 def main():
