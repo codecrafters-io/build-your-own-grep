@@ -56,12 +56,14 @@ func matchLine(line []byte, pattern string) (bool, error) {
 		}
 
 		return false, nil
-	case strings.HasPrefix(pattern, "[^") && strings.IndexByte(pattern, ']') == len(pattern)-1: // starts with "[^" and the ']' is the last
-		charset := pattern[2 : len(pattern)-1]
+	case strings.HasPrefix(pattern, "[^"):
+		end := strings.IndexByte(pattern, ']')
+		charset := pattern[2:end]
 
 		return !bytes.ContainsAny(line, charset), nil
-	case strings.HasPrefix(pattern, "[") && strings.IndexByte(pattern, ']') == len(pattern)-1: // first is '[' and the ']' is the last
-		charset := pattern[1 : len(pattern)-1]
+	case strings.HasPrefix(pattern, "["):
+		end := strings.IndexByte(pattern, ']')
+		charset := pattern[1:end]
 
 		return bytes.ContainsAny(line, charset), nil
 	case utf8.RuneCountInString(pattern) == 1:

@@ -1,4 +1,4 @@
-@@ -34,35 +34,39 @@
+@@ -34,36 +34,41 @@
  	if !ok {
  		os.Exit(1)
  	}
@@ -24,12 +24,14 @@
  		}
 
  		return false, nil
-+	case strings.HasPrefix(pattern, "[^") && strings.IndexByte(pattern, ']') == len(pattern)-1: // starts with "[^" and the ']' is the last
-+		charset := pattern[2 : len(pattern)-1]
++	case strings.HasPrefix(pattern, "[^"):
++		end := strings.IndexByte(pattern, ']')
++		charset := pattern[2:end]
 +
 +		return !bytes.ContainsAny(line, charset), nil
- 	case strings.HasPrefix(pattern, "[") && strings.IndexByte(pattern, ']') == len(pattern)-1: // first is '[' and the ']' is the last
- 		charset := pattern[1 : len(pattern)-1]
+ 	case strings.HasPrefix(pattern, "["):
+ 		end := strings.IndexByte(pattern, ']')
+ 		charset := pattern[1:end]
 
  		return bytes.ContainsAny(line, charset), nil
  	case utf8.RuneCountInString(pattern) == 1:
