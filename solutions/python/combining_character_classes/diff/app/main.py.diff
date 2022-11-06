@@ -1,4 +1,4 @@
-@@ -1,39 +1,71 @@
+@@ -1,39 +1,75 @@
  import sys
 
  # import pyparsing - available if you need it!
@@ -57,11 +57,15 @@
 +
 +
 +def match_pattern(input_line, pattern):
++    # Base case: if there's no input remaining, the match failed
++    if input_line == "":
++        return False
++
 +    if match_here(input_line, pattern):
 +        return True
      else:
 -        raise RuntimeError(f"Unhandled pattern: {pattern}")
-+        return match_here(input_line[1:], pattern)
++        return match_pattern(input_line[1:], pattern)
 
 
  def main():
