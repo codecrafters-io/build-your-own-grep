@@ -83,10 +83,6 @@ func matchHere(line []byte, pattern string) (bool, error) {
 
 	case strings.HasPrefix(pattern, "[^"):
 		end := strings.IndexByte(pattern, ']')
-		if end == -1 {
-			return false, fmt.Errorf("unclosed negative character group: %q", pattern)
-		}
-
 		charset := pattern[2:end]
 
 		char, size := utf8.DecodeRune(line)
@@ -98,10 +94,6 @@ func matchHere(line []byte, pattern string) (bool, error) {
 
 	case strings.HasPrefix(pattern, "["):
 		end := strings.IndexByte(pattern, ']')
-		if end == -1 {
-			return false, fmt.Errorf("unclosed positive character group: %q", pattern)
-		}
-
 		charset := pattern[1:end]
 
 		char, size := utf8.DecodeRune(line)

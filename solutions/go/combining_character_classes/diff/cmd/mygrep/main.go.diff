@@ -1,4 +1,4 @@
-@@ -17,58 +17,114 @@
+@@ -17,58 +17,106 @@
  		os.Exit(2) // 1 means no lines were selected, >1 means error
  	}
 
@@ -47,12 +47,12 @@
 +
 +	return false, nil
 +}
-+
+
 +func matchHere(line []byte, pattern string) (bool, error) {
 +	switch {
 +	case pattern == "": // empty pattern matches anything
 +		return true, nil
-
++
 +	case len(line) == 0: // if there's no input, the match failed
  		return false, nil
 -	case pattern == `\w`:
@@ -80,10 +80,6 @@
 +
  	case strings.HasPrefix(pattern, "[^"):
  		end := strings.IndexByte(pattern, ']')
-+		if end == -1 {
-+			return false, fmt.Errorf("unclosed negative character group: %q", pattern)
-+		}
-+
  		charset := pattern[2:end]
 
 -		return !bytes.ContainsAny(line, charset), nil
@@ -96,10 +92,6 @@
 +
  	case strings.HasPrefix(pattern, "["):
  		end := strings.IndexByte(pattern, ']')
-+		if end == -1 {
-+			return false, fmt.Errorf("unclosed positive character group: %q", pattern)
-+		}
-+
  		charset := pattern[1:end]
 
 -		return bytes.ContainsAny(line, charset), nil
