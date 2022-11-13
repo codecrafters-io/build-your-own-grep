@@ -21,7 +21,7 @@ matchPattern pat input = do
         then any (\c -> isAlphaNum c || c == '_') input
         else
           if take 2 pat == "[^"
-            then elem False $ fmap (`elem` input) (getNotAllowedCharacters pat)
+            then not $ or $ fmap (`elem` input) (getNotAllowedCharacters pat)
             else
               if head pat == '['
                 then or $ fmap (`elem` input) (getAllowedCharacters pat)
