@@ -1,5 +1,3 @@
---- ../../starter_templates/haskell/app/Main.hs	2022-10-28 09:07:32.391951866 +0200
-+++ init/code/app/Main.hs	2022-10-28 09:10:24.643339837 +0200
 @@ -19,9 +19,7 @@
      then do
        putStrLn "Expected first argument to be '-E'"

@@ -1,5 +1,3 @@
---- positive_character_groups/code/app/Main.hs	2022-10-28 09:14:09.321816906 +0200
-+++ negative_character_groups/code/app/Main.hs	2022-10-28 09:17:56.957037918 +0200
 @@ -9,6 +9,9 @@
  getAllowedCharacters :: String -> String
  getAllowedCharacters s = take (length s - 2) $ tail s

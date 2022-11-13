@@ -1,5 +1,3 @@
---- match_alphanumeric/code/app/Main.hs	2022-10-28 09:12:30.254351985 +0200
-+++ positive_character_groups/code/app/Main.hs	2022-10-28 09:59:41.077258075 +0200
 @@ -4,6 +4,9 @@
  import System.Environment
  import System.Exit
