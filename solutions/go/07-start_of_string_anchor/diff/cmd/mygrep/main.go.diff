@@ -1,8 +1,4 @@
-@@ -17,52 +17,55 @@
- 		os.Exit(2) // 1 means no lines were selected, >1 means error
- 	}
-
- 	pattern := os.Args[2]
+@@ -21,50 +21,54 @@
 
  	line, err := io.ReadAll(os.Stdin) // assume we're only dealing with a single line
  	if err != nil {
@@ -24,14 +20,14 @@
  }
 
  func matchLine(line []byte, pattern string) (bool, error) {
--	if pattern == "" {
-+	switch {
-+	case pattern == "":
+ 	if pattern == "" {
  		return true, nil
-+	case strings.HasPrefix(pattern, "^"):
-+		return matchHere(line, pattern[1:])
  	}
 
++	if strings.HasPrefix(pattern, "^") {
++		return matchHere(line, pattern[1:])
++	}
++
  	for i := range string(line) { // range over string handles multibyte utf-8 characters correctly
  		// try for every starting position
  		ok, err := matchHere(line[i:], pattern)
@@ -55,3 +51,5 @@
  		return false, nil
 
  	case strings.HasPrefix(pattern, `\d`):
+ 		char, size := utf8.DecodeRune(line)
+ 		if !unicode.IsDigit(char) {

@@ -1,7 +1,7 @@
-@@ -43,50 +43,53 @@
- 	case pattern == "":
- 		return true, nil
- 	case strings.HasPrefix(pattern, "^"):
+@@ -44,50 +44,53 @@
+ 	}
+
+ 	if strings.HasPrefix(pattern, "^") {
  		return matchHere(line, pattern[1:])
  	}
 

@@ -39,10 +39,11 @@ func main() {
 }
 
 func matchLine(line []byte, pattern string) (bool, error) {
-	switch {
-	case pattern == "":
+	if pattern == "" {
 		return true, nil
-	case strings.HasPrefix(pattern, "^"):
+	}
+
+	if strings.HasPrefix(pattern, "^") {
 		return matchHere(line, pattern[1:])
 	}
 
