@@ -1,6 +1,28 @@
-@@ -23,7 +23,17 @@
+@@ -1,51 +1,61 @@
+ module Parser (parse) where
+
+
+ import qualified Text.Megaparsec as M
+ import Text.Megaparsec.Char (char)
+ import Data.Void
+ import RegEx
+
+ type MParser = M.Parsec Void String
+ data MathingType = Pos | Neg deriving (Eq)
+
+ notChar :: Char -> MParser Char
+ notChar c = M.satisfy (/=c)
+
+ anyNotUsed :: String -> MParser Char
+ anyNotUsed s = M.satisfy $ not . (`elem` s)
+
+ -- The regex parser starts here
+ -- https://github.com/kean/Regex/blob/master/grammar.ebnf
+ -- I had to adjust the rule CharacterGroup
+ -- CharacterGroup         ::= PositiveCharacterGroup | NegativeCharacterGroup
+ -- PositiveCharacterGroup ::= "[" CharacterGroupItem+ "]"
  -- CharacterGroup         ::= "[" CharacterGroupNegativeModifier CharacterGroupItem+ "]"
- 
+
  pRegEx :: MParser (M Char)
 -pRegEx = pExpression
 +pRegEx = do
@@ -14,6 +36,28 @@
 +  return $ case s of
 +    Nothing -> concatM [kleeneStarM anyCharM]
 +    Just _ -> noOpM
- 
+
  pExpression :: MParser (M Char)
  pExpression = pSubExpression
+
+ pSubExpression :: MParser (M Char)
+ pSubExpression = do
+   subExp <- M.some $ M.try pMatch
+   return $ concatM subExp
+
+ pMatch :: MParser (M Char)
+ pMatch = pMatchItem
+
+ pMatchItem :: MParser (M Char)
+ pMatchItem = do
+   M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
+
+ pMatchCharacterClass :: MParser (M Char)
+ pMatchCharacterClass = M.try pCharacterGroup M.<|> fmap (\g -> g Pos ) (M.try pCharacterClass)
+
+ pMatchCharacter :: MParser (M Char)
+ pMatchCharacter = do
+   -- TODO: Update to only consume non special characters like letters or digits etc.
+   c <- anyNotUsed "|()$"
+   return $ posLit c
+

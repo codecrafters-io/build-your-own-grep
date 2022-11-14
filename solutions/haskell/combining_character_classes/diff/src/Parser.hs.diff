@@ -31,7 +31,7 @@
 +
 +pSubExpression :: MParser (M Char)
 +pSubExpression = do
-+  subExp <- M.some $ M.try pMatch 
++  subExp <- M.some $ M.try pMatch
 +  return $ concatM subExp
 +
 +pMatch :: MParser (M Char)

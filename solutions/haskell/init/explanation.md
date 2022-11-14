@@ -4,9 +4,7 @@ Study and uncomment the relevant code:
 
 ```haskell
 -- Uncomment this to pass stage 1
-if matchPattern pat input_line
-then exitSuccess
-  else exitFailure
+putStrLn "Logs from your program will appear here"
 ```
 
 Push your changes to pass the first stage:

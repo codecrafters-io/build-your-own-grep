@@ -1,7 +1,7 @@
-@@ -1,34 +1,9 @@
+@@ -1,46 +1,23 @@
 -module Main where
 +module Main (main) where
- 
+
 -import Data.Char
 -import Data.List
 -import Data.Maybe
@@ -33,10 +33,14 @@
 -                    else error $ "Unhandled pattern: " ++ pat
 +import Parser (parse)
 +import RegEx (matching)
- 
+
  main :: IO ()
  main = do
-@@ -40,7 +15,9 @@
+   args <- getArgs
+   let pat = args !! 1
+   input_line <- getLine
+
+   if head args /= "-E"
      then do
        putStrLn "Expected first argument to be '-E'"
        exitFailure

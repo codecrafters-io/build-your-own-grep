@@ -11,17 +11,8 @@ matchPattern pat input = do
 
 main :: IO ()
 main = do
-  args <- getArgs
-  let pat = args !! 1
-  input_line <- getLine
+  -- You can use print statements as follows for debugging, they'll be visible when running tests.
+  putStrLn "Logs from your program will appear here"
 
-  if head args /= "-E"
-    then do
-      putStrLn "Expected first argument to be '-E'"
-      exitFailure
-    else do putStrLn "Logs from your program will appear here!"
-            -- Uncomment this to pass stage 1
-            -- if matchPattern pat input_line
-            --   then exitSuccess
-            --   else exitFailure
-
+  -- Uncomment this to pass stage 1
+  -- putStrLn "Logs from your program will appear here"

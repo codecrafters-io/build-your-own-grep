@@ -1,7 +1,28 @@
-@@ -22,6 +22,11 @@
+@@ -1,72 +1,82 @@
+ module Parser (parse) where
+
+
+ import qualified Text.Megaparsec as M
+ import Text.Megaparsec.Char (char)
+ import Data.Void
+ import RegEx
+
+ type MParser = M.Parsec Void String
+ data MathingType = Pos | Neg deriving (Eq)
+
+ notChar :: Char -> MParser Char
+ notChar c = M.satisfy (/=c)
+
+ anyNotUsed :: String -> MParser Char
+ anyNotUsed s = M.satisfy $ not . (`elem` s)
+
+ -- The regex parser starts here
+ -- https://github.com/kean/Regex/blob/master/grammar.ebnf
+ -- I had to adjust the rule CharacterGroup
+ -- CharacterGroup         ::= PositiveCharacterGroup | NegativeCharacterGroup
  -- PositiveCharacterGroup ::= "[" CharacterGroupItem+ "]"
  -- CharacterGroup         ::= "[" CharacterGroupNegativeModifier CharacterGroupItem+ "]"
- 
+
 +pipe :: MParser (M Char)
 +pipe = do
 +  _ <- char '|'
@@ -10,9 +31,24 @@
  pRegEx :: MParser (M Char)
  pRegEx = do
    s <- pStartOfString
-@@ -44,7 +49,12 @@
+   ex <- pExpression
+   e <- pEndOfString
+   return $ concatM [s, ex, e]
+
+ pStartOfString :: MParser (M Char)
+ pStartOfString = do
+   s <- M.optional $ char '^'
+   return $ case s of
+     Nothing -> concatM [kleeneStarM anyCharM]
+     Just _ -> noOpM
+
+ pEndOfString :: MParser (M Char)
+ pEndOfString = do
+   s <- M.optional $ char '$'
+   return $ case s of
+     Nothing -> concatM [kleeneStarM anyCharM]
      Just _ -> emptyStrM
- 
+
  pExpression :: MParser (M Char)
 -pExpression = pSubExpression
 +pExpression = do
@@ -21,6 +57,28 @@
 +  return $ case alt of
 +    Nothing -> subExpression
 +    Just x -> altM [subExpression, x]
- 
+
  pSubExpression :: MParser (M Char)
  pSubExpression = do
+   subExp <- M.some $ M.try pMatch
+   return $ concatM subExp
+
+ pMatch :: MParser (M Char)
+ pMatch = do
+   i <- pMatchItem
+   q <- M.optional pQuantifiers
+   return $ case q of
+           Nothing -> i
+           Just c -> quantifier c i
+
+ quantifier :: Char -> M Char -> M Char
+ quantifier c i =
+   case c of
+     '*' -> kleeneStarM i
+     '+' -> kleenePlusM i
+     '?' -> altM [emptyStrM, i]
+     _   -> error "Invalid quantifier"
+
+ pMatchItem :: MParser (M Char)
+ pMatchItem = do
+   M.try pMatchAnyChar M.<|> M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
