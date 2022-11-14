@@ -1,0 +1,57 @@
+@@ -17,52 +17,55 @@
+ 		os.Exit(2) // 1 means no lines were selected, >1 means error
+ 	}
+
+ 	pattern := os.Args[2]
+
+ 	line, err := io.ReadAll(os.Stdin) // assume we're only dealing with a single line
+ 	if err != nil {
+ 		fmt.Fprintf(os.Stderr, "error: read input text: %v\n", err)
+ 		os.Exit(2)
+ 	}
+
+ 	ok, err := matchLine(line, pattern)
+ 	if err != nil {
+ 		fmt.Fprintf(os.Stderr, "error: %v\n", err)
+ 		os.Exit(2)
+ 	}
+
+ 	if !ok {
+ 		os.Exit(1)
+ 	}
+
+ 	// default exit code is 0 which means success
+ }
+
+ func matchLine(line []byte, pattern string) (bool, error) {
+-	if pattern == "" {
++	switch {
++	case pattern == "":
+ 		return true, nil
++	case strings.HasPrefix(pattern, "^"):
++		return matchHere(line, pattern[1:])
+ 	}
+
+ 	for i := range string(line) { // range over string handles multibyte utf-8 characters correctly
+ 		// try for every starting position
+ 		ok, err := matchHere(line[i:], pattern)
+ 		if err != nil {
+ 			return false, err
+ 		}
+ 		if ok {
+ 			return true, nil
+ 		}
+ 	}
+
+ 	return false, nil
+ }
+
+ func matchHere(line []byte, pattern string) (bool, error) {
+ 	switch {
+ 	case pattern == "": // empty pattern matches anything
+ 		return true, nil
+
+ 	case len(line) == 0: // if there's no input, the match failed
+ 		return false, nil
+
+ 	case strings.HasPrefix(pattern, `\d`):
