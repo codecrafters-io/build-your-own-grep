@@ -1,0 +1,2 @@
+* [ ] add `emptyStrM`
+* [ ] add `pEndOfString`

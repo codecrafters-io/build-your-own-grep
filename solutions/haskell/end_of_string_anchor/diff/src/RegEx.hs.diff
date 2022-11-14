@@ -1,0 +1,10 @@
+@@ -36,6 +36,9 @@
+ noOpM :: M a
+ noOpM s = [s]
+ 
++emptyStrM :: M a
++emptyStrM s = if null s then [[]] else []
++
+ altM :: [M a] -> M a
+ altM [] = failM
+ altM (m:ms) = \s -> m s ++ altM ms s

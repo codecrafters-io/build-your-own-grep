@@ -23,7 +23,25 @@ anyNotUsed s = M.satisfy $ not . (`elem` s)
 -- CharacterGroup         ::= "[" CharacterGroupNegativeModifier CharacterGroupItem+ "]"
 
 pRegEx :: MParser (M Char)
-pRegEx = pExpression
+pRegEx = do
+  s <- pStartOfString
+  ex <- pExpression
+  e <- pEndOfString
+  return $ concatM [s, ex, e]
+
+pStartOfString :: MParser (M Char)
+pStartOfString = do
+  s <- M.optional $ char '^'
+  return $ case s of
+    Nothing -> concatM [kleeneStarM anyCharM]
+    Just _ -> noOpM
+
+pEndOfString :: MParser (M Char)
+pEndOfString = do
+  s <- M.optional $ char '$'
+  return $ case s of
+    Nothing -> concatM [kleeneStarM anyCharM]
+    Just _ -> emptyStrM
 
 pExpression :: MParser (M Char)
 pExpression = pSubExpression
@@ -34,11 +52,29 @@ pSubExpression = do
   return $ concatM subExp
 
 pMatch :: MParser (M Char)
-pMatch = pMatchItem
+pMatch = do
+  i <- pMatchItem
+  q <- M.optional pQuantifiers
+  return $ case q of
+          Nothing -> i
+          Just c -> quantifier c i
+
+quantifier :: Char -> M Char -> M Char
+quantifier c i =
+  case c of
+    '*' -> kleeneStarM i
+    '+' -> kleenePlusM i
+    '?' -> altM [emptyStrM, i]
+    _   -> error "Invalid quantifier"
 
 pMatchItem :: MParser (M Char)
 pMatchItem = do
-  M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
+  M.try pMatchAnyChar M.<|> M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
+
+pMatchAnyChar :: MParser (M Char)
+pMatchAnyChar = do
+  _ <- char '.'
+  return anyCharM
 
 pMatchCharacterClass :: MParser (M Char)
 pMatchCharacterClass = M.try pCharacterGroup M.<|> fmap (\g -> g Pos ) (M.try pCharacterClass)
@@ -91,6 +127,18 @@ pCharacterClassAnyDecimal = do
 
 pChar :: MParser Char
 pChar = notChar ']'
+
+pQuantifiers :: MParser Char
+pQuantifiers = M.try zeroOrMoreQuantifier M.<|> M.try oneOrMoreQuantifier M.<|> M.try zeroOrOneQuantifier
+
+zeroOrMoreQuantifier :: MParser Char
+zeroOrMoreQuantifier = char '*'
+
+oneOrMoreQuantifier :: MParser Char
+oneOrMoreQuantifier = char '+'
+
+zeroOrOneQuantifier :: MParser Char
+zeroOrOneQuantifier = char '?'
 
 parse :: String -> M Char
 parse s = case M.parse pRegEx "Error" s of

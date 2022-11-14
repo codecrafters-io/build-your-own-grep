@@ -1,4 +1,4 @@
-@@ -0,0 +1,56 @@
+@@ -0,0 +1,53 @@
 +module RegEx
 +  where
 +
@@ -27,9 +27,6 @@
 +
 +alphaNumInverseM :: M Char
 +alphaNumInverseM = singleM (\c -> not (isAlphaNum c) && c /= '_')
-+
-+anyCharM :: M a
-+anyCharM = singleM (const True)
 +
 +failM :: M a
 +failM _ = []

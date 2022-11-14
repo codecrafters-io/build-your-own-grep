@@ -23,7 +23,25 @@ anyNotUsed s = M.satisfy $ not . (`elem` s)
 -- CharacterGroup         ::= "[" CharacterGroupNegativeModifier CharacterGroupItem+ "]"
 
 pRegEx :: MParser (M Char)
-pRegEx = pExpression
+pRegEx = do
+  s <- pStartOfString
+  ex <- pExpression
+  e <- pEndOfString
+  return $ concatM [s, ex, e]
+
+pStartOfString :: MParser (M Char)
+pStartOfString = do
+  s <- M.optional $ char '^'
+  return $ case s of
+    Nothing -> concatM [kleeneStarM anyCharM]
+    Just _ -> noOpM
+
+pEndOfString :: MParser (M Char)
+pEndOfString = do
+  s <- M.optional $ char '$'
+  return $ case s of
+    Nothing -> concatM [kleeneStarM anyCharM]
+    Just _ -> emptyStrM
 
 pExpression :: MParser (M Char)
 pExpression = pSubExpression

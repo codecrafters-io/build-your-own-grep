@@ -1,0 +1,29 @@
+@@ -72,7 +72,9 @@
+ quantifier :: Char -> M Char -> M Char
+ quantifier c i =
+   case c of
++    '*' -> kleeneStarM i
+     '+' -> kleenePlusM i
++    '?' -> altM [emptyStrM, i]
+     _   -> error "Invalid quantifier"
+ 
+ pMatchItem :: MParser (M Char)
+@@ -132,11 +134,17 @@
+ pChar = notChar ']'
+ 
+ pQuantifiers :: MParser Char
+-pQuantifiers = M.try oneOrMoreQuantifier 
++pQuantifiers = M.try zeroOrMoreQuantifier M.<|> M.try oneOrMoreQuantifier M.<|> M.try zeroOrOneQuantifier
++
++zeroOrMoreQuantifier :: MParser Char
++zeroOrMoreQuantifier = char '*'
+ 
+ oneOrMoreQuantifier :: MParser Char
+ oneOrMoreQuantifier = char '+'
+ 
++zeroOrOneQuantifier :: MParser Char
++zeroOrOneQuantifier = char '?'
++
+ parse :: String -> M Char
+ parse s = case M.parse pRegEx "Error" s of
+                  Left e -> error $ M.errorBundlePretty e

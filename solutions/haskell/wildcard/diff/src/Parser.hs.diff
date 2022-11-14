@@ -1,0 +1,14 @@
+@@ -69,7 +69,12 @@
+ 
+ pMatchItem :: MParser (M Char)
+ pMatchItem = do
+-  M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
++  M.try pMatchAnyChar M.<|> M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
++
++pMatchAnyChar :: MParser (M Char)
++pMatchAnyChar = do
++  _ <- char '.'
++  return anyCharM
+ 
+ pMatchCharacterClass :: MParser (M Char)
+ pMatchCharacterClass = M.try pCharacterGroup M.<|> fmap (\g -> g Pos ) (M.try pCharacterClass)

@@ -1,0 +1,26 @@
+@@ -25,8 +25,9 @@
+ pRegEx :: MParser (M Char)
+ pRegEx = do
+   s <- pStartOfString
+-  e <- pExpression
+-  return $ concatM [s, e]
++  ex <- pExpression
++  e <- pEndOfString
++  return $ concatM [s, ex, e]
+ 
+ pStartOfString :: MParser (M Char)
+ pStartOfString = do
+@@ -35,6 +36,13 @@
+     Nothing -> concatM [kleeneStarM anyCharM]
+     Just _ -> noOpM
+ 
++pEndOfString :: MParser (M Char)
++pEndOfString = do
++  s <- M.optional $ char '$'
++  return $ case s of
++    Nothing -> concatM [kleeneStarM anyCharM]
++    Just _ -> emptyStrM
++
+ pExpression :: MParser (M Char)
+ pExpression = pSubExpression
+ 

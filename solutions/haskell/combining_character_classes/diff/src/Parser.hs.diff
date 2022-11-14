@@ -1,4 +1,4 @@
-@@ -0,0 +1,113 @@
+@@ -0,0 +1,98 @@
 +module Parser (parse) where
 +
 +
@@ -23,21 +23,11 @@
 +-- PositiveCharacterGroup ::= "[" CharacterGroupItem+ "]"
 +-- CharacterGroup         ::= "[" CharacterGroupNegativeModifier CharacterGroupItem+ "]"
 +
-+pipe :: MParser (M Char)
-+pipe = do
-+  _ <- char '|'
-+  pExpression
-+
 +pRegEx :: MParser (M Char)
 +pRegEx = pExpression
 +
 +pExpression :: MParser (M Char)
-+pExpression = do
-+  subExpression <- pSubExpression
-+  alt <- M.optional pipe
-+  return $ case alt of
-+    Nothing -> subExpression
-+    Just x -> altM [subExpression, x]
++pExpression = pSubExpression
 +
 +pSubExpression :: MParser (M Char)
 +pSubExpression = do
@@ -49,12 +39,7 @@
 +
 +pMatchItem :: MParser (M Char)
 +pMatchItem = do
-+  M.try pMatchAnyChar M.<|> M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
-+
-+pMatchAnyChar :: MParser (M Char)
-+pMatchAnyChar = do
-+  _ <- char '.'
-+  return anyCharM
++  M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
 +
 +pMatchCharacterClass :: MParser (M Char)
 +pMatchCharacterClass = M.try pCharacterGroup M.<|> fmap (\g -> g Pos ) (M.try pCharacterClass)
