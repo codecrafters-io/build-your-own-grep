@@ -1,4 +1,4 @@
-FROM haskell:9.0.2-buster
+FROM haskell:8.8.3-buster
 
 WORKDIR /app
 
@@ -17,8 +17,10 @@ COPY stack.yaml package.yaml stack.yaml.lock /app/
 RUN mkdir /app/app
 RUN echo 'main :: IO ()' >> /app/app/Main.hs
 RUN echo 'main = putStrLn "Hello, World!"' >> /app/app/Main.hs
+
 RUN mkdir /app/src
 
 RUN stack build
 
 ENV CODECRAFTERS_DEPENDENCY_FILE_PATHS="stack.yaml,package.yaml,stack.yaml.lock"
+
