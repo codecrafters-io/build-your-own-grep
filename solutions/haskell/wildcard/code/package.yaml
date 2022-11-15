@@ -27,16 +27,3 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - hs-grep-clone
-
-tests:
-  hs-grep-clone-test:
-    main:                Spec.hs
-    source-dirs:         test
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - hs-grep-clone
-    - hspec
-    - QuickCheck

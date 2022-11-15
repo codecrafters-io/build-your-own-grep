@@ -25,3 +25,5 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    dependencies:
+    - hs-grep-clone
