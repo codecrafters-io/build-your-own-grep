@@ -20,7 +20,11 @@ RUN echo 'main :: IO ()' >> /app/app/Main.hs
 RUN echo 'main = putStrLn "Hello, World!"' >> /app/app/Main.hs
 
 RUN stack build 
+RUN stack clean hs-grep-clone
 RUN cp -r .stack-work /tmp/
+
+RUN rm -rf /app/app
+RUN rm -rf /app/src
 
 RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && cp -r /tmp/.stack-work . && stack build" > /codecrafters-precompile.sh
 RUN chmod +x /codecrafters-precompile.sh
