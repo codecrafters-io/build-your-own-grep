@@ -4,7 +4,13 @@ Study and uncomment the relevant code:
 
 ```haskell
 -- Uncomment this to pass stage 1
-putStrLn "Logs from your program will appear here"
+if head args /= "-E"
+  then do
+    putStrLn "Expected first argument to be '-E'"
+    exitFailure
+  else do if matchPattern pat input_line
+            then exitSuccess
+            else exitFailure
 ```
 
 Push your changes to pass the first stage:

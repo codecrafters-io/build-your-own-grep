@@ -70,7 +70,30 @@ After you implemented `concatM` correctly you finished the application logic for
 ## Implement parser using megaparsec
 
 We are going to implement a parser for the RegEx using the [megaparsec library](https://hackage.haskell.org/package/megaparsec).
+Our parser can parse the [EBNF](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form) from [this file](https://github.com/kean/Regex/blob/master/grammar.ebnf).
+We adjusted the EBNF so that it fit better for our parser:
 
+```EBNF
+CharacterGroup         ::= PositiveCharacterGroup | NegativeCharacterGroup
+PositiveCharacterGroup ::= "[" CharacterGroupItem+ "]"
+CharacterGroup         ::= "[" CharacterGroupNegativeModifier CharacterGroupItem+ "]"
+```
+
+We created a type alias for the megaparsec parser:
+```Haskell
+type MParser = M.Parsec Void String
+```
+
+Now you can write one function for every EBNF rule.
+
+One function is still missing - the `parse` function.
+The `parse` function is our entry point for the parser and should return the parsed matcher (`M a`).
+```Haskell
+parse :: String -> M Char
+parse s = case M.parse pRegEx "Error" s of
+                 Left e -> error $ M.errorBundlePretty e
+                 Right x -> x
+```
 
 ## Next Stage
 The big rewrite of our application is done!
