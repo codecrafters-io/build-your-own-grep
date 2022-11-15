@@ -14,13 +14,15 @@ RUN echo "system-ghc: true" >> /etc/stack/config.yaml
 COPY stack.yaml package.yaml stack.yaml.lock /app/
 
 # Dummy static content to circumvent the /app doesn't exist warning
+RUN mkdir /app/src
 RUN mkdir /app/app
 RUN echo 'main :: IO ()' >> /app/app/Main.hs
 RUN echo 'main = putStrLn "Hello, World!"' >> /app/app/Main.hs
 
-RUN mkdir /app/src
+RUN stack build 
+RUN cp -r .stack-work /tmp/
 
-RUN stack build
+RUN echo "cd \${CODECRAFTERS_SUBMISSION_DIR} && cp -r /tmp/.stack-work . && stack build" > /codecrafters-precompile.sh
+RUN chmod +x /codecrafters-precompile.sh
 
 ENV CODECRAFTERS_DEPENDENCY_FILE_PATHS="stack.yaml,package.yaml,stack.yaml.lock"
-
