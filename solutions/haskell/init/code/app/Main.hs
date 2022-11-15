@@ -11,4 +11,14 @@ matchPattern pat input = do
 
 main :: IO ()
 main = do
-  putStrLn "Logs from your program will appear here"
+  args <- getArgs
+  let pat = args !! 1
+  input_line <- getLine
+
+  if head args /= "-E"
+    then do
+      putStrLn "Expected first argument to be '-E'"
+      exitFailure
+    else do if matchPattern pat input_line
+              then exitSuccess
+              else exitFailure

@@ -26,7 +26,9 @@ pRegEx :: MParser (M Char)
 pRegEx = pExpression
 
 pExpression :: MParser (M Char)
-pExpression = pSubExpression
+pExpression = do
+  ex <- pSubExpression
+  return $ concatM [kleeneStarM anyCharM, ex, kleeneStarM anyCharM]
 
 pSubExpression :: MParser (M Char)
 pSubExpression = do

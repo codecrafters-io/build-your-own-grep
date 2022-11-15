@@ -25,7 +25,7 @@ anyNotUsed s = M.satisfy $ not . (`elem` s)
 pipe :: MParser (M Char)
 pipe = do
   _ <- char '|'
-  pExpression- CharacterGroup         ::= "[" CharacterGroupNegativeModifier CharacterGroupItem+ "]"
+  pExpression
 
 pRegEx :: MParser (M Char)
 pRegEx = do
@@ -58,8 +58,18 @@ pExpression = do
 
 pSubExpression :: MParser (M Char)
 pSubExpression = do
-  subExp <- M.some $ M.try pMatch 
+  subExp <- M.some $ M.try pMatch M.<|> M.try pGroup
   return $ concatM subExp
+  
+pGroup :: MParser (M Char)
+pGroup = do
+  _ <- char '('
+  i <- pExpression
+  _ <- char ')'
+  q <- M.optional pQuantifiers
+  return $ case q of
+          Nothing -> i
+          Just c -> quantifier c i
 
 pMatch :: MParser (M Char)
 pMatch = do
@@ -74,7 +84,7 @@ quantifier c i =
   case c of
     '*' -> kleeneStarM i
     '+' -> kleenePlusM i
-    '?' -> altM [emptyStrM, i]
+    '?' -> altM [noOpM, i]
     _   -> error "Invalid quantifier"
 
 pMatchItem :: MParser (M Char)

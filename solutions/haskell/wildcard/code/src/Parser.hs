@@ -64,7 +64,7 @@ quantifier c i =
   case c of
     '*' -> kleeneStarM i
     '+' -> kleenePlusM i
-    '?' -> altM [emptyStrM, i]
+    '?' -> altM [noOpM, i]
     _   -> error "Invalid quantifier"
 
 pMatchItem :: MParser (M Char)

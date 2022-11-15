@@ -8,7 +8,7 @@ import RegEx (matching)
 main :: IO ()
 main = do
   args <- getArgs
-  let pat = args !! 1
+  let pat = unwords $ tail args
   input_line <- getLine
 
   if head args /= "-E"

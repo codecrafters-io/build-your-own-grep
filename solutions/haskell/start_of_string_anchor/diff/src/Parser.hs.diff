@@ -1,4 +1,4 @@
-@@ -1,51 +1,61 @@
+@@ -1,56 +1,64 @@
  module Parser (parse) where
 
 
@@ -38,7 +38,10 @@
 +    Just _ -> noOpM
 
  pExpression :: MParser (M Char)
- pExpression = pSubExpression
+-pExpression = do
+-  ex <- pSubExpression
+-  return $ concatM [kleeneStarM anyCharM, ex, kleeneStarM anyCharM]
++pExpression = pSubExpression
 
  pSubExpression :: MParser (M Char)
  pSubExpression = do
@@ -60,4 +63,7 @@
    -- TODO: Update to only consume non special characters like letters or digits etc.
    c <- anyNotUsed "|()$"
    return $ posLit c
+
+ pCharacterGroup :: MParser (M Char)
+ pCharacterGroup = M.try pPositiveCharacterGroup M.<|> M.try pNegativeCharacterGroup
 
