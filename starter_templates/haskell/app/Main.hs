@@ -18,7 +18,7 @@ main = do
   -- You can use print statements as follows for debugging, they'll be visible when running tests.
   putStrLn "Logs from your program will appear here"
 
-  -- Uncomment this to pass stage 1
+  -- Uncomment this block to pass stage 1
   -- if head args /= "-E"
   --   then do
   --     putStrLn "Expected first argument to be '-E'"
