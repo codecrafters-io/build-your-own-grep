@@ -1,17 +1,19 @@
-In Stage 2 we use some new functions like `any` or `isDigit` and implemented a nested if statement.
-`isDigit` cames from the `Data.Char` module.
-The `Data.Char` module contains many more usefull functions to work with single characters.
-For more information about the `Data.Char` module see the [Data.Char](https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-Char.html) documentation on Hackage.
+In Stage 2 we use some new functions like `any` or `isDigit` and implement a nested if statement.
 
-You may already noticed, but the indentation is important in Haskell.
-Therefore, the second if must be more indentend than the first if.
+`isDigit` is a function from the `Data.Char` module.
+The `Data.Char` module contains many more useful functions when you work with single characters.
 
-Also the `any` function is quite neat.
-`any` has a type of `any Foldable t => :: (a -> Bool) -> t a -> Bool`.
+For more information about the `Data.Char` module check out the [Data.Char](https://hackage.haskell.org/package/base/docs/Data-Char.html) documentation on Hackage.
+
+You may have already noticed that the indentation is important in Haskell.
+Therefore, the second `if` statement must be nested one level deeper than the first `if`.
+
+Also the `any` function is quite neat when you want to check if at least one character matches a certain criterion.
+The function `any` has a type of `any Foldable t => :: (a -> Bool) -> t a -> Bool`.
 In our case this translates to `any :: (Char -> Bool) -> [Char] -> Bool`.
-That means it taks first a predicate, which checks if the char fullfills a certain critera (is the char a digit?).
-The second argument is a list of chars, our input string.
-If at least one character in the input string fullfilss the predicate the whole expression evaluates to true.
+This means, `any` takes a predicate as a first input, which checks if a given `Char` fulfills the provided criterion (e.g., is the character a digit).
+The second argument is a list of characters; this is our input string.
+If at least one character in the input string matches the predicate the whole expression evaluates to true.
 
 ```haskell
 if pat == "\\d"
