@@ -34,3 +34,14 @@ Note: This section is for stages 2 and beyond.
    will be fast.{{/ language_is_rust}}
 1. Commit your changes and run `git push origin master` to submit your solution
    to CodeCrafters. Test output will be streamed to your terminal.
+
+{{# language_is_haskell }}
+# Stage 5
+
+Please be aware that when implementing your solution in Haskell, there is a heavy re-write of the code at stage 5.
+
+This is mainly due to the more advanced functional concepts that allow an elegant implementation of `grep`, which may not be familiar to someone who is just starting with Haskell.
+
+However, please feel free to implement your solution from the beginning in a functional style with the caveat that this may require more work for stage 2, but less work afterwards.
+
+{{/ language_is_haskell }}
