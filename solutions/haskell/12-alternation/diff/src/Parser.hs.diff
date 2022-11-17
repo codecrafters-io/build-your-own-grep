@@ -8,7 +8,7 @@
  import RegEx
 
  type MParser = M.Parsec Void String
- data MathingType = Pos | Neg deriving (Eq)
+ data MatchingType = Pos | Neg deriving (Eq)
 
  notChar :: Char -> MParser Char
  notChar c = M.satisfy (/=c)

@@ -62,8 +62,6 @@ Negative character groups require two additional functions:
 * [ ] `altM :: [M a] -> M a` - matches if at least one matcher from the list was successful
 * [ ] `concatM :: [M a] -> M a` - combines different matchers from the given list
 
-We provided some tests, so you can verify your implementation.
-You can run these tests with `stack test`.
 Once you have `concatM` correctly implemented you can finish the application logic for this stage, and then continue with implementing the parser.
 
 ## Implement Parser Using Megaparsec

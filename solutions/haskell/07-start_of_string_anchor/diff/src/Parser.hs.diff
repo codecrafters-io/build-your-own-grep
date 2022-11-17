@@ -8,7 +8,7 @@
  import RegEx
 
  type MParser = M.Parsec Void String
- data MathingType = Pos | Neg deriving (Eq)
+ data MatchingType = Pos | Neg deriving (Eq)
 
  notChar :: Char -> MParser Char
  notChar c = M.satisfy (/=c)
@@ -60,10 +60,10 @@
 
  pMatchCharacter :: MParser (M Char)
  pMatchCharacter = do
-   -- TODO: Update to only consume non special characters like letters or digits etc.
    c <- anyNotUsed "|()$"
    return $ posLit c
 
  pCharacterGroup :: MParser (M Char)
  pCharacterGroup = M.try pPositiveCharacterGroup M.<|> M.try pNegativeCharacterGroup
 
+ pPositiveCharacterGroup :: MParser (M Char)

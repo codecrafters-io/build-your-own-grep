@@ -7,7 +7,7 @@ import Data.Void
 import RegEx
 
 type MParser = M.Parsec Void String
-data MathingType = Pos | Neg deriving (Eq)
+data MatchingType = Pos | Neg deriving (Eq)
 
 notChar :: Char -> MParser Char
 notChar c = M.satisfy (/=c)
@@ -74,7 +74,6 @@ pMatchCharacterClass = M.try pCharacterGroup M.<|> fmap (\g -> g Pos ) (M.try pC
 
 pMatchCharacter :: MParser (M Char)
 pMatchCharacter = do
-  -- TODO: Update to only consume non special characters like letters or digits etc.
   c <- anyNotUsed "|()$"
   return $ posLit c
 
@@ -98,21 +97,21 @@ pNegativeCharacterGroup = do
   _ <- char ']'
   return $ andM ms
 
-pCharacterGroupItem :: (Char -> M Char) -> MathingType -> MParser (M Char)
+pCharacterGroupItem :: (Char -> M Char) -> MatchingType -> MParser (M Char)
 pCharacterGroupItem f b = fmap (\g -> g b) (M.try pCharacterClass) M.<|> fmap f (M.try pChar)
 
 
-pCharacterClass :: MParser (MathingType -> M Char)
+pCharacterClass :: MParser (MatchingType -> M Char)
 pCharacterClass = M.try pCharacterClassAnyWord M.<|> M.try pCharacterClassAnyDecimal
 
-pCharacterClassAnyWord :: MParser (MathingType -> M Char)
+pCharacterClassAnyWord :: MParser (MatchingType -> M Char)
 pCharacterClassAnyWord = do
   _ <- char '\\'
   _ <- char 'w'
   return $ \b -> if b == Pos then alphaNumM else alphaNumInverseM
 
 
-pCharacterClassAnyDecimal :: MParser (MathingType -> M Char)
+pCharacterClassAnyDecimal :: MParser (MatchingType -> M Char)
 pCharacterClassAnyDecimal = do
   _ <- char '\\'
   _ <- char 'd'

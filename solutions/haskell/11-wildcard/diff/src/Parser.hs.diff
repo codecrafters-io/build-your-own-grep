@@ -37,7 +37,6 @@
 
  pMatchCharacter :: MParser (M Char)
  pMatchCharacter = do
-   -- TODO: Update to only consume non special characters like letters or digits etc.
    c <- anyNotUsed "|()$"
    return $ posLit c
 
@@ -56,3 +55,4 @@
  pNegativeCharacterGroup :: MParser (M Char)
  pNegativeCharacterGroup = do
    _ <- char '['
+   _ <- char '^'
