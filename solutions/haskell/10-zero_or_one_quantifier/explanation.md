@@ -1,4 +1,11 @@
-The parser must be extend again.
-However, the changes are easy and straight forward.
+The parser must be extended again.
+However, the changes are easy and straightforward.
 
-We also added the support for the zero or one (`?`) quantifier.
+By now you may have noticed that building additional support for quantifiers is relatively easy in the functional style. For example, adding support for the zero or one (`?`) quantifier is a simple addition of the following function:
+
+```Haskell
+zeroOrOneQuantifier :: MParser Char
+zeroOrOneQuantifier = char '?'
+```
+
+The effort of having (re-)written everything in a functional style is for sure paying off by now.
