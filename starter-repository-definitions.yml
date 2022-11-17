@@ -38,6 +38,24 @@
     required_executable: "cargo (1.62)"
     user_editable_file: "src/main.rs"
 
+- language: go
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/go/your_grep.sh
+      target: your_grep.sh
+    - source: starter_templates/go/go.mod
+      target: go.mod
+    - source: starter_templates/go/go.sum
+      target: go.sum
+    - source: starter_templates/go/cmd/mygrep/main.go
+      target: cmd/mygrep/main.go
+  template_attributes:
+    required_executable: "go (1.19)"
+    user_editable_file: "cmd/mygrep/main.go"
+
 - language: haskell
   file_mappings:
     - source: starter_templates/README.md

@@ -4,12 +4,12 @@ short_name: "grep"
 release_status: "alpha"
 
 description_md: |
-  [Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (Regexes, for short) are patterns used to 
-  match character combinations in strings. [`grep`](https://en.wikipedia.org/wiki/Grep) is a CLI tool for searching 
+  [Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (Regexes, for short) are patterns used to
+  match character combinations in strings. [`grep`](https://en.wikipedia.org/wiki/Grep) is a CLI tool for searching
   using Regexes.
   
-  In this challenge you'll build your own implementation of `grep`. Along the way we'll learn about Regex syntax and 
-  how Regexes are evaluated. 
+  In this challenge you'll build your own implementation of `grep`. Along the way we'll learn about Regex syntax and
+  how Regexes are evaluated.
 
 short_description_md: |
   Learn how regular expressions work, including character classes, quantifiers and more
@@ -17,10 +17,11 @@ short_description_md: |
 completion_percentage: 30
 
 early_access_languages: []
-supported_languages: ["python", "haskell"]
+supported_languages: ["python", "go", "rust", "haskell"]
 
 starter_repos:
   python: https://github.com/codecrafters-io/grep-starter-python
+  go: https://github.com/codecrafters-io/grep-starter-go
   haskell: https://github.com/codecrafters-io/grep-starter-haskell
 
 marketing:
@@ -45,22 +46,22 @@ stages:
     name: "Match a literal character"
     difficulty: very_easy
     description_md: |
-      In this stage, we'll handle the simplest regex possible: a single character. 
+      In this stage, we'll handle the simplest regex possible: a single character.
       
       **Example:** `a` should match "apple", but not "dog".
       
-      Your program will be executed like this: 
+      Your program will be executed like this:
       
       ```bash
       $ echo "apple" | ./your_grep.sh -E "a"
       ```
       
-      The `-E` flag instructs `grep` to interprets patterns as extended regular expressions (with support 
+      The `-E` flag instructs `grep` to interprets patterns as extended regular expressions (with support
       for metacharacters like `+`, `?` etc.). We'll use this flag in all stages.
       
       You program must [exit](https://en.wikipedia.org/wiki/Exit_status) with 0 if the character is found, and 1 if not.
     marketing_md: |
-      In this stage, we'll handle the simplest regex possible: a single character. 
+      In this stage, we'll handle the simplest regex possible: a single character.
       
       **Example:**
       
@@ -70,14 +71,14 @@ stages:
     name: "Match digits"
     difficulty: very_easy
     description_md: |
-      In this stage, we'll implement support for the `\d` 
+      In this stage, we'll implement support for the `\d`
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
       
-      `\d` matches any digit. 
+      `\d` matches any digit.
       
       **Example:** `\d` should match "3", but not "c".
       
-      Your program will be executed like this: 
+      Your program will be executed like this:
       
       ```bash
       $ echo "apple123" | ./your_grep.sh -E "\d"
@@ -85,10 +86,10 @@ stages:
       
       You program must exit with 0 if a digit is found in the string, and 1 if not.
     marketing_md: |
-      In this stage, we'll implement support for the `\d` 
+      In this stage, we'll implement support for the `\d`
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
       
-      `\d` matches any digit. 
+      `\d` matches any digit.
       
       **Example:**
       
@@ -98,14 +99,14 @@ stages:
     name: "Match alphanumeric characters"
     difficulty: very_easy
     description_md: |
-      In this stage, we'll implement support for the `\w` 
+      In this stage, we'll implement support for the `\w`
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
       
       `\w` matches any alphanumeric character (`a-z`, `A-Z`, `0-9`, `_`).
       
       **Example:** `\w` should match "foo101", but not "$!?".
       
-      Your program will be executed like this: 
+      Your program will be executed like this:
       
       ```bash
       $ echo "alpha-num3ric" | ./your_grep.sh -E "\w"
@@ -113,7 +114,7 @@ stages:
       
       You program must exit with 0 if an alphanumeric character is found in the string, and 1 if not.
     marketing_md: |
-      In this stage, we'll implement support for the `\w` 
+      In this stage, we'll implement support for the `\w`
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
       
       `\w` matches any alphanumeric character (`a-z`, `A-Z`, `0-9`, `_`).
@@ -132,7 +133,7 @@ stages:
       
       **Example:** `[abc]` should match "apple", but not "dog".
       
-      Your program will be executed like this: 
+      Your program will be executed like this:
       
       ```bash
       $ echo "apple" | ./your_grep.sh -E "[abc]"
@@ -158,7 +159,7 @@ stages:
       
       **Example:** `[^abc]` should match "dog", but not "cab" (since all characters are either "a", "b" or "c").
       
-      Your program will be executed like this: 
+      Your program will be executed like this:
       
       ```bash
       $ echo "apple" | ./your_grep.sh -E "[^abc]"
@@ -178,23 +179,23 @@ stages:
     name: "Combining Character Classes"
     difficulty: medium
     description_md: |
-      In this stage, we'll add support for patterns that combine the character classes we've seen so far. 
+      In this stage, we'll add support for patterns that combine the character classes we've seen so far.
       
-      This is where your regex matcher will start to _feel_ useful. 
+      This is where your regex matcher will start to _feel_ useful.
       
-      Keep in mind that this stage is harder than the previous ones. You'll likely need to rework your 
-      implementation to process user input character-by-character instead of the whole line at once. 
+      Keep in mind that this stage is harder than the previous ones. You'll likely need to rework your
+      implementation to process user input character-by-character instead of the whole line at once.
       
-      We recommend taking a look at the example code in ["A Regular Expression Matcher"](https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html) 
+      We recommend taking a look at the example code in ["A Regular Expression Matcher"](https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html)
       by Rob Pike to guide your implementation.
       
-      **Examples:** 
+      **Examples:**
       
       - `\d apple` should match "1 apple", but not "1 orange".
       - `\d\d\d apple` should match "100 apples", but not "1 apple".
       - `\d \w\w\ws` should match "3 dogs" and "4 cats" but not "1 dog" (because the "s" is not present at the end).
       
-      Your program will be executed like this: 
+      Your program will be executed like this:
       
       ```bash
       $ echo "1 apple" | ./your_grep.sh -E "\d apple"
@@ -202,16 +203,16 @@ stages:
       
       You program must exit with 0 if the pattern matches the input, and 1 if not.
     marketing_md: |
-      In this stage, we'll support patterns that combine the character classes we've seen so far. 
+      In this stage, we'll support patterns that combine the character classes we've seen so far.
       
-      **Examples:** 
+      **Examples:**
       
       - `\d apple` should match "1 apple", but not "1 orange".
       - `\d\d\d apple` should match "100 apples", but not "1 apple".
       - `\d \w\w\ws` should match "3 dogs" and "4 cats" but not "1 dog" (because the "s" is not present at the end).
       
-      This stage is significantly harder than the previous ones. You'll likely need to rework your 
-      implementation to process user input character-by-character instead of the whole line at once. 
+      This stage is significantly harder than the previous ones. You'll likely need to rework your
+      implementation to process user input character-by-character instead of the whole line at once.
 
   - slug: "start_of_string_anchor"
     name: "Start of string anchor"
@@ -223,7 +224,7 @@ stages:
       
       **Example:** `^log` should match "log", but not "slog".
       
-      Your program will be executed like this: 
+      Your program will be executed like this:
       
       ```bash
       $ echo "log" | ./your_grep.sh -E "^log"
@@ -265,13 +266,13 @@ stages:
     description_md: |
       In this stage, we'll add support for `+`, the [one or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier.
       
-      **Example**: 
+      **Example**:
       
       - `a+` should match "apple" and "SaaS", but not "dog".
     marketing_md: |
       In this stage, we'll add support for `+`, the [one or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier.
       
-      **Example**: 
+      **Example**:
       
       - `a+` should match "apple" and "SaaS", but not "dog".
 
@@ -281,13 +282,13 @@ stages:
     description_md: |
       In this stage, we'll add support for `?`, the [zero or one](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier (also known as the "optional" quantifier).
       
-      **Example**: 
+      **Example**:
       
       - `dogs?` should match "dogs" and "dog", but not "cat".
     marketing_md: |
       In this stage, we'll add support for `?`, the [zero or one](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier (also known as the "optional" quantifier).
       
-      **Example**: 
+      **Example**:
       
       - `dogs?` should match "dogs" and "dog", but not "cat".
 
@@ -297,13 +298,13 @@ stages:
     description_md: |
       In this stage, we'll add support for `.`, which matches any character.
       
-      **Example**: 
+      **Example**:
       
       - `d.g` should match "dog", but not "cog".
     marketing_md: |
       In this stage, we'll add support for `.`, which matches any character.
       
-      **Example**: 
+      **Example**:
       
       - `d.g` should match "dog", but not "cog".
       
@@ -314,12 +315,12 @@ stages:
     description_md: |
       In this stage, we'll add support for the `|` keyword, which allows combining multiple patterns in an either/or fashion.
       
-      **Example**: 
+      **Example**:
       
       - `(cat|dog)` should match "dog" and "cat", but not "apple".
     marketing_md: |
       In this stage, we'll add support for the `|` keyword, which allows combining multiple patterns in an either/or fashion.
       
-      **Example**: 
+      **Example**:
       
       - `(cat|dog)` should match "dog" and "cat", but not "apple".
