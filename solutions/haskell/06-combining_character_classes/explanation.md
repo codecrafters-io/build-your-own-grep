@@ -69,7 +69,7 @@ We need the following functions:
 * [ ] `digitM :: M Char` - matches if the char is a digit
 * [ ] `digitInverseM :: M Char` - matches if the char is not a digit
 * [ ] `alphaNumM :: M Char` - matches if the char is an alphanumeric or '_'
-* [ ] `alphaNumInverserM :: M Char` - matches if the char is not an alphanumeric and not '_'
+* [ ] `alphaNumInverseM :: M Char` - matches if the char is not an alphanumeric and not '_'
 * [ ] `anyCharM :: M Char` - matches any char
 * [ ] `failM :: M a` - always fails (always returns the empty list)
 * [ ] `noOpM :: M a` - does not perform any matching
