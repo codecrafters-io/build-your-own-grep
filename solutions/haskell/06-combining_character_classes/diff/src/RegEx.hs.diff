@@ -1,4 +1,8 @@
-@@ -0,0 +1,62 @@
+@@ -0,0 +1,74 @@
++{-# OPTIONS_GHC -Wno-missing-export-lists #-}
++{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
++{-# HLINT ignore "Use list comprehension" #-}
++
 +module RegEx
 +  where
 +
@@ -31,33 +35,41 @@
 +anyCharM :: M a
 +anyCharM = singleM (const True)
 +
++-- | Lets now look at some extreme matchers that we can use as identity elements in our later operations and properties
++-- | A matcher that matches nothing. Equivalent to the 'empty set' or '∅' or '0' from the theory of regular languages.
 +failM :: M a
 +failM _ = []
 +
-+noOpM :: M a
-+noOpM s = [s]
-+
-+altM :: [M a] -> M a
-+altM [] = failM
-+altM (m:ms) = \s -> m s ++ altM ms s
++-- | A matcher that matches the empty string. Equivalent to the 'empty string' or 'ε' or '1' from the theory of regular languages.
++emptyStrM :: M a
++emptyStrM s = [s]
 +
 +concatM :: [M a] -> M a
-+concatM [] = noOpM
++concatM [] = emptyStrM
 +concatM (m:ms) = \s -> concatMap (concatM ms) (m s)
++-- ^ Explanation: `(m s)` is a list of all strings remaining after matching the given string `s` with the first matcher `m` in the list. Each of the strings in `(m s)` must then be matched with the remaining matchers `ms`. This can be done by mapping `concatM ms` over each element of `m s`. This results in a list of lists of strings which then needs to be concatenated.
 +
++-- | Compose a list of alternate matchers to match in parallel
++orM :: [M a] -> M a
++orM []    s  = failM s
++orM (m:ms) s = m s ++ orM ms s
++
++-- | Compose a list of alternate matchers to match in parallel
 +andM :: [M a] -> M a
-+andM [] = \s -> if null s then [[]] else [tail s]
-+andM (m:ms) = \s -> let xs = m s
-+                        ys = andM ms s
-+                        in if null xs || null ys then [] else xs ++ ys
++andM []     s = failM s
++andM [m]    s = m s
++andM (m:ms) s | null r   = []
++              | null rs  = []
++              | otherwise = r ++ rs
++  where
++    r = m s
++    rs = andM ms s
 +
 +kleeneStarM :: M a -> M a
-+kleeneStarM m = altM [noOpM, kleenePlusM m]
++kleeneStarM m = orM [emptyStrM, kleenePlusM m]
 +
 +kleenePlusM :: M a -> M a
 +kleenePlusM m = concatM [m, kleeneStarM m]
 +
-+matching :: M a -> [a] -> [a]
-+matching m s = take (length s - l) s
-+  where xs = m s
-+        l  = if null xs then length s else minimum $ map length xs
++isMatching :: Eq a => M a -> [a] -> Bool
++isMatching m s = [] `elem` m s

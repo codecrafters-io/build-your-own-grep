@@ -70,9 +70,7 @@ We need the following functions:
 * [ ] `digitInverseM :: M Char` - matches if the char is not a digit
 * [ ] `alphaNumM :: M Char` - matches if the char is an alphanumeric or '_'
 * [ ] `alphaNumInverseM :: M Char` - matches if the char is not an alphanumeric and not '_'
-* [ ] `anyCharM :: M Char` - matches any char
-* [ ] `failM :: M a` - always fails (always returns the empty list)
-* [ ] `noOpM :: M a` - does not perform any matching
+* [ ] `anyCharM :: M Char` - machtes any character
 
 All these functions are based on `singleM`.
 
@@ -107,23 +105,60 @@ The new matcher takes a parameter to indicate which character is to be matched.
 
 
 ### Higher-Order Matchers
-Negative character groups require two additional functions:
+Lets now look at some extreme matchers that we can use as [identity elements](https://en.wikipedia.org/wiki/Identity_element) in our later operations and properties:
+
+- `failM :: M a`: A matcher that matches nothing (returns `[]`).
+  This is equivalent to the 'empty set' or '∅' or '0' from the theory of regular languages, [Wikipedia](https://en.wikipedia.org/wiki/Empty_set)
+- `emptyStrM :: M a`: A matcher that matches the empty string (the string between '').
+  This is equivalent to the 'empty string' or 'empty word' or 'ε' or '1' from the theory of regular languages, [Wikipedia](https://en.wikipedia.org/wiki/Empty_string)
+
+
+For (negative) character groups and concatination (combining) we need the following functions:
 
 * [ ] `andM :: [M a] -> M a` - matches if all matchers from the list are matching
-* [ ] `altM :: [M a] -> M a` - matches if at least one matcher from the list was successful
-* [ ] `concatM :: [M a] -> M a` - combines different matchers from the given list
+* [ ] `orM :: [M a] -> M a` - matches if at least one matcher from the list was successful
+* [ ] `concatM :: [M a] -> M a` - matches a list of mathers in a row
 
 Again how did we end up with these functions?
-If you think about character groups than you realize that it is the same as an alternation or, in case of a negative character group, a [conjunction](https://en.wikipedia.org/wiki/Logical_conjunction).
-The pattern "[ab]" can be translated as "(a|b)".
-This is the same as performing `posLit 'a'` and `posLit 'b'` on the same input.
-If at least one of them was successful the whole expression was successfully matched.
+Think about RegEx as mathematical equations:
 
+$$ [abc] = \text{posLit 'a' || (posLit 'b' || posLit 'c')} $$
+
+$$ [\^abc] = \text{negLit 'a' \&\& (negLit 'b' \&\& negLit 'c')} $$
+
+$$ abc = \text{posLit 'a' then (posLit 'b' then posLit c')} $$
+
+`||`, `&&` and `then` can also be expressed as functions: `orM`, `andM` and `concatM`.
+
+In the recursive case in `orM` you perform the match on the first element and concat the result with the same operation.
 ```Haskell
-altM (m:ms) = \s -> m s ++ altM ms s
+orM (m:ms) s = m s ++ orM ms s
 ```
 
-Once you have `concatM` correctly implemented you can finish the application logic for this stage, and then continue with implementing the parser.
+But now we need the base case, the [identity elements](https://en.wikipedia.org/wiki/Identity_element).
+After you performed the `m s` the base case should **not** change the result.
+```Haskell
+["a", "b"] == ["a", "b"] ++ []
+[] = [] ++ []
+```
+This can be done using the `failM`.
+
+The same goes for `andM` and `concatM`.
+If you would use `failM` in `andM` and `concatM` then you would change the result.
+In both cases you want to match the 'empty word' and are therefore the bases case for both functions.
+
+### KleeneStar and KleenPlus
+In grep the pattern `abc` is the same as `.*abc.*`.
+To support this behaviour we have to insert at the start and end the kleene star with the wildcard.
+For this we required the following three functions:
+
+* [ ] `anyCharM :: M a` - matches any character
+* [ ] `kleeneStarM :: M a -> M a` - matches the given character 0 or n times
+* [ ] `kleenePlusM :: M a -> M a` - matches the given character 1 or n times
+
+We implement `kleeneStarM` and `kleenePlusM` as a mutual recursion.
+Mutual recursion is when two or more functions call it self interchangable manner recursively.
+In our case `kleenStarM` uses / calls `kleenPlusM`, but also the other way around.
 
 ## Implement Parser Using Megaparsec
 
@@ -141,7 +176,7 @@ CharacterGroup         ::= "[" CharacterGroupNegativeModifier CharacterGroupItem
 To use the Megaparsec Parser you need to create a type alias first.
 The first parameter `M.Parsec` is the Megaparsec parser.
 The second parameter is the error type for which `Void` is commonly used.
-Lastly, we want to parse strings, hence the type `String.
+Lastly, we want to parse strings, hence the type `String`.
 
 ```Haskell
 type MParser = M.Parsec Void String
@@ -150,13 +185,44 @@ type MParser = M.Parsec Void String
 With that in place you can write one function for every EBNF rule.
 
 You may have observed that one function is still missing - the `parse` function itself.
-The `parse` function is our entry point for the parser and should return the parsed matcher (`M a`). Since the Megaparsec's `parse` function returns something of type `Either`, we have to distinguish these two cases (`Left` holds an error, `Right` means correct).
+The `parse` function is our entry point for the parser and should return an [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
+For every matcher you need a constructor in the `data AST` data type.
+After you got an `AST` from the parser you have to convert it to an matcher.
+For this purpose we have to write an `astToMatcher` function.
+
+Since the Megaparsec's `parse` function returns something of type `Either`, we have to distinguish these two cases (`Left` holds an error, `Right` means correct).
 
 ```Haskell
 parse :: String -> M Char
 parse s = case M.parse pRegEx "Error" s of
                  Left e -> error $ M.errorBundlePretty e
                  Right x -> x
+```
+
+## main function
+The `main` function performs the following steps:
+1. parses the pattern to an AST
+2. if no valid pattern: exit
+3. check if `-E` is provided as argument
+4. run matching
+5. print matched lines
+
+The `grep` function read the input line for line using recursion.
+The result for each list is stored in a list, which will be returned after all input is processed
+
+If at least one match was succesfully we have to iterate over the list and print all lines which match the pattern.
+To iterate over all elements in the list we can use the `mapM_` function.
+This function works similar to the normal `map` function.
+Each value from the input (list) is fed into a function which returns a monad (`putStrLn`) and the return value is discarded.
+
+
+``` Haskell
+if any ((==True) . fst) bs -- has at least one line matched the pattern?
+  then do
+     mapM_ (putStrLn . snd) $ filter ((==True) . fst) bs
+     exitSuccess
+  else do
+     exitFailure
 ```
 
 ## Next Stage

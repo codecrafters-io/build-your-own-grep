@@ -1,4 +1,4 @@
-The application logic for alternation is already implemented (`altM`).
+The application logic for alternation is already implemented (`orM`).
 We have to modify the parser to support the alternation (`|`).
 
 ```Haskell

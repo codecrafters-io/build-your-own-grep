@@ -1,100 +1,69 @@
-@@ -1,77 +1,97 @@
- module Parser (parse) where
+@@ -54,57 +54,67 @@
+ neg _          = error "Unsupported input string"
 
-
- import qualified Text.Megaparsec as M
- import Text.Megaparsec.Char (char)
- import Data.Void
- import RegEx
-
- type MParser = M.Parsec Void String
- data MatchingType = Pos | Neg deriving (Eq)
-
- notChar :: Char -> MParser Char
- notChar c = M.satisfy (/=c)
-
- anyNotUsed :: String -> MParser Char
- anyNotUsed s = M.satisfy $ not . (`elem` s)
 
  -- The regex parser starts here
  -- https://github.com/kean/Regex/blob/master/grammar.ebnf
- -- I had to adjust the rule CharacterGroup
- -- CharacterGroup         ::= PositiveCharacterGroup | NegativeCharacterGroup
- -- PositiveCharacterGroup ::= "[" CharacterGroupItem+ "]"
- -- CharacterGroup         ::= "[" CharacterGroupNegativeModifier CharacterGroupItem+ "]"
+ -- I had to adjust a few rules to support better parsing
 
-+pipe :: MParser (M Char)
-+pipe = do
-+  _ <- char '|'
-+  pExpression
-+
- pRegEx :: MParser (M Char)
+ pRegEx :: MParser (AST Char)
  pRegEx = do
    s <- pStartOfString
-   ex <- pExpression
+   expression <- pExpression
    e <- pEndOfString
-   return $ concatM [s, ex, e]
+   return $ ConcatM [s, expression, e]
 
- pStartOfString :: MParser (M Char)
+ pStartOfString :: MParser (AST Char)
  pStartOfString = do
    s <- M.optional $ char '^'
-   return $ case s of
-     Nothing -> concatM [kleeneStarM anyCharM]
-     Just _ -> noOpM
+   return $ if isNothing s then  KleeneStarM AnyCharM else EmptyStrM
 
- pEndOfString :: MParser (M Char)
+ pEndOfString :: MParser (AST Char)
  pEndOfString = do
    s <- M.optional $ char '$'
-   return $ case s of
-     Nothing -> concatM [kleeneStarM anyCharM]
-     Just _ -> emptyStrM
+   return $ if isNothing s then KleeneStarM AnyCharM else EmptyStrM
 
- pExpression :: MParser (M Char)
+ pExpression :: MParser (AST Char)
 -pExpression = pSubExpression
 +pExpression = do
 +  subExpression <- pSubExpression
-+  alt <- M.optional pipe
++  alt <- M.optional pAlternation
 +  return $ case alt of
 +    Nothing -> subExpression
-+    Just x -> altM [subExpression, x]
++    Just ex -> OrM [subExpression, ex]
 
- pSubExpression :: MParser (M Char)
+ pSubExpression :: MParser (AST Char)
  pSubExpression = do
--  subExp <- M.some $ M.try pMatch
-+  subExp <- M.some $ M.try pMatch M.<|> M.try pGroup
-   return $ concatM subExp
-+
-+pGroup :: MParser (M Char)
-+pGroup = do
-+  _ <- char '('
-+  i <- pExpression
-+  _ <- char ')'
-+  q <- M.optional pQuantifiers
-+  return $ case q of
-+          Nothing -> i
-+          Just c -> quantifier c i
+   subExp <- M.some $ M.try pMatch M.<|> M.try pGroup
+   return $ ConcatM subExp
 
- pMatch :: MParser (M Char)
++pAlternation :: MParser (AST Char)
++pAlternation = do
++  _ <- char '|'
++  pExpression
++
+ pGroup :: MParser (AST Char)
+ pGroup = do
+   _ <- char '('
+   i <- pExpression
+   _ <- char ')'
+   q <- M.optional $ pQuantifiers i
+   return $ fromMaybe i q
+
+ pMatch :: MParser (AST Char)
  pMatch = do
    i <- pMatchItem
-   q <- M.optional pQuantifiers
-   return $ case q of
-           Nothing -> i
-           Just c -> quantifier c i
+   q <- M.optional $ pQuantifiers i
+   return $ fromMaybe i q
 
- quantifier :: Char -> M Char -> M Char
- quantifier c i =
-   case c of
-     '*' -> kleeneStarM i
-     '+' -> kleenePlusM i
-     '?' -> altM [noOpM, i]
-     _   -> error "Invalid quantifier"
+ pMatchItem :: MParser (AST Char)
+ pMatchItem = M.try pMatchAnyChar M.<|> M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
 
- pMatchItem :: MParser (M Char)
- pMatchItem = do
-   M.try pMatchAnyChar M.<|> M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
-
- pMatchAnyChar :: MParser (M Char)
+ pMatchAnyChar :: MParser (AST Char)
  pMatchAnyChar = do
    _ <- char '.'
-   return anyCharM
+   return AnyCharM
+
+ pMatchCharacterClass :: MParser (AST Char)
+ pMatchCharacterClass = M.try pCharacterGroup M.<|> M.try pCharacterClass
+

@@ -1,58 +1,58 @@
-@@ -47,51 +47,56 @@
+@@ -76,51 +76,56 @@
+   return $ if isNothing s then KleeneStarM AnyCharM else EmptyStrM
+
+ pExpression :: MParser (AST Char)
  pExpression = pSubExpression
 
- pSubExpression :: MParser (M Char)
+ pSubExpression :: MParser (AST Char)
  pSubExpression = do
-   subExp <- M.some $ M.try pMatch
-   return $ concatM subExp
+   subExp <- M.some $ M.try pMatch M.<|> M.try pGroup
+   return $ ConcatM subExp
 
- pMatch :: MParser (M Char)
+ pGroup :: MParser (AST Char)
+ pGroup = do
+   _ <- char '('
+   i <- pExpression
+   _ <- char ')'
+   q <- M.optional $ pQuantifiers i
+   return $ fromMaybe i q
+
+ pMatch :: MParser (AST Char)
  pMatch = do
    i <- pMatchItem
-   q <- M.optional pQuantifiers
-   return $ case q of
-           Nothing -> i
-           Just c -> quantifier c i
+   q <- M.optional $ pQuantifiers i
+   return $ fromMaybe i q
 
- quantifier :: Char -> M Char -> M Char
- quantifier c i =
-   case c of
-     '*' -> kleeneStarM i
-     '+' -> kleenePlusM i
-     '?' -> altM [noOpM, i]
-     _   -> error "Invalid quantifier"
-
- pMatchItem :: MParser (M Char)
- pMatchItem = do
--  M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
-+  M.try pMatchAnyChar M.<|> M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
+ pMatchItem :: MParser (AST Char)
+-pMatchItem = M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
++pMatchItem = M.try pMatchAnyChar M.<|> M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
 +
-+pMatchAnyChar :: MParser (M Char)
++pMatchAnyChar :: MParser (AST Char)
 +pMatchAnyChar = do
 +  _ <- char '.'
-+  return anyCharM
++  return AnyCharM
 
- pMatchCharacterClass :: MParser (M Char)
- pMatchCharacterClass = M.try pCharacterGroup M.<|> fmap (\g -> g Pos ) (M.try pCharacterClass)
+ pMatchCharacterClass :: MParser (AST Char)
+ pMatchCharacterClass = M.try pCharacterGroup M.<|> M.try pCharacterClass
 
- pMatchCharacter :: MParser (M Char)
+ pMatchCharacter :: MParser (AST Char)
  pMatchCharacter = do
    c <- anyNotUsed "|()$"
-   return $ posLit c
+   return $ PosLit c
 
- pCharacterGroup :: MParser (M Char)
+ pCharacterGroup :: MParser (AST Char)
  pCharacterGroup = M.try pPositiveCharacterGroup M.<|> M.try pNegativeCharacterGroup
 
- pPositiveCharacterGroup :: MParser (M Char)
+ pPositiveCharacterGroup :: MParser (AST Char)
  pPositiveCharacterGroup = do
    _ <- char '['
    c <- anyNotUsed "^]"
-   cs <- M.many $ pCharacterGroupItem posLit Pos
-   let cs' = posLit c : cs
+   cs <- M.many pCharacterGroupItem
+   let cs' = PosLit c : cs
    _ <- char ']'
-   return $ altM cs'
+   return $ OrM cs'
 
- pNegativeCharacterGroup :: MParser (M Char)
+ pNegativeCharacterGroup :: MParser (AST Char)
  pNegativeCharacterGroup = do
    _ <- char '['
    _ <- char '^'

@@ -1,23 +1,46 @@
 module Main (main) where
 
+import System.IO
 import System.Environment
 import System.Exit
-import Parser (parse)
-import RegEx (matching)
+import Data.Maybe
+import Parser
+import RegEx
+
+match :: M Char -> String -> Bool
+match pat s = isMatching pat s
+
+grep :: M Char -> IO [(Bool, String)]
+grep pat = do
+  done <- isEOF
+  if done
+    then return $ []
+    else do
+      input_line <- getLine
+      let r = match pat input_line
+      rs <- grep pat
+      return $ (r, input_line) : rs
+
 
 main :: IO ()
 main = do
   args <- getArgs
-  let pat = unwords $ tail args
-  input_line <- getLine
+  let pat = parse $ unwords $ tail args
 
-  if head args /= "-E"
+  if isNothing pat
     then do
-      putStrLn "Expected first argument to be '-E'"
+      putStrLn "Invalid pattern"
       exitFailure
     else do
-      let s = matching (parse pat) input_line
-      if null s
-        then exitFailure
-        else do
-          exitSuccess
+      if head args /= "-E"
+      then do
+        putStrLn "Expected first argument to be '-E'"
+        exitFailure
+      else do
+        bs <- grep $ astToMatcher $ fromJust pat
+        if any ((==True) . fst) bs
+          then do
+            mapM_ (putStrLn . snd) $ filter ((==True) . fst) bs
+            exitSuccess
+          else do
+            exitFailure
