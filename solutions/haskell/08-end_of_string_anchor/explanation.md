@@ -1,4 +1,1 @@
-In this stage we only have to update the parser, because `$` does not introduce any new matching logic.
-If the `$` is missing the parser appends `.*` to the result.
-
-In the parser we have to add the function for parsing the `end of string` anchor (`$`) and call it from the regex parsing function.
+We add support for the end of string anchor in a way similar to the start of string anchor: If the end of string anchor `$` is **NOT** present at the end of the given regular expression, the parser will add the regular expression `.*` to the end of the given regular expression.  

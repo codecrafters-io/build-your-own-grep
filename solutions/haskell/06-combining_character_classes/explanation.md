@@ -2,17 +2,16 @@
 ## Introduction
 Until now we have been able to get away with not having to really think about the problem and solve it more-or-less in the same quick-and-dirty way one would do this in an imperative programming language.
 Solving this stage in this way is significantly more difficult and can make the existing code significantly more complicated.
-Both these points can be illustrated by looking at the solutions up to and including this stage in the other programming languages.
+Both these points can be illustrated by looking at the solutions up to and including this stage in other programming languages.
 
 When programming in the functional style, one places special emphasis on simplicity and clarity.
-In particular, one tries to study the problem from the viewpoint of [algebraic design](https://algebradriven.design) and arrive at a solution that is made up of smaller building blocks that compose elegantly.
+In particular, one tries to study the problem from the viewpoint of [algebraic design](https://algebradriven.design), a.k.a. [denotational design](https://www.youtube.com/watch?v=bmKYiUOEo2A) and arrive at a solution that is made up of smaller building blocks that compose elegantly.
 
 The solution till now has several problems:
 - No [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns): The code to parse the pattern string is in the same place as the code used for matching.
 - The individual solutions do not compose: We cannot build on the existing functions in order to arrive at a solution for this and later stages.
   For instance, there is no way to reuse the function that matches a single digit to do this in sequence in order to match a sequence of two digits.
 - The code is in one big function, making it difficult to read or test portions relevant to individual concerns (such as single characters, positive groups, negative groups, etc.).
-- ...
 
 We therefore have no choice but to throw away our existing code and start from scratch by first thinking about the problem more deeply with the aim of understanding it thoroughly and arriving at an elegant algebraic design for it that composes elegantly and is fun and easy to program correctly.
 Luckily for us, Stephen [Cole Kleene](https://en.wikipedia.org/wiki/Stephen_Cole_Kleene) has already worked this out for us in his theory of [regular expressions and languages](https://en.wikipedia.org/wiki/Regular_expression).
@@ -47,8 +46,9 @@ Your project structure should look like this:
 ### Basic Functions
 In functional programming your application logic is composed of many small functions.
 
-Before we write our first function we create a type alias for our matching functions.
-Every matching function will get a list of characters as input and should return a list of unprocessed inputs.
+Before we write our first function we create a type alias for our matching functions (a.k.a., matchers).
+A matcher `M` for characters of type `a` is a function that accepts a string (i.e., a list in our case) of `a`s as input and returns the strings remaining after all successful matches.
+Note: a character, unless otherwise specified, can be of any type, not just `Char`. This makes our code more general and potentially reusable in the future.
 
 
 ```Haskell
@@ -75,13 +75,13 @@ We need the following functions:
 All these functions are based on `singleM`.
 
 But how did we make the decision to implement these specific functions?
-You try to find an [algebraic design](https://algebradriven.design).
-Here is an example how you can do this.
+We used the methodology from [algebraic design](https://algebradriven.design), or [denotational design](https://www.youtube.com/watch?v=bmKYiUOEo2A) along with what we know about the [theory of regular languages](https://en.wikipedia.org/wiki/Regular_expression#Formal_definition). 
+Here is an illustration of how this could be done.
 
-First you have to understand that RegEx does nothing more than checking if the current character matches a given predicate.
+First we try to figure out what the most simplest matchers could be. We then try to make more complex marchers by instantiating and composing the simplest matchers.
 This gives us the first function `singleM`.
 Next consider a basic pattern like "a".
-This pattern represent the predicate "match the current character if it is equal to 'a'".
+This pattern represents the predicate "match the current character if it is equal to 'a'".
 
 ```Haskell
 predicateA :: Char -> Bool
@@ -104,20 +104,20 @@ Instead of creating a matcher for each character, a single matcher is created.
 The new matcher takes a parameter to indicate which character is to be matched.
 
 
-### Higher-Order Matchers
-Lets now look at some extreme matchers that we can use as [identity elements](https://en.wikipedia.org/wiki/Identity_element) in our later operations and properties:
+### Composing Matchers
+Lets now look at some boundary cases for matchers that we can use as [identity elements](https://en.wikipedia.org/wiki/Identity_element) in our later operations and properties:
 
 - `failM :: M a`: A matcher that matches nothing (returns `[]`).
-  This is equivalent to the 'empty set' or '∅' or '0' from the theory of regular languages, [Wikipedia](https://en.wikipedia.org/wiki/Empty_set)
+  This is equivalent to the 'empty set' or '∅' or '0' from the theory of regular languages, [Wikipedia](https://en.wikipedia.org/wiki/Regular_expression#Formal_definition)
 - `emptyStrM :: M a`: A matcher that matches the empty string (the string between '').
-  This is equivalent to the 'empty string' or 'empty word' or 'ε' or '1' from the theory of regular languages, [Wikipedia](https://en.wikipedia.org/wiki/Empty_string)
+  This is equivalent to the 'empty string' or 'empty word' or 'ε' or '1' from the theory of regular languages, [Wikipedia](https://en.wikipedia.org/wiki/Regular_expression#Formal_definition)
 
 
 For (negative) character groups and concatination (combining) we need the following functions:
 
-* [ ] `andM :: [M a] -> M a` - matches if all matchers from the list are matching
+* [ ] `andM :: [M a] -> M a` - matches if all matchers from the list are was successful
 * [ ] `orM :: [M a] -> M a` - matches if at least one matcher from the list was successful
-* [ ] `concatM :: [M a] -> M a` - matches a list of mathers in a row
+* [ ] `concatM :: [M a] -> M a` - matches a list of mathers in sequence
 
 Again how did we end up with these functions?
 Think about RegEx as mathematical equations:
@@ -148,21 +148,21 @@ If you would use `failM` in `andM` and `concatM` then you would change the resul
 In both cases you want to match the 'empty word' and are therefore the bases case for both functions.
 
 ### KleeneStar and KleenPlus
-In grep the pattern `abc` is the same as `.*abc.*`.
-To support this behaviour we have to insert at the start and end the kleene star with the wildcard.
-For this we required the following three functions:
 
-* [ ] `anyCharM :: M a` - matches any character
+In order to support the `*` and `+` operations the following are required:
+
 * [ ] `kleeneStarM :: M a -> M a` - matches the given character 0 or n times
 * [ ] `kleenePlusM :: M a -> M a` - matches the given character 1 or n times
 
 We implement `kleeneStarM` and `kleenePlusM` as a mutual recursion.
-Mutual recursion is when two or more functions call it self interchangable manner recursively.
+Mutual recursion is when two or more functions call it self interchangeable manner recursively.
 In our case `kleenStarM` uses / calls `kleenPlusM`, but also the other way around.
 
-## Implement Parser Using Megaparsec
+## Implement a Parser Using Megaparsec
 
-We are going to implement a parser for the RegEx using the [Megaparsec library](https://hackage.haskell.org/package/megaparsec).
+Next we need a way to parse the regular expressions given by the user. We use the [Megaparsec library](https://hackage.haskell.org/package/megaparsec) to do this, but you may choose to implement this using any of the parser libraries available in Haskell, or even implement your own. Alternatively, you could also just reuse the parser from the solution and concentrate on the matchers for the moment.
+
+We are going to implement a parser for regular expressions using the [Megaparsec library](https://hackage.haskell.org/package/megaparsec).
 Our parser should parse the Extended Backus Naur Form ([EBNF](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form)) from [this file](https://github.com/kean/Regex/blob/master/grammar.ebnf).
 
 This is an adjusted EBNF that better fits to our parser:
@@ -187,7 +187,7 @@ With that in place you can write one function for every EBNF rule.
 You may have observed that one function is still missing - the `parse` function itself.
 The `parse` function is our entry point for the parser and should return an [Abstract Syntax Tree (AST)](https://en.wikipedia.org/wiki/Abstract_syntax_tree).
 For every matcher you need a constructor in the `data AST` data type.
-After you got an `AST` from the parser you have to convert it to an matcher.
+After you got an `AST` from the parser you have to convert it to a matcher.
 For this purpose we have to write an `astToMatcher` function.
 
 Since the Megaparsec's `parse` function returns something of type `Either`, we have to distinguish these two cases (`Left` holds an error, `Right` means correct).
@@ -210,7 +210,7 @@ The `main` function performs the following steps:
 The `grep` function read the input line for line using recursion.
 The result for each list is stored in a list, which will be returned after all input is processed
 
-If at least one match was succesfully we have to iterate over the list and print all lines which match the pattern.
+If at least one match was successfully we have to iterate over the list and print all lines which match the pattern.
 To iterate over all elements in the list we can use the `mapM_` function.
 This function works similar to the normal `map` function.
 Each value from the input (list) is fed into a function which returns a monad (`putStrLn`) and the return value is discarded.
