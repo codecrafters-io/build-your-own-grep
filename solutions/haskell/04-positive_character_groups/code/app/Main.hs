@@ -8,24 +8,24 @@ getAllowedCharacters :: String -> String
 getAllowedCharacters s = take (length s - 2) $ tail s
 
 matchPattern :: String -> String -> Bool
-matchPattern pat input = do
-  if pat == "\\d"
+matchPattern pattern input = do
+  if pattern == "\\d"
     then any isDigit input
     else
-      if pat == "\\w"
+      if pattern == "\\w"
         then any (\c -> isAlphaNum c || c == '_') input
         else
-          if head pat == '['
-            then or $ fmap (`elem` input) (getAllowedCharacters pat)
+          if head pattern == '['
+            then or $ fmap (`elem` input) (getAllowedCharacters pattern)
             else
-              if length pat == 1
-                then head pat `elem` input
-                else error $ "Unhandled pattern: " ++ pat
+              if length pattern == 1
+                then head pattern `elem` input
+                else error $ "Unhandled pattern: " ++ pattern
 
 main :: IO ()
 main = do
   args <- getArgs
-  let pat = args !! 1
+  let pattern = args !! 1
   input_line <- getLine
 
   if head args /= "-E"
@@ -33,6 +33,6 @@ main = do
       putStrLn "Expected first argument to be '-E'"
       exitFailure
     else
-      if matchPattern pat input_line
+      if matchPattern pattern input_line
         then exitSuccess
         else exitFailure

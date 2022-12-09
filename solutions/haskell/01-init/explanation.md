@@ -8,7 +8,7 @@ if head args /= "-E"
   then do
     putStrLn "Expected first argument to be '-E'"
     exitFailure
-  else do if matchPattern pat input_line
+  else do if matchPattern pattern input_line
             then exitSuccess
             else exitFailure
 ```

@@ -7,27 +7,24 @@ import Data.Maybe
 import Parser
 import RegEx
 
-match :: M Char -> String -> Bool
-match pat s = isMatching pat s
-
 grep :: M Char -> IO [(Bool, String)]
-grep pat = do
+grep pattern = do
   done <- isEOF
   if done
-    then return $ []
+    then return []
     else do
       input_line <- getLine
-      let r = match pat input_line
-      rs <- grep pat
+      let r = isMatching pattern input_line
+      rs <- grep pattern
       return $ (r, input_line) : rs
 
 
 main :: IO ()
 main = do
   args <- getArgs
-  let pat = parse $ unwords $ tail args
+  let pattern = parse $ unwords $ tail args
 
-  if isNothing pat
+  if isNothing pattern
     then do
       putStrLn "Invalid pattern"
       exitFailure
@@ -37,7 +34,7 @@ main = do
         putStrLn "Expected first argument to be '-E'"
         exitFailure
       else do
-        bs <- grep $ astToMatcher $ fromJust pat
+        bs <- grep $ astToMatcher $ fromJust pattern
         if any ((==True) . fst) bs
           then do
             mapM_ (putStrLn . snd) $ filter ((==True) . fst) bs

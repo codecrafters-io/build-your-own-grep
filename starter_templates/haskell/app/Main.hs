@@ -4,15 +4,15 @@ import System.Environment
 import System.Exit
 
 matchPattern :: String -> String -> Bool
-matchPattern pat input = do
-  if length pat == 1
-    then head pat `elem` input
-    else error $ "Unhandled pattern: " ++ pat
+matchPattern pattern input = do
+  if length pattern == 1
+    then head pattern `elem` input
+    else error $ "Unhandled pattern: " ++ pattern
 
 main :: IO ()
 main = do
   args <- getArgs
-  let pat = args !! 1
+  let pattern = args !! 1
   input_line <- getLine
 
   -- You can use print statements as follows for debugging, they'll be visible when running tests.
@@ -23,6 +23,6 @@ main = do
   --   then do
   --     putStrLn "Expected first argument to be '-E'"
   --     exitFailure
-  --   else do if matchPattern pat input_line
+  --   else do if matchPattern pattern input_line
   --             then exitSuccess
   --             else exitFailure

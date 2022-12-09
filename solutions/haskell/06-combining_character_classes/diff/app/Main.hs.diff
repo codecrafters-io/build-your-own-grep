@@ -1,4 +1,4 @@
-@@ -1,46 +1,46 @@
+@@ -1,46 +1,43 @@
 -module Main where
 +module Main (main) where
 
@@ -14,55 +14,53 @@
 
 -getAllowedCharacters :: String -> String
 -getAllowedCharacters s = take (length s - 2) $ tail s
-+match :: M Char -> String -> Bool
-+match pat s = isMatching pat s
-
+-
 -getNotAllowedCharacters :: String -> String
 -getNotAllowedCharacters s = take (length s - 3) $ tail $ tail s
 +grep :: M Char -> IO [(Bool, String)]
-+grep pat = do
++grep pattern = do
 +  done <- isEOF
 +  if done
-+    then return $ []
++    then return []
 +    else do
 +      input_line <- getLine
-+      let r = match pat input_line
-+      rs <- grep pat
++      let r = isMatching pattern input_line
++      rs <- grep pattern
 +      return $ (r, input_line) : rs
 
 -matchPattern :: String -> String -> Bool
--matchPattern pat input = do
--  if pat == "\\d"
+-matchPattern pattern input = do
+-  if pattern == "\\d"
 -    then any isDigit input
 -    else
--      if pat == "\\w"
+-      if pattern == "\\w"
 -        then any (\c -> isAlphaNum c || c == '_') input
 -        else
--          if take 2 pat == "[^"
--            then not $ or $ fmap (`elem` input) (getNotAllowedCharacters pat)
+-          if take 2 pattern == "[^"
+-            then not $ or $ fmap (`elem` input) (getNotAllowedCharacters pattern)
 -            else
--              if head pat == '['
--                then or $ fmap (`elem` input) (getAllowedCharacters pat)
+-              if head pattern == '['
+-                then or $ fmap (`elem` input) (getAllowedCharacters pattern)
 -                else
--                  if length pat == 1
--                    then head pat `elem` input
--                    else error $ "Unhandled pattern: " ++ pat
+-                  if length pattern == 1
+-                    then head pattern `elem` input
+-                    else error $ "Unhandled pattern: " ++ pattern
 
  main :: IO ()
  main = do
    args <- getArgs
--  let pat = args !! 1
+-  let pattern = args !! 1
 -  input_line <- getLine
-+  let pat = parse $ unwords $ tail args
++  let pattern = parse $ unwords $ tail args
 
 -  if head args /= "-E"
-+  if isNothing pat
++  if isNothing pattern
      then do
 -      putStrLn "Expected first argument to be '-E'"
 +      putStrLn "Invalid pattern"
        exitFailure
 -    else
--      if matchPattern pat input_line
+-      if matchPattern pattern input_line
 -        then exitSuccess
 -        else exitFailure
 +    else do
@@ -71,7 +69,7 @@
 +        putStrLn "Expected first argument to be '-E'"
 +        exitFailure
 +      else do
-+        bs <- grep $ astToMatcher $ fromJust pat
++        bs <- grep $ astToMatcher $ fromJust pattern
 +        if any ((==True) . fst) bs
 +          then do
 +            mapM_ (putStrLn . snd) $ filter ((==True) . fst) bs
