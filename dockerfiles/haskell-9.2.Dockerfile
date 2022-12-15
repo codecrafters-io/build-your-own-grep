@@ -1,4 +1,4 @@
-FROM haskell:9.0.2-buster
+FROM haskell:9.2.5-buster
 
 WORKDIR /app
 
