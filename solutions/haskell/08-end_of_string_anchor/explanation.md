@@ -1,0 +1,1 @@
+We add support for the end of string anchor in a way similar to the start of string anchor: If the end of string anchor `$` is **NOT** present at the end of the given regular expression, the parser will add the regular expression `.*` to the end of the given regular expression.  

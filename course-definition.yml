@@ -17,11 +17,12 @@ short_description_md: |
 completion_percentage: 30
 
 early_access_languages: []
-supported_languages: ["python", "go"]
+supported_languages: ["python", "go", "rust", "haskell"]
 
 starter_repos:
   python: https://github.com/codecrafters-io/grep-starter-python
   go: https://github.com/codecrafters-io/grep-starter-go
+  haskell: https://github.com/codecrafters-io/grep-starter-haskell
 
 marketing:
   difficulty: medium

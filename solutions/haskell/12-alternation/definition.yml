@@ -1,0 +1,16 @@
+author_details:
+  name: Olivier Lischer
+  profile_url: https://github.com/liolin
+  avatar_url: https://github.com/liolin.png
+  headline: Student, Eastern Switzerland University of Applied Sciences (OST Rapperswil)
+
+reviewers_details:
+  - name: Farhad Mehta
+    profile_url: https://github.com/fmehta
+    avatar_url: https://github.com/fmehta.png
+    headline: Professor, Eastern Switzerland University of Applied Sciences (OST Rapperswil)
+
+  - name: Robin Elvedi
+    profile_url: https://github.com/catreadme
+    avatar_url: https://github.com/catreadme.png
+    headline: Research Assistant, Eastern Switzerland University of Applied Sciences (OST Rapperswil)

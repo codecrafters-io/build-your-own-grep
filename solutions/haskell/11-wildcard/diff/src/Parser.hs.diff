@@ -1,0 +1,58 @@
+@@ -76,51 +76,56 @@
+   return $ if isNothing s then KleeneStarM AnyCharM else EmptyStrM
+
+ pExpression :: MParser (AST Char)
+ pExpression = pSubExpression
+
+ pSubExpression :: MParser (AST Char)
+ pSubExpression = do
+   subExp <- M.some $ M.try pMatch M.<|> M.try pGroup
+   return $ ConcatM subExp
+
+ pGroup :: MParser (AST Char)
+ pGroup = do
+   _ <- char '('
+   i <- pExpression
+   _ <- char ')'
+   q <- M.optional $ pQuantifiers i
+   return $ fromMaybe i q
+
+ pMatch :: MParser (AST Char)
+ pMatch = do
+   i <- pMatchItem
+   q <- M.optional $ pQuantifiers i
+   return $ fromMaybe i q
+
+ pMatchItem :: MParser (AST Char)
+-pMatchItem = M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
++pMatchItem = M.try pMatchAnyChar M.<|> M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
++
++pMatchAnyChar :: MParser (AST Char)
++pMatchAnyChar = do
++  _ <- char '.'
++  return AnyCharM
+
+ pMatchCharacterClass :: MParser (AST Char)
+ pMatchCharacterClass = M.try pCharacterGroup M.<|> M.try pCharacterClass
+
+ pMatchCharacter :: MParser (AST Char)
+ pMatchCharacter = do
+   c <- anyNotUsed "|()$"
+   return $ PosLit c
+
+ pCharacterGroup :: MParser (AST Char)
+ pCharacterGroup = M.try pPositiveCharacterGroup M.<|> M.try pNegativeCharacterGroup
+
+ pPositiveCharacterGroup :: MParser (AST Char)
+ pPositiveCharacterGroup = do
+   _ <- char '['
+   c <- anyNotUsed "^]"
+   cs <- M.many pCharacterGroupItem
+   let cs' = PosLit c : cs
+   _ <- char ']'
+   return $ OrM cs'
+
+ pNegativeCharacterGroup :: MParser (AST Char)
+ pNegativeCharacterGroup = do
+   _ <- char '['
+   _ <- char '^'

@@ -1,0 +1,105 @@
+@@ -58,55 +58,66 @@
+ -- https://github.com/kean/Regex/blob/master/grammar.ebnf
+ -- I had to adjust a few rules to support better parsing
+
+ pRegEx :: MParser (AST Char)
+ pRegEx = do
+   s <- pStartOfString
+   expression <- pExpression
+   e <- pEndOfString
+   return $ ConcatM [s, expression, e]
+
+ pStartOfString :: MParser (AST Char)
+ pStartOfString = do
+   s <- M.optional $ char '^'
+   return $ if isNothing s then  KleeneStarM AnyCharM else EmptyStrM
+
+ pEndOfString :: MParser (AST Char)
+ pEndOfString = do
+   s <- M.optional $ char '$'
+   return $ if isNothing s then KleeneStarM AnyCharM else EmptyStrM
+
+ pExpression :: MParser (AST Char)
+ pExpression = pSubExpression
+
+ pSubExpression :: MParser (AST Char)
+ pSubExpression = do
+-  subExp <- M.some $ M.try pMatch
++  subExp <- M.some $ M.try pMatch M.<|> M.try pGroup
+   return $ ConcatM subExp
+
++pGroup :: MParser (AST Char)
++pGroup = do
++  _ <- char '('
++  i <- pExpression
++  _ <- char ')'
++  q <- M.optional $ pQuantifiers i
++  return $ fromMaybe i q
++
+ pMatch :: MParser (AST Char)
+-pMatch = pMatchItem
++pMatch = do
++  i <- pMatchItem
++  q <- M.optional $ pQuantifiers i
++  return $ fromMaybe i q
+
+ pMatchItem :: MParser (AST Char)
+ pMatchItem = M.try pMatchCharacterClass M.<|> M.try pMatchCharacter
+
+ pMatchCharacterClass :: MParser (AST Char)
+ pMatchCharacterClass = M.try pCharacterGroup M.<|> M.try pCharacterClass
+
+ pMatchCharacter :: MParser (AST Char)
+ pMatchCharacter = do
+   c <- anyNotUsed "|()$"
+   return $ PosLit c
+
+ pCharacterGroup :: MParser (AST Char)
+ pCharacterGroup = M.try pPositiveCharacterGroup M.<|> M.try pNegativeCharacterGroup
+
+ pPositiveCharacterGroup :: MParser (AST Char)
+ pPositiveCharacterGroup = do
+   _ <- char '['
+   c <- anyNotUsed "^]"
+   cs <- M.many pCharacterGroupItem
+   let cs' = PosLit c : cs
+   _ <- char ']'
+   return $ OrM cs'
+
+ pNegativeCharacterGroup :: MParser (AST Char)
+@@ -119,27 +130,35 @@
+
+ pCharacterGroupItem :: MParser (AST Char)
+ pCharacterGroupItem = M.try pCharacterClass M.<|> M.try pChar
+
+
+ pCharacterClass :: MParser (AST Char)
+ pCharacterClass = M.try pCharacterClassAnyWord M.<|> M.try pCharacterClassAnyDecimal
+
+ pCharacterClassAnyWord :: MParser (AST a)
+ pCharacterClassAnyWord = do
+   _ <- char '\\'
+   _ <- char 'w'
+   return AlphaNumM
+
+ pCharacterClassAnyDecimal :: MParser (AST Char)
+ pCharacterClassAnyDecimal = do
+   _ <- char '\\'
+   _ <- char 'd'
+   return DigitM
+
+ pChar :: MParser (AST Char)
+ pChar = do
+   c <- notChar ']'
+   return $ PosLit c
+
++pQuantifiers :: AST a -> MParser (AST a)
++pQuantifiers x = M.try (oneOrMoreQuantifier x)
++
++oneOrMoreQuantifier :: AST a -> MParser (AST a)
++oneOrMoreQuantifier x = do
++  _ <- char '+'
++  return $ KleenePlusM x
++
+ parse :: String -> Maybe (AST Char)
+ parse = M.parseMaybe pRegEx

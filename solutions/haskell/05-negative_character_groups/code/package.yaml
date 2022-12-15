@@ -1,0 +1,29 @@
+# DON'T EDIT THIS!
+#
+# Codecrafters relies on this file being intact to run tests successfully. Any changes
+# here will not reflect when CodeCrafters tests your code, and might even cause build
+# failures.
+#
+# DON'T EDIT THIS!
+
+name:                hs-grep-clone
+version:             0.1.0.0
+license:             BSD3
+
+dependencies:
+- base >= 4.7 && < 5
+- megaparsec # can help when implementing the parser
+
+library:
+  source-dirs: src
+
+executables:
+  hs-grep-clone-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - hs-grep-clone
