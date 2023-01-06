@@ -20,6 +20,7 @@ dependencies:
 
 default-extensions:
 - BlockArguments
+- ImportQualifiedPost
 - LambdaCase
 - NamedFieldPuns
 - RecordWildCards
