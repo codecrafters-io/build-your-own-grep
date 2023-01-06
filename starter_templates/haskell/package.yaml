@@ -19,6 +19,7 @@ dependencies:
 - mtl # monad transformers to help with nested monads
 
 default-extensions:
+- BlockArguments
 - LambdaCase
 - NamedFieldPuns
 - RecordWildCards
