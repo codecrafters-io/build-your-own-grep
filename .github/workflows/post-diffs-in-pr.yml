@@ -10,3 +10,5 @@ concurrency:
 jobs:
   post_diffs:
     uses: codecrafters-io/course-sdk/.github/workflows/post-diffs-in-pr.yml@main
+    with:
+      sdkRef: main
