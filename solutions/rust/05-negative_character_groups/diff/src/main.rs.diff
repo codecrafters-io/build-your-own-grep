@@ -1,0 +1,68 @@
+@@ -7,51 +7,66 @@
+         r"\d" => {
+             for ch in input_line.chars() {
+                 match ch {
+                     '0'..='9' => {
+                         return true;
+                     }
+                     _ => continue
+                 }
+             }
+
+             false
+         }
+         r"\w" => {
+             for ch in input_line.chars() {
+                 match ch {
+                     '0'..='9' | 'a'..='z' | 'A'..='Z' | '_' => {
+                         return true;
+                     }
+                     _ => continue
+                 }
+             }
+
+             false
+         }
+         _ => {
+-            if pattern.starts_with("[") {
++            if pattern.starts_with("[^") {
++                let end_index = if let Some(i) = pattern.find("]") {
++                    i
++                } else {
++                    panic!("Unclosed '[' in pattern");
++                };
++
++                for ch in pattern.chars().skip(2).take(end_index - 2) {
++                    if input_line.contains(ch) {
++                        return false;
++                    }
++                }
++
++                true
++            }
++            else if pattern.starts_with("[") {
+                 let end_index = if let Some(i) = pattern.find("]") {
+                     i
+                 } else {
+                     panic!("Unclosed '[' in pattern");
+                 };
+
+                 for ch in pattern.chars().skip(1).take(end_index - 1) {
+                     if input_line.contains(ch) {
+                         return true;
+                     }
+                 }
+
+                 false
+             }
+             else if pattern.chars().count() == 1 {
+                 input_line.contains(pattern)
+             } else {
+                 panic!("Unhandled pattern: {}", pattern);
+             }
+         }
+     }
+ }
+
+ // Usage: echo <input_text> | your_grep.sh -E <pattern>
+ fn main() {
