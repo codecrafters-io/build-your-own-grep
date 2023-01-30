@@ -4,10 +4,16 @@ For this stage we can extend the `match_pattern` function from stage 1.
 fn match_pattern(input_line: &str, pattern: &str) -> bool {
     match pattern {
         r"\d" => {
-            match input_line.chars().next() {
-                Some('0'..='9') => true,
-                _ => false
+            for ch in input_line.chars() {
+                match ch {
+                    '0'..='9' => {
+                        return true;
+                    }
+                    _ => continue
+                }
             }
+
+            false
         }
         _ => {
             if pattern.chars().count() == 1 {

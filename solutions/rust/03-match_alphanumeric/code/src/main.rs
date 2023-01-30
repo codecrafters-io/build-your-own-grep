@@ -8,7 +8,19 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
             for ch in input_line.chars() {
                 match ch {
                     '0'..='9' => {
-                        return true
+                        return true;
+                    }
+                    _ => continue
+                }
+            }
+
+            false
+        }
+        r"\w" => {
+            for ch in input_line.chars() {
+                match ch {
+                    '0'..='9' | 'a'..='z' | 'A'..='Z' | '_' => {
+                        return true;
                     }
                     _ => continue
                 }
