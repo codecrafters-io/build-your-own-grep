@@ -10,7 +10,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
                     '0'..='9' => {
                         return true;
                     }
-                    _ => continue
+                    _ => continue,
                 }
             }
 
@@ -22,7 +22,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
                     '0'..='9' | 'a'..='z' | 'A'..='Z' | '_' => {
                         return true;
                     }
-                    _ => continue
+                    _ => continue,
                 }
             }
 
@@ -43,8 +43,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
                 }
 
                 true
-            }
-            else if pattern.starts_with("[") {
+            } else if pattern.starts_with("[") {
                 let end_index = if let Some(i) = pattern.find("]") {
                     i
                 } else {
@@ -58,8 +57,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
                 }
 
                 false
-            }
-            else if pattern.chars().count() == 1 {
+            } else if pattern.chars().count() == 1 {
                 input_line.contains(pattern)
             } else {
                 panic!("Unhandled pattern: {}", pattern);

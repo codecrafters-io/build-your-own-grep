@@ -7,10 +7,8 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
         r"\d" => {
             for ch in input_line.chars() {
                 match ch {
-                    '0'..='9' => {
-                        return true
-                    }
-                    _ => continue
+                    '0'..='9' => return true,
+                    _ => continue,
                 }
             }
 

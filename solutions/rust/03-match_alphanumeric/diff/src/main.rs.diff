@@ -1,4 +1,4 @@
-@@ -1,36 +1,48 @@
+@@ -1,35 +1,49 @@
  use std::env;
  use std::io;
  use std::process;
@@ -8,11 +8,11 @@
          r"\d" => {
              for ch in input_line.chars() {
                  match ch {
-                     '0'..='9' => {
--                        return true
+-                    '0'..='9' => return true,
++                    '0'..='9' => {
 +                        return true;
 +                    }
-+                    _ => continue
++                    _ => continue,
 +                }
 +            }
 +
@@ -23,8 +23,8 @@
 +                match ch {
 +                    '0'..='9' | 'a'..='z' | 'A'..='Z' | '_' => {
 +                        return true;
-                     }
-                     _ => continue
++                    }
+                     _ => continue,
                  }
              }
 
@@ -48,3 +48,4 @@
      }
 
      let pattern = env::args().nth(2).unwrap();
+     let mut input_line = String::new();

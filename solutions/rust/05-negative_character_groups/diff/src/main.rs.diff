@@ -1,11 +1,11 @@
-@@ -7,51 +7,66 @@
+@@ -7,51 +7,65 @@
          r"\d" => {
              for ch in input_line.chars() {
                  match ch {
                      '0'..='9' => {
                          return true;
                      }
-                     _ => continue
+                     _ => continue,
                  }
              }
 
@@ -17,7 +17,7 @@
                      '0'..='9' | 'a'..='z' | 'A'..='Z' | '_' => {
                          return true;
                      }
-                     _ => continue
+                     _ => continue,
                  }
              }
 
@@ -39,8 +39,7 @@
 +                }
 +
 +                true
-+            }
-+            else if pattern.starts_with("[") {
++            } else if pattern.starts_with("[") {
                  let end_index = if let Some(i) = pattern.find("]") {
                      i
                  } else {
@@ -54,8 +53,7 @@
                  }
 
                  false
-             }
-             else if pattern.chars().count() == 1 {
+             } else if pattern.chars().count() == 1 {
                  input_line.contains(pattern)
              } else {
                  panic!("Unhandled pattern: {}", pattern);
@@ -66,3 +64,4 @@
 
  // Usage: echo <input_text> | your_grep.sh -E <pattern>
  fn main() {
+     if env::args().nth(1).unwrap() != "-E" {

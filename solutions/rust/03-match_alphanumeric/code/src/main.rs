@@ -10,7 +10,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
                     '0'..='9' => {
                         return true;
                     }
-                    _ => continue
+                    _ => continue,
                 }
             }
 
@@ -22,7 +22,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
                     '0'..='9' | 'a'..='z' | 'A'..='Z' | '_' => {
                         return true;
                     }
-                    _ => continue
+                    _ => continue,
                 }
             }
 

@@ -1,4 +1,4 @@
-@@ -1,30 +1,46 @@
+@@ -1,30 +1,44 @@
  use std::env;
  use std::io;
  use std::process;
@@ -12,10 +12,8 @@
 +        r"\d" => {
 +            for ch in input_line.chars() {
 +                match ch {
-+                    '0'..='9' => {
-+                        return true
-+                    }
-+                    _ => continue
++                    '0'..='9' => return true,
++                    _ => continue,
 +                }
 +            }
 +
