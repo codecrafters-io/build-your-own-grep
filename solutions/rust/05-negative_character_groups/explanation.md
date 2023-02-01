@@ -1,4 +1,4 @@
-This stage is similar to the last one with the logic reversed
+This stage is similar to the last one with the logic reversed.
 
 ```rust
 if pattern.starts_with("[^") {
