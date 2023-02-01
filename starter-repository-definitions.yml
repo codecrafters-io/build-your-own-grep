@@ -76,4 +76,4 @@
       target: your_grep.sh
   template_attributes:
     required_executable: "stack"
-    user_editable_file: "Main.hs"
+    user_editable_file: "app/Main.hs"
