@@ -43,7 +43,6 @@ func matchLine(line []byte, pattern string) (bool, error) {
 	case pattern == `\d`:
 		for _, char := range string(line) { // ranging over string handles utf-8 multibyte characters correctly
 			if unicode.IsDigit(char) {
-				print(char)
 				return true, nil
 			}
 		}
