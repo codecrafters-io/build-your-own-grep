@@ -10,6 +10,7 @@ fn match_pattern(input_line: &str, pattern: &str) -> bool {
     }
 }
 
+// Usage: echo <input_text> | your_grep.sh -E <pattern>
 fn main() {
     if env::args().nth(1).unwrap() != "-E" {
         println!("Expected first argument to be '-E'");
