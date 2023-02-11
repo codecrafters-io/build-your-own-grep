@@ -22,7 +22,7 @@ grep pattern = do
 main :: IO ()
 main = do
   args <- getArgs
-  let pattern = parse $ unwords $ tail args
+  let pattern = parse $ args !! 1
 
   if isNothing pattern
     then do

@@ -51,7 +51,7 @@
    args <- getArgs
 -  let pattern = args !! 1
 -  input_line <- getLine
-+  let pattern = parse $ unwords $ tail args
++  let pattern = parse $ args !! 1
 
 -  if head args /= "-E"
 +  if isNothing pattern
