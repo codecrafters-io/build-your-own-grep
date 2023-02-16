@@ -12,12 +12,13 @@ def main
 
   if ARGV[0] != "-E"
     puts "Expected first argument to be '-E'"
-    exit(1)
+    exit 1
   end
+
   if match_pattern(input_line, pattern)
-    exit(0)
+    exit 0
   else
-    exit(1)
+    exit 1
   end
 end
 

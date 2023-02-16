@@ -12,16 +12,17 @@ def main
 
   if ARGV[0] != "-E"
     puts "Expected first argument to be '-E'"
-    exit(1)
+    exit 1
   end
+
   # You can use print statements as follows for debugging, they'll be visible when running tests.
   puts "Logs from your program will appear here"
   
   # Uncomment this block to pass the first stage
   # if match_pattern(input_line, pattern)
-  #   exit(0)
+  #   exit 0
   # else
-  #   exit(1)
+  #   exit 1
   # end
 end
 

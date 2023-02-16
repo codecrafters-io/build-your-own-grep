@@ -5,9 +5,9 @@ Study and uncomment the relevant code:
 ```ruby
 # Uncomment this block to pass the first stage
 if match_pattern(input_line, pattern)
-  exit(0)
+  exit 0
 else
-  exit(1)
+  exit 1
 end
 ```
 
