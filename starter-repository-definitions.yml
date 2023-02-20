@@ -77,3 +77,17 @@
   template_attributes:
     required_executable: "stack"
     user_editable_file: "app/Main.hs"
+
+- language: ruby
+  file_mappings:
+    - source: starter_templates/README.md
+      target: README.md
+    - source: starter_templates/codecrafters.yml
+      target: codecrafters.yml
+    - source: starter_templates/ruby/app/main.rb
+      target: app/main.rb
+    - source: starter_templates/ruby/your_grep.sh
+      target: your_grep.sh
+  template_attributes:
+    required_executable: "ruby (2.7)"
+    user_editable_file: "app/main.rb"
