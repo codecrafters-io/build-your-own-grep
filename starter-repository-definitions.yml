@@ -14,6 +14,8 @@
       target: .gitignore
     - source: starter_templates/python/your_grep.sh
       target: your_grep.sh
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
   template_attributes:
     required_executable: "python (3.10)"
     user_editable_file: "app/main.py"
@@ -34,6 +36,8 @@
       target: Cargo.lock
     - source: starter_templates/rust/your_grep.sh
       target: your_grep.sh
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
   template_attributes:
     required_executable: "cargo (1.62)"
     user_editable_file: "src/main.rs"
@@ -52,6 +56,8 @@
       target: go.sum
     - source: starter_templates/go/cmd/mygrep/main.go
       target: cmd/mygrep/main.go
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
   template_attributes:
     required_executable: "go (1.19)"
     user_editable_file: "cmd/mygrep/main.go"
@@ -74,6 +80,8 @@
       target: app/Main.hs
     - source: starter_templates/haskell/your_grep.sh
       target: your_grep.sh
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
   template_attributes:
     required_executable: "stack"
     user_editable_file: "app/Main.hs"
@@ -88,6 +96,8 @@
       target: app/main.rb
     - source: starter_templates/ruby/your_grep.sh
       target: your_grep.sh
+    - source: starter_templates/.gitattributes
+      target: .gitattributes
   template_attributes:
     required_executable: "ruby (2.7)"
     user_editable_file: "app/main.rb"
