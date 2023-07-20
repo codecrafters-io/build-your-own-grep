@@ -17,7 +17,7 @@
     - source: starter_templates/.gitattributes
       target: .gitattributes
   template_attributes:
-    required_executable: "python (3.10)"
+    required_executable: "python (3.11)"
     user_editable_file: "app/main.py"
 
 - language: rust
