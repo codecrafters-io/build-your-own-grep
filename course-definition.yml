@@ -19,22 +19,13 @@ completion_percentage: 30
 
 languages:
   - slug: "go"
-    starter_repository_url: "https://github.com/codecrafters-io/grep-starter-go"
-
   - slug: "haskell"
-    starter_repository_url: "https://github.com/codecrafters-io/grep-starter-haskell"
     release_status: "beta"
-
   - slug: "python"
-    starter_repository_url: "https://github.com/codecrafters-io/grep-starter-python"
-
   - slug: "ruby"
-    starter_repository_url: "https://github.com/codecrafters-io/grep-starter-ruby"
     release_status: "alpha"
     alpha_tester_usernames: ["rohitpaulk", "sreeram-venkitesh"]
-
   - slug: "rust"
-    starter_repository_url: "https://github.com/codecrafters-io/grep-starter-rust"
 
 marketing:
   difficulty: medium
