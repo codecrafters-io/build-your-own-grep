@@ -1,7 +1,7 @@
 slug: "grep"
 name: "Build your own grep"
 short_name: "grep"
-release_status: "beta"
+release_status: "live"
 
 description_md: |
   [Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (Regexes, for short) are patterns used to 
