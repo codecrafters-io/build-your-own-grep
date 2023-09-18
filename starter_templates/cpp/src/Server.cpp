@@ -11,6 +11,9 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
 }
 
 int main(int argc, char* argv[]) {
+    // You can use print statements as follows for debugging, they'll be visible when running tests.
+    std::cout << "Logs from your program will appear here" << std::endl;
+
     if (argc != 3) {
         std::cerr << "Expected two arguments" << std::endl;
         return 1;
@@ -23,9 +26,6 @@ int main(int argc, char* argv[]) {
         std::cerr << "Expected first argument to be '-E'" << std::endl;
         return 1;
     }
-
-    // You can use print statements as follows for debugging, they'll be visible when running tests.
-    std::cout << "Logs from your program will appear here" << std::endl;
 
     // Uncomment this block to pass the first stage
     //
