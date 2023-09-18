@@ -14,11 +14,6 @@ int main(int argc, char* argv[]) {
     // You can use print statements as follows for debugging, they'll be visible when running tests.
     std::cout << "Logs from your program will appear here" << std::endl;
 
-    // std::cout << "Number of arguments: " << argc << "\n";
-    // for (int i = 0; i < argc; ++i) {
-    //   std::cout << "argv[" << i << "] = " << argv[i] << "\n";
-    // }
-
     if (argc != 3) {
         std::cerr << "Expected two arguments" << std::endl;
         return 1;
@@ -31,7 +26,6 @@ int main(int argc, char* argv[]) {
         std::cerr << "Expected first argument to be '-E'" << std::endl;
         return 1;
     }
-
 
     // Uncomment this block to pass the first stage
     //

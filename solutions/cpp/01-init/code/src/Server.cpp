@@ -11,11 +11,6 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
 }
 
 int main(int argc, char* argv[]) {
-    // std::cout << "Number of arguments: " << argc << "\n";
-    // for (int i = 0; i < argc; ++i) {
-    //   std::cout << "argv[" << i << "] = " << argv[i] << "\n";
-    // }
-
     if (argc != 3) {
         std::cerr << "Expected two arguments" << std::endl;
         return 1;
@@ -28,7 +23,6 @@ int main(int argc, char* argv[]) {
         std::cerr << "Expected first argument to be '-E'" << std::endl;
         return 1;
     }
-
 
     std::string input_line;
     std::getline(std::cin, input_line);
