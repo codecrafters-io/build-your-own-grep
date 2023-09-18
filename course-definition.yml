@@ -18,6 +18,7 @@ short_description_md: |
 completion_percentage: 30
 
 languages:
+  - slug: "cpp"
   - slug: "go"
   - slug: "haskell"
     release_status: "beta"
