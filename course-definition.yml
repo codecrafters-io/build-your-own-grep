@@ -3,7 +3,7 @@ name: "Build your own grep"
 short_name: "grep"
 release_status: "live"
 
-description_md: |
+description_md: |-
   [Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (Regexes, for short) are patterns used to 
   match character combinations in strings. [`grep`](https://en.wikipedia.org/wiki/Grep) is a CLI tool for searching 
   using Regexes.
@@ -12,7 +12,7 @@ description_md: |
   how Regexes are evaluated.
 
 # Keep this under 70 characters
-short_description_md: |
+short_description_md: |-
   Learn about regex syntax: character classes, quantifiers and more
 
 completion_percentage: 30
@@ -43,7 +43,7 @@ marketing:
       author_description: "Senior Software Developer, CenturyLink"
       author_avatar: "https://codecrafters.io/images/external/testimonials/patrick-burris.jpeg"
       link: "https://github.com/Jumballaya"
-      text: |
+      text: |-
         I think the instant feedback right there in the git push is really cool.
         Didn't even know that was possible!
 
@@ -51,7 +51,7 @@ stages:
   - slug: "init"
     name: "Match a literal character"
     difficulty: very_easy
-    description_md: |
+    description_md: |-
       In this stage, we'll handle the simplest regex possible: a single character. 
 
       **Example:** `a` should match "apple", but not "dog".
@@ -66,7 +66,7 @@ stages:
       for metacharacters like `+`, `?` etc.). We'll use this flag in all stages.
 
       You program must [exit](https://en.wikipedia.org/wiki/Exit_status) with 0 if the character is found, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll handle the simplest regex possible: a single character. 
 
       **Example:**
@@ -76,7 +76,7 @@ stages:
   - slug: "match_digit"
     name: "Match digits"
     difficulty: very_easy
-    description_md: |
+    description_md: |-
       In this stage, we'll implement support for the `\d` 
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
 
@@ -91,7 +91,7 @@ stages:
       ```
 
       You program must exit with 0 if a digit is found in the string, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll implement support for the `\d` 
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
 
@@ -104,7 +104,7 @@ stages:
   - slug: "match_alphanumeric"
     name: "Match alphanumeric characters"
     difficulty: very_easy
-    description_md: |
+    description_md: |-
       In this stage, we'll implement support for the `\w` 
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
 
@@ -119,7 +119,7 @@ stages:
       ```
 
       You program must exit with 0 if an alphanumeric character is found in the string, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll implement support for the `\w` 
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
 
@@ -132,7 +132,7 @@ stages:
   - slug: "positive_character_groups"
     name: "Positive Character Groups"
     difficulty: medium
-    description_md: |
+    description_md: |-
       In this stage, we'll add support for [positive character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#positive-character-group--).
 
       Positive character groups match any character that is present within a pair of square brackets.
@@ -146,7 +146,7 @@ stages:
       ```
 
       You program must exit with 0 if an any of the characters are found in the string, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll add support for [positive character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#positive-character-group--).
 
       Positive character groups match any character that is present within a pair of square brackets.
@@ -158,7 +158,7 @@ stages:
   - slug: "negative_character_groups"
     name: "Negative Character Groups"
     difficulty: medium
-    description_md: |
+    description_md: |-
       In this stage, we'll add support for [negative character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#negative-character-group-).
 
       Negative character groups match any character that is not present within a pair of square brackets.
@@ -172,7 +172,7 @@ stages:
       ```
 
       You program must exit with 0 if the input contains characters that aren't part of the negative character group, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll add support for [negative character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#negative-character-group-).
 
       Negative character groups match any character that is not present within a pair of square brackets.
@@ -184,7 +184,7 @@ stages:
   - slug: "combining_character_classes"
     name: "Combining Character Classes"
     difficulty: medium
-    description_md: |
+    description_md: |-
       In this stage, we'll add support for patterns that combine the character classes we've seen so far. 
 
       This is where your regex matcher will start to _feel_ useful. 
@@ -208,7 +208,7 @@ stages:
       ```
 
       You program must exit with 0 if the pattern matches the input, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll support patterns that combine the character classes we've seen so far. 
 
       **Examples:** 
@@ -223,7 +223,7 @@ stages:
   - slug: "start_of_string_anchor"
     name: "Start of string anchor"
     difficulty: medium
-    description_md: |
+    description_md: |-
       In this stage, we'll add support for `^`, the [Start of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-). 
 
       `^` doesn't match a character, it matches the start of a line.
@@ -237,7 +237,7 @@ stages:
       ```
 
       You program must exit with 0 if the input starts with the given pattern, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll add support for `^`, the [Start of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-). 
 
       `^` doesn't match a character, it matches the start of a line.
@@ -249,7 +249,7 @@ stages:
   - slug: "end_of_string_anchor"
     name: "End of string anchor"
     difficulty: medium
-    description_md: |
+    description_md: |-
       In this stage, we'll add support for `$`, the [End of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-).
 
       `$` doesn't match a character, it matches the end of a line.
@@ -263,7 +263,7 @@ stages:
       ```
 
       You program must exit with 0 if the input matches the given pattern, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll add support for `$`, the [End of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-).
 
       `$` doesn't match a character, it matches the end of a line.
@@ -275,7 +275,7 @@ stages:
   - slug: "one_or_more_quantifier"
     name: "Match one or more times"
     difficulty: hard
-    description_md: |
+    description_md: |-
       In this stage, we'll add support for `+`, the [one or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier.
 
       **Example**: `a+` should match "apple" and "SaaS", but not "dog".
@@ -287,7 +287,7 @@ stages:
       ```
 
       You program must exit with 0 if the input matches the given pattern, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll add support for `+`, the [one or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier.
 
       **Example**: 
@@ -297,7 +297,7 @@ stages:
   - slug: "zero_or_one_quantifier"
     name: "Match zero or one times"
     difficulty: hard
-    description_md: |
+    description_md: |-
       In this stage, we'll add support for `?`, the [zero or one](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier (also known as the "optional" quantifier).
 
       **Example**: `dogs?` should match "dogs" and "dog", but not "cat".
@@ -309,7 +309,7 @@ stages:
       ```
 
       You program must exit with 0 if the input matches the given pattern, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll add support for `?`, the [zero or one](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier (also known as the "optional" quantifier).
 
       **Example**: 
@@ -319,7 +319,7 @@ stages:
   - slug: "wildcard"
     name: "Wildcard"
     difficulty: medium
-    description_md: |
+    description_md: |-
       In this stage, we'll add support for `.`, which matches any character.
 
       **Example**: `d.g` should match "dog", but not "cog".
@@ -331,7 +331,7 @@ stages:
       ```
 
       You program must exit with 0 if the input matches the given pattern, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll add support for `.`, which matches any character.
 
       **Example**: 
@@ -341,7 +341,7 @@ stages:
   - slug: "alternation"
     name: "Alternation"
     difficulty: hard
-    description_md: |
+    description_md: |-
       In this stage, we'll add support for the `|` keyword, which allows combining multiple patterns in an either/or fashion.
 
       **Example**: `(cat|dog)` should match "dog" and "cat", but not "apple".
@@ -353,7 +353,7 @@ stages:
       ```
 
       You program must exit with 0 if the input matches the given pattern, and 1 if not.
-    marketing_md: |
+    marketing_md: |-
       In this stage, we'll add support for the `|` keyword, which allows combining multiple patterns in an either/or fashion.
 
       **Example**: 
