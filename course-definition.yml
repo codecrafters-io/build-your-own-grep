@@ -23,7 +23,6 @@ languages:
   - slug: "haskell"
     release_status: "beta"
   - slug: "javascript"
-    release_status: "alpha"
   - slug: "python"
   - slug: "ruby"
     release_status: "alpha"
