@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
   public static void main(String[] args){
     if(args.length < 2 || !args[0].equals("-E")) {
@@ -6,9 +8,10 @@ public class Main {
     }
 
     final String pattern = args[1];
-    final String inputLine = System.console().readLine();
+    final Scanner input = new Scanner(System.in);
+    final String inputLine = input.nextLine();
 
-    if (inputLine.matches(pattern)) {
+    if (inputLine.contains(pattern)) {
       System.exit(0);
     } else {
       System.exit(1);

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
   public static void main(String[] args){
     // You can use print statements as follows for debugging, they'll be visible when running tests.
@@ -9,10 +11,11 @@ public class Main {
     }
 
     final String pattern = args[1];
-    final String inputLine = System.console().readLine();
+    final Scanner input = new Scanner(System.in);
+    final String inputLine = input.nextLine();
 
     // Uncomment this block to pass the first stage
-    // if (inputLine.matches(pattern)) {
+    // if (inputLine.contains(pattern)) {
     //   System.exit(0);
     // } else {
     //   System.exit(1);
