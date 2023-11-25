@@ -144,7 +144,7 @@
       target: README.md
     - source: starter_templates/codecrafters.yml
       target: codecrafters.yml
-    - source: starter_templates/javascript/your_grep.sh
+    - source: starter_templates/java/your_grep.sh
       target: your_grep.sh
     - source: starter_templates/java/.gitignore
       target: .gitignore
