@@ -48,6 +48,15 @@ marketing:
         I think the instant feedback right there in the git push is really cool.
         Didn't even know that was possible!
 
+extensions:
+  - slug: "backreferences"
+    name: "Backreferences"
+    description_markdown: |
+      In this challenge extension, you'll add support for [backreferences][1] to your Grep implementation.
+      
+      Along the way, you'll learn about how capture groups and backreferences work.
+      [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/backreference-constructs-in-regular-expressions#numbered-backreferences
+
 stages:
   - slug: "init"
     name: "Match a literal character"
@@ -408,3 +417,71 @@ stages:
       **Example**:
 
       - `(cat|dog)` should match "dog" and "cat", but not "apple".
+
+  # Backreferences
+
+  - slug: "backreferences-single"
+    primary_extension_slug: "backreferences"
+    name: "Single Backreference"
+    difficulty: hard
+    description_md: |
+      In this stage, we'll add support for backreferences.
+
+      A backreference lets you reuse a captured group in a regular expression. It is denoted by `\` followed by a number, indicating the position of the captured group.
+
+      **Examples:**
+      - `(cat) and \1` should match "cat and cat", but not "cat and dog".
+        - `\1` refers to the first captured group, which is `(cat)`.
+      - `(\w+) and \1` should match "cat and cat" and "dog and dog", but not "cat and dog".
+        - `\1` refers to the first captured group, which is `(\w+)`.
+
+      Your program will be executed like this:
+
+      ```
+      $ echo "<input>" | ./your_grep.sh -E "<pattern>"
+      ```
+
+      Your program must exit with 0 if the input matches the given pattern, and 1 if not.
+
+      **Note:** You only need to focus on one backreference and one capturing group in this stage. We'll get to handling multiple backreferences in the next stage.
+    marketing_md: |
+      In this stage, you'll add support for single backreferences. You'll implement support for `\d`.
+  - slug: "backreferences-multiple"
+    primary_extension_slug: "backreferences"
+    name: "Multiple Backreferences"
+    difficulty: medium
+    description_md: |
+      In this stage, we'll add support for multiple backreferences.
+
+      Multiple backreferences allow you to refer to several different captured groups within the same regex pattern.
+
+      **Example:** `(\d+) (\w+) squares and \1 \2 circles` should match "3 red squares and 3 red circles" but should not match "3 red squares and 4 red circles".
+
+      Your program will be executed like this:
+
+      ```
+      $ echo "<input>" | ./your_grep.sh -E "<pattern>"
+      ```
+
+      Your program must exit with 0 if the input matches the given pattern, and 1 if not.
+    marketing_md: |
+      In this stage, you'll add support for multiple backreferences. You'll implement support for multiple `\d` in the same line.
+  - slug: "backreferences-nested"
+    primary_extension_slug: "backreferences"
+    name: "Nested Backreferences"
+    difficulty: hard 
+    description_md: |
+      In this stage, we'll add support for nested backreferences. This means that a backreference is part of a larger capturing group, which itself is referenced again.
+
+      **Examples:** `('(cat) and \2') is the same as \1` should match "'cat and cat' is the same as 'cat and cat'".
+
+      Your program will be executed like this:
+
+      ```
+      $ echo "<input>" | ./your_grep.sh -E "<pattern>"
+      ```
+
+      Your program must exit with 0 if the input matches the given pattern, and 1 if not.
+    marketing_md: |
+      In this stage, you'll add support for nested backreferences. You'll implement support for multiple `\d` that references capturing groups in other capturing groups.
+
