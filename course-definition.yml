@@ -445,7 +445,7 @@ stages:
 
       **Note:** You only need to focus on one backreference and one capturing group in this stage. We'll get to handling multiple backreferences in the next stage.
     marketing_md: |
-      In this stage, you'll add support for single backreferences. You'll implement support for `\N`.
+      In this stage, you'll add support for single backreferences. You'll implement support for `\1`.
 
       **Example:**
       - `(cat) and \1` should match "cat and cat", but not "cat and dog".
@@ -468,7 +468,7 @@ stages:
 
       Your program must exit with 0 if the input matches the given pattern, and 1 if not.
     marketing_md: |
-      In this stage, you'll add support for multiple backreferences. You'll implement support for multiple `\N` in the same line.
+      In this stage, you'll add support for multiple backreferences (`\1`, `\2` etc.) in the same pattern.
 
       **Example:** 
       - `(\d+) (\w+) squares and \1 \2 circles` should match "3 red squares and 3 red circles" but should not match "3 red squares and 4 red circles".
@@ -489,7 +489,7 @@ stages:
 
       Your program must exit with 0 if the input matches the given pattern, and 1 if not.
     marketing_md: |
-      In this stage, you'll add support for nested backreferences. You'll implement support for multiple `\N` that references capturing groups in other capturing groups.
+      In this stage, you'll add support for nested backreferences.
 
       **Example:** 
       - `('(cat) and \2') is the same as \1` should match "'cat and cat' is the same as 'cat and cat'".
