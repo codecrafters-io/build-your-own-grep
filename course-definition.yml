@@ -4,12 +4,10 @@ short_name: "grep"
 release_status: "live"
 
 description_md: |-
-  [Regular expressions](https://en.wikipedia.org/wiki/Regular_expression) (Regexes, for short) are patterns used to
-  match character combinations in strings. [`grep`](https://en.wikipedia.org/wiki/Grep) is a CLI tool for searching
-  using Regexes.
+  Regular expressions (Regexes, for short) are patterns used to match character combinations in strings. In this
+  challenge you'll build your own implementation of grep, a CLI tool for searching using Regexes.
 
-  In this challenge you'll build your own implementation of `grep`. Along the way we'll learn about Regex syntax and
-  how Regexes are evaluated.
+  Along the way you'll learn about Regex syntax, character classes, quantifiers and more.
 
 # Keep this under 70 characters
 short_description_md: |-
@@ -53,7 +51,7 @@ extensions:
     name: "Backreferences"
     description_markdown: |
       In this challenge extension, you'll add support for [backreferences][1] to your Grep implementation.
-      
+
       Along the way, you'll learn about how capture groups and backreferences work.
       [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/backreference-constructs-in-regular-expressions#numbered-backreferences
 
@@ -470,12 +468,12 @@ stages:
     marketing_md: |
       In this stage, you'll add support for multiple backreferences (`\1`, `\2` etc.) in the same pattern.
 
-      **Example:** 
+      **Example:**
       - `(\d+) (\w+) squares and \1 \2 circles` should match "3 red squares and 3 red circles" but should not match "3 red squares and 4 red circles".
   - slug: "backreferences-nested"
     primary_extension_slug: "backreferences"
     name: "Nested Backreferences"
-    difficulty: hard 
+    difficulty: hard
     description_md: |
       In this stage, we'll add support for nested backreferences. This means that a backreference is part of a larger capturing group, which itself is referenced again.
 
@@ -491,6 +489,6 @@ stages:
     marketing_md: |
       In this stage, you'll add support for nested backreferences.
 
-      **Example:** 
+      **Example:**
       - `('(cat) and \2') is the same as \1` should match "'cat and cat' is the same as 'cat and cat'".
 
