@@ -1,6 +1,6 @@
 FROM python:3.10-alpine
 
-RUN pip install pipenv
+RUN pip install --no-cache-dir "pipenv>=2023.12.1"
 
 COPY Pipfile /app/Pipfile
 COPY Pipfile.lock /app/Pipfile.lock
@@ -15,4 +15,3 @@ RUN pipenv install
 RUN pipenv run python3 -c "1+1"
 
 ENV CODECRAFTERS_DEPENDENCY_FILE_PATHS="Pipfile,Pipfile.lock"
-
