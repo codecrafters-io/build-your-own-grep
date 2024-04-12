@@ -27,7 +27,7 @@ languages:
     alpha_tester_usernames: ["rohitpaulk", "sreeram-venkitesh"]
   - slug: "rust"
   - slug: "csharp"
-    release_status: "alpha"
+    release_status: "beta"
 
 marketing:
   difficulty: medium
