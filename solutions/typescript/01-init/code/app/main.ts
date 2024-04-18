@@ -9,7 +9,6 @@ function matchPattern(inputLine: string, pattern: string): boolean {
 const args = Deno.args;
 const pattern = args[1];
 
-// Read from stdin
 const decoder = new TextDecoder();
 const inputLine = decoder.decode(await Deno.readAll(Deno.stdin));
 
