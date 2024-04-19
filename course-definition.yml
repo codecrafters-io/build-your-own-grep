@@ -29,7 +29,7 @@ languages:
   - slug: "csharp"
     release_status: "beta"
   - slug: "typescript"
-    release_status: "alpha"
+    release_status: "beta"
 
 marketing:
   difficulty: medium
