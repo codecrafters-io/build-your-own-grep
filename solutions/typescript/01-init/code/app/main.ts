@@ -1,11 +1,7 @@
-import { TextDecoder } from "util";
-
 const args = process.argv;
 const pattern = args[3];
 
-const inputBuffer: ArrayBuffer = await Bun.stdin.arrayBuffer();
-const decoder: TextDecoder = new TextDecoder();
-const inputLine: string = decoder.decode(inputBuffer);
+const inputLine: string = await Bun.stdin.text();
 
 function matchPattern(inputLine: string, pattern: string): boolean {
   if (pattern.length === 1) {
