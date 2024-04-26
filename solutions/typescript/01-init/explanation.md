@@ -5,9 +5,9 @@ Study and uncomment the relevant code:
 ```typescript
 // Uncomment this block to pass the first stage
 if (matchPattern(inputLine, pattern)) {
-    Deno.exit(0);
+  process.exit(0);
 } else {
-    Deno.exit(1);
+  process.exit(1);
 }
 ```
 

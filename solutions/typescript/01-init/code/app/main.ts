@@ -1,24 +1,27 @@
+import { TextDecoder } from "util";
+
+const args = process.argv;
+const pattern = args[3];
+
+const inputBuffer: ArrayBuffer = await Bun.stdin.arrayBuffer();
+const decoder: TextDecoder = new TextDecoder();
+const inputLine: string = decoder.decode(inputBuffer);
+
 function matchPattern(inputLine: string, pattern: string): boolean {
-    if (pattern.length === 1) {
-        return inputLine.includes(pattern);
-    } else {
-        throw new Error(`Unhandled pattern: ${pattern}`);
-    }
+  if (pattern.length === 1) {
+    return inputLine.includes(pattern);
+  } else {
+    throw new Error(`Unhandled pattern: ${pattern}`);
+  }
 }
 
-const args = Deno.args;
-const pattern = args[1];
-
-const decoder = new TextDecoder();
-const inputLine = decoder.decode(await Deno.readAll(Deno.stdin));
-
-if (args[0] !== "-E") {
-    console.log("Expected first argument to be '-E'");
-    Deno.exit(1);
+if (args[2] !== "-E") {
+  console.log("Expected first argument to be '-E'");
+  process.exit(1);
 }
 
 if (matchPattern(inputLine, pattern)) {
-    Deno.exit(0);
+  process.exit(0);
 } else {
-    Deno.exit(1);
+  process.exit(1);
 }
