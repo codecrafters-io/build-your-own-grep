@@ -182,7 +182,6 @@
       target: package.json
     - source: starter_templates/typescript/bun.lockb
       target: bun.lockb
-      should_skip_template_evaluation: true
     - source: starter_templates/typescript/your_grep.sh
       target: your_grep.sh
     - source: starter_templates/.gitattributes
