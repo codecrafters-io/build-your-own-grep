@@ -422,7 +422,7 @@ stages:
 
   # Backreferences
 
-  - slug: "backreferences-single"
+  - legacy_slug: "backreferences-single"
     primary_extension_slug: "backreferences"
     name: "Single Backreference"
     difficulty: hard
@@ -451,7 +451,7 @@ stages:
 
       **Example:**
       - `(cat) and \1` should match "cat and cat", but not "cat and dog".
-  - slug: "backreferences-multiple"
+  - legacy_slug: "backreferences-multiple"
     primary_extension_slug: "backreferences"
     name: "Multiple Backreferences"
     difficulty: medium
@@ -474,7 +474,7 @@ stages:
 
       **Example:**
       - `(\d+) (\w+) squares and \1 \2 circles` should match "3 red squares and 3 red circles" but should not match "3 red squares and 4 red circles".
-  - slug: "backreferences-nested"
+  - legacy_slug: "backreferences-nested"
     primary_extension_slug: "backreferences"
     name: "Nested Backreferences"
     difficulty: hard
