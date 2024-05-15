@@ -60,7 +60,7 @@ extensions:
       [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/backreference-constructs-in-regular-expressions#numbered-backreferences
 
 stages:
-  - slug: "init"
+  - legacy_slug: "init"
     name: "Match a literal character"
     difficulty: very_easy
     description_md: |-
@@ -89,7 +89,7 @@ stages:
 
       `a` should match "apple", but not "dog".
 
-  - slug: "match_digit"
+  - legacy_slug: "match_digit"
     name: "Match digits"
     difficulty: very_easy
     description_md: |-
@@ -121,7 +121,7 @@ stages:
 
       `\d` should match "1", but not "a".
 
-  - slug: "match_alphanumeric"
+  - legacy_slug: "match_alphanumeric"
     name: "Match alphanumeric characters"
     difficulty: very_easy
     description_md: |-
@@ -153,7 +153,7 @@ stages:
 
       `\w` should match "foo101", but not "$!?".
 
-  - slug: "positive_character_groups"
+  - legacy_slug: "positive_character_groups"
     name: "Positive Character Groups"
     difficulty: medium
     description_md: |-
@@ -183,7 +183,7 @@ stages:
 
       `[abc]` should match "apple", but not "dog".
 
-  - slug: "negative_character_groups"
+  - legacy_slug: "negative_character_groups"
     name: "Negative Character Groups"
     difficulty: medium
     description_md: |-
@@ -213,7 +213,7 @@ stages:
 
       `[^abc]` should match "dog", but not "cab" (since all characters are either "a", "b" or "c").
 
-  - slug: "combining_character_classes"
+  - legacy_slug: "combining_character_classes"
     name: "Combining Character Classes"
     difficulty: medium
     description_md: |-
@@ -256,7 +256,7 @@ stages:
       This stage is significantly harder than the previous ones. You'll likely need to rework your
       implementation to process user input character-by-character instead of the whole line at once.
 
-  - slug: "start_of_string_anchor"
+  - legacy_slug: "start_of_string_anchor"
     name: "Start of string anchor"
     difficulty: medium
     description_md: |-
@@ -286,7 +286,7 @@ stages:
 
       `^log` should match "log", but not "slog".
 
-  - slug: "end_of_string_anchor"
+  - legacy_slug: "end_of_string_anchor"
     name: "End of string anchor"
     difficulty: medium
     description_md: |-
@@ -316,7 +316,7 @@ stages:
 
       `dog$` should match "dog", but not "dogs".
 
-  - slug: "one_or_more_quantifier"
+  - legacy_slug: "one_or_more_quantifier"
     name: "Match one or more times"
     difficulty: hard
     description_md: |-
@@ -342,7 +342,7 @@ stages:
 
       - `a+` should match "apple" and "SaaS", but not "dog".
 
-  - slug: "zero_or_one_quantifier"
+  - legacy_slug: "zero_or_one_quantifier"
     name: "Match zero or one times"
     difficulty: hard
     description_md: |-
@@ -368,7 +368,7 @@ stages:
 
       - `dogs?` should match "dogs" and "dog", but not "cat".
 
-  - slug: "wildcard"
+  - legacy_slug: "wildcard"
     name: "Wildcard"
     difficulty: medium
     description_md: |-
@@ -394,7 +394,7 @@ stages:
 
       - `d.g` should match "dog", but not "cog".
 
-  - slug: "alternation"
+  - legacy_slug: "alternation"
     name: "Alternation"
     difficulty: hard
     description_md: |-
