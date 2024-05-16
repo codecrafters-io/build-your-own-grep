@@ -61,6 +61,7 @@ extensions:
 
 stages:
   - legacy_slug: "init"
+    slug: "init"
     name: "Match a literal character"
     difficulty: very_easy
     description_md: |-
@@ -90,6 +91,7 @@ stages:
       `a` should match "apple", but not "dog".
 
   - legacy_slug: "match_digit"
+    slug: "match_digit"
     name: "Match digits"
     difficulty: very_easy
     description_md: |-
@@ -122,6 +124,7 @@ stages:
       `\d` should match "1", but not "a".
 
   - legacy_slug: "match_alphanumeric"
+    slug: "match_alphanumeric"
     name: "Match alphanumeric characters"
     difficulty: very_easy
     description_md: |-
@@ -154,6 +157,7 @@ stages:
       `\w` should match "foo101", but not "$!?".
 
   - legacy_slug: "positive_character_groups"
+    slug: "positive_character_groups"
     name: "Positive Character Groups"
     difficulty: medium
     description_md: |-
@@ -184,6 +188,7 @@ stages:
       `[abc]` should match "apple", but not "dog".
 
   - legacy_slug: "negative_character_groups"
+    slug: "negative_character_groups"
     name: "Negative Character Groups"
     difficulty: medium
     description_md: |-
@@ -214,6 +219,7 @@ stages:
       `[^abc]` should match "dog", but not "cab" (since all characters are either "a", "b" or "c").
 
   - legacy_slug: "combining_character_classes"
+    slug: "combining_character_classes"
     name: "Combining Character Classes"
     difficulty: medium
     description_md: |-
@@ -257,6 +263,7 @@ stages:
       implementation to process user input character-by-character instead of the whole line at once.
 
   - legacy_slug: "start_of_string_anchor"
+    slug: "start_of_string_anchor"
     name: "Start of string anchor"
     difficulty: medium
     description_md: |-
@@ -287,6 +294,7 @@ stages:
       `^log` should match "log", but not "slog".
 
   - legacy_slug: "end_of_string_anchor"
+    slug: "end_of_string_anchor"
     name: "End of string anchor"
     difficulty: medium
     description_md: |-
@@ -317,6 +325,7 @@ stages:
       `dog$` should match "dog", but not "dogs".
 
   - legacy_slug: "one_or_more_quantifier"
+    slug: "one_or_more_quantifier"
     name: "Match one or more times"
     difficulty: hard
     description_md: |-
@@ -343,6 +352,7 @@ stages:
       - `a+` should match "apple" and "SaaS", but not "dog".
 
   - legacy_slug: "zero_or_one_quantifier"
+    slug: "zero_or_one_quantifier"
     name: "Match zero or one times"
     difficulty: hard
     description_md: |-
@@ -369,6 +379,7 @@ stages:
       - `dogs?` should match "dogs" and "dog", but not "cat".
 
   - legacy_slug: "wildcard"
+    slug: "wildcard"
     name: "Wildcard"
     difficulty: medium
     description_md: |-
@@ -395,6 +406,7 @@ stages:
       - `d.g` should match "dog", but not "cog".
 
   - legacy_slug: "alternation"
+    slug: "alternation"
     name: "Alternation"
     difficulty: hard
     description_md: |-
@@ -423,6 +435,7 @@ stages:
   # Backreferences
 
   - legacy_slug: "backreferences-single"
+    slug: "backreferences-single"
     primary_extension_slug: "backreferences"
     name: "Single Backreference"
     difficulty: hard
@@ -452,6 +465,7 @@ stages:
       **Example:**
       - `(cat) and \1` should match "cat and cat", but not "cat and dog".
   - legacy_slug: "backreferences-multiple"
+    slug: "backreferences-multiple"
     primary_extension_slug: "backreferences"
     name: "Multiple Backreferences"
     difficulty: medium
@@ -475,6 +489,7 @@ stages:
       **Example:**
       - `(\d+) (\w+) squares and \1 \2 circles` should match "3 red squares and 3 red circles" but should not match "3 red squares and 4 red circles".
   - legacy_slug: "backreferences-nested"
+    slug: "backreferences-nested"
     primary_extension_slug: "backreferences"
     name: "Nested Backreferences"
     difficulty: hard
