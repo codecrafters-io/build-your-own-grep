@@ -60,8 +60,7 @@ extensions:
       [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/backreference-constructs-in-regular-expressions#numbered-backreferences
 
 stages:
-  - legacy_slug: "init"
-    slug: "cq2"
+  - slug: "cq2"
     name: "Match a literal character"
     difficulty: very_easy
     description_md: |-
@@ -90,8 +89,7 @@ stages:
 
       `a` should match "apple", but not "dog".
 
-  - legacy_slug: "match_digit"
-    slug: "oq2"
+  - slug: "oq2"
     name: "Match digits"
     difficulty: very_easy
     description_md: |-
@@ -123,8 +121,7 @@ stages:
 
       `\d` should match "1", but not "a".
 
-  - legacy_slug: "match_alphanumeric"
-    slug: "mr9"
+  - slug: "mr9"
     name: "Match alphanumeric characters"
     difficulty: very_easy
     description_md: |-
@@ -156,8 +153,7 @@ stages:
 
       `\w` should match "foo101", but not "$!?".
 
-  - legacy_slug: "positive_character_groups"
-    slug: "tl6"
+  - slug: "tl6"
     name: "Positive Character Groups"
     difficulty: medium
     description_md: |-
@@ -187,8 +183,7 @@ stages:
 
       `[abc]` should match "apple", but not "dog".
 
-  - legacy_slug: "negative_character_groups"
-    slug: "rk3"
+  - slug: "rk3"
     name: "Negative Character Groups"
     difficulty: medium
     description_md: |-
@@ -218,8 +213,7 @@ stages:
 
       `[^abc]` should match "dog", but not "cab" (since all characters are either "a", "b" or "c").
 
-  - legacy_slug: "combining_character_classes"
-    slug: "sh9"
+  - slug: "sh9"
     name: "Combining Character Classes"
     difficulty: medium
     description_md: |-
@@ -262,8 +256,7 @@ stages:
       This stage is significantly harder than the previous ones. You'll likely need to rework your
       implementation to process user input character-by-character instead of the whole line at once.
 
-  - legacy_slug: "start_of_string_anchor"
-    slug: "rr8"
+  - slug: "rr8"
     name: "Start of string anchor"
     difficulty: medium
     description_md: |-
@@ -293,8 +286,7 @@ stages:
 
       `^log` should match "log", but not "slog".
 
-  - legacy_slug: "end_of_string_anchor"
-    slug: "ao7"
+  - slug: "ao7"
     name: "End of string anchor"
     difficulty: medium
     description_md: |-
@@ -324,8 +316,7 @@ stages:
 
       `dog$` should match "dog", but not "dogs".
 
-  - legacy_slug: "one_or_more_quantifier"
-    slug: "fz7"
+  - slug: "fz7"
     name: "Match one or more times"
     difficulty: hard
     description_md: |-
@@ -351,8 +342,7 @@ stages:
 
       - `a+` should match "apple" and "SaaS", but not "dog".
 
-  - legacy_slug: "zero_or_one_quantifier"
-    slug: "ny8"
+  - slug: "ny8"
     name: "Match zero or one times"
     difficulty: hard
     description_md: |-
@@ -378,8 +368,7 @@ stages:
 
       - `dogs?` should match "dogs" and "dog", but not "cat".
 
-  - legacy_slug: "wildcard"
-    slug: "zb3"
+  - slug: "zb3"
     name: "Wildcard"
     difficulty: medium
     description_md: |-
@@ -405,8 +394,7 @@ stages:
 
       - `d.g` should match "dog", but not "cog".
 
-  - legacy_slug: "alternation"
-    slug: "zm7"
+  - slug: "zm7"
     name: "Alternation"
     difficulty: hard
     description_md: |-
@@ -434,8 +422,7 @@ stages:
 
   # Backreferences
 
-  - legacy_slug: "backreferences-single"
-    slug: "sb5"
+  - slug: "sb5"
     primary_extension_slug: "backreferences"
     name: "Single Backreference"
     difficulty: hard
@@ -464,8 +451,7 @@ stages:
 
       **Example:**
       - `(cat) and \1` should match "cat and cat", but not "cat and dog".
-  - legacy_slug: "backreferences-multiple"
-    slug: "tg1"
+  - slug: "tg1"
     primary_extension_slug: "backreferences"
     name: "Multiple Backreferences"
     difficulty: medium
@@ -488,8 +474,7 @@ stages:
 
       **Example:**
       - `(\d+) (\w+) squares and \1 \2 circles` should match "3 red squares and 3 red circles" but should not match "3 red squares and 4 red circles".
-  - legacy_slug: "backreferences-nested"
-    slug: "xe5"
+  - slug: "xe5"
     primary_extension_slug: "backreferences"
     name: "Nested Backreferences"
     difficulty: hard
