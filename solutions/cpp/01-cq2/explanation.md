@@ -4,7 +4,6 @@ Study and uncomment the relevant code:
 
 ```cpp
 // Uncomment this block to pass the first stage
-
 std::string input_line;
 std::getline(std::cin, input_line);
 
