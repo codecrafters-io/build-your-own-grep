@@ -11,6 +11,10 @@ bool match_pattern(const std::string& input_line, const std::string& pattern) {
 }
 
 int main(int argc, char* argv[]) {
+    // Flush after every std::cout / std::cerr
+    std::cout << std::unitbuf;
+    std::cerr << std::unitbuf;
+
     if (argc != 3) {
         std::cerr << "Expected two arguments" << std::endl;
         return 1;
