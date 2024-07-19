@@ -8,4 +8,4 @@
 
 set -e # Exit on failure
 
-go build -o /tmp/codecrafters-build-grep-go app/*.go
+go build -o /tmp/codecrafters-build-grep-go cmd/mygrep/main.go
