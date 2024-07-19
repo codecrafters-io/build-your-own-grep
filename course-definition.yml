@@ -73,7 +73,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "apple" | ./your_grep.sh -E "a"
+      $ echo "apple" | ./your_program.sh -E "a"
       ```
 
       The `-E` flag instructs `grep` to interprets patterns as extended regular expressions (with support
@@ -105,7 +105,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "apple123" | ./your_grep.sh -E "\d"
+      $ echo "apple123" | ./your_program.sh -E "\d"
       ```
 
       You program must exit with 0 if a digit is found in the string, and 1 if not.
@@ -137,7 +137,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "alpha-num3ric" | ./your_grep.sh -E "\w"
+      $ echo "alpha-num3ric" | ./your_program.sh -E "\w"
       ```
 
       You program must exit with 0 if an alphanumeric character is found in the string, and 1 if not.
@@ -168,7 +168,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "apple" | ./your_grep.sh -E "[abc]"
+      $ echo "apple" | ./your_program.sh -E "[abc]"
       ```
 
       You program must exit with 0 if an any of the characters are found in the string, and 1 if not.
@@ -198,7 +198,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "apple" | ./your_grep.sh -E "[^abc]"
+      $ echo "apple" | ./your_program.sh -E "[^abc]"
       ```
 
       You program must exit with 0 if the input contains characters that aren't part of the negative character group, and 1 if not.
@@ -238,7 +238,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "1 apple" | ./your_grep.sh -E "\d apple"
+      $ echo "1 apple" | ./your_program.sh -E "\d apple"
       ```
 
       You program must exit with 0 if the pattern matches the input, and 1 if not.
@@ -271,7 +271,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "log" | ./your_grep.sh -E "^log"
+      $ echo "log" | ./your_program.sh -E "^log"
       ```
 
       You program must exit with 0 if the input starts with the given pattern, and 1 if not.
@@ -301,7 +301,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "dog" | ./your_grep.sh -E "dog$"
+      $ echo "dog" | ./your_program.sh -E "dog$"
       ```
 
       You program must exit with 0 if the input matches the given pattern, and 1 if not.
@@ -329,7 +329,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "caats" | ./your_grep.sh -E "ca+ts"
+      $ echo "caats" | ./your_program.sh -E "ca+ts"
       ```
 
       You program must exit with 0 if the input matches the given pattern, and 1 if not.
@@ -355,7 +355,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "dogs" | ./your_grep.sh -E "dogs?"
+      $ echo "dogs" | ./your_program.sh -E "dogs?"
       ```
 
       You program must exit with 0 if the input matches the given pattern, and 1 if not.
@@ -381,7 +381,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "dog" | ./your_grep.sh -E "d.g"
+      $ echo "dog" | ./your_program.sh -E "d.g"
       ```
 
       You program must exit with 0 if the input matches the given pattern, and 1 if not.
@@ -407,7 +407,7 @@ stages:
       Your program will be executed like this:
 
       ```bash
-      $ echo "cat" | ./your_grep.sh -E "(cat|dog)"
+      $ echo "cat" | ./your_program.sh -E "(cat|dog)"
       ```
 
       You program must exit with 0 if the input matches the given pattern, and 1 if not.
@@ -442,7 +442,7 @@ stages:
       Your program will be executed like this:
 
       ```
-      $ echo "<input>" | ./your_grep.sh -E "<pattern>"
+      $ echo "<input>" | ./your_program.sh -E "<pattern>"
       ```
 
       Your program must exit with 0 if the input matches the given pattern, and 1 if not.
@@ -467,7 +467,7 @@ stages:
       Your program will be executed like this:
 
       ```
-      $ echo "<input>" | ./your_grep.sh -E "<pattern>"
+      $ echo "<input>" | ./your_program.sh -E "<pattern>"
       ```
 
       Your program must exit with 0 if the input matches the given pattern, and 1 if not.
@@ -488,7 +488,7 @@ stages:
       Your program will be executed like this:
 
       ```
-      $ echo "<input>" | ./your_grep.sh -E "<pattern>"
+      $ echo "<input>" | ./your_program.sh -E "<pattern>"
       ```
 
       Your program must exit with 0 if the input matches the given pattern, and 1 if not.
@@ -497,4 +497,3 @@ stages:
 
       **Example:**
       - `('(cat) and \2') is the same as \1` should match "'cat and cat' is the same as 'cat and cat'".
-
