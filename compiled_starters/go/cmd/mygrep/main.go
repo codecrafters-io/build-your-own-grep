@@ -9,7 +9,7 @@ import (
 	"unicode/utf8"
 )
 
-// Usage: echo <input_text> | your_grep.sh -E <pattern>
+// Usage: echo <input_text> | your_program.sh -E <pattern>
 func main() {
 	if len(os.Args) < 3 || os.Args[1] != "-E" {
 		fmt.Fprintf(os.Stderr, "usage: mygrep -E <pattern>\n")
