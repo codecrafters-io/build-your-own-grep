@@ -17,21 +17,18 @@ completion_percentage: 30
 
 languages:
   - slug: "cpp"
+  - slug: "csharp"
+  - slug: "gleam"
   - slug: "go"
   - slug: "haskell"
-    release_status: "beta"
   - slug: "javascript"
+  - slug: "kotlin"
   - slug: "python"
+  - slug: "rust"
+  - slug: "typescript"
   - slug: "ruby"
     release_status: "alpha"
     alpha_tester_usernames: ["rohitpaulk", "sreeram-venkitesh"]
-  - slug: "rust"
-  - slug: "csharp"
-    release_status: "beta"
-  - slug: "typescript"
-    release_status: "beta"
-  - slug: "gleam"
-    release_status: "beta"
 
 marketing:
   difficulty: medium
