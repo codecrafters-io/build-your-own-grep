@@ -1,4 +1,4 @@
-The entry point for your grep implementation is in `src/grep.gleam`.
+The entry point for your grep implementation is in `src/main.gleam`.
 
 Study and uncomment the relevant code: 
 
