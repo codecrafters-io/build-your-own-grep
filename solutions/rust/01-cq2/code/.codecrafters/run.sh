@@ -6,6 +6,4 @@
 #
 # Learn more: https://codecrafters.io/program-interface
 
-set -e # Exit on failure
-
-exec /tmp/codecrafters-grep-target/release/grep-starter-rust "$@"
+exec /tmp/codecrafters-build-grep-rust/release/codecrafters-grep "$@"
