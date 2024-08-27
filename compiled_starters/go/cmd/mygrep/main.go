@@ -1,13 +1,15 @@
 package main
 
 import (
-	// Uncomment this to pass the first stage
-	// "bytes"
+	"bytes"
 	"fmt"
 	"io"
 	"os"
 	"unicode/utf8"
 )
+
+// Ensures gofmt doesn't remove the "bytes" import above (feel free to remove this!)
+var _ = bytes.ContainsAny
 
 // Usage: echo <input_text> | your_program.sh -E <pattern>
 func main() {
