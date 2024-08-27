@@ -4,11 +4,6 @@ Study and uncomment the relevant code:
 
 ```go
 // Uncomment this to pass the first stage
-"bytes"
-```
-
-```go
-// Uncomment this to pass the first stage
 ok = bytes.ContainsAny(line, pattern)
 ```
 
