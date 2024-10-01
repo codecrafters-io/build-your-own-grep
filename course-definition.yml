@@ -21,6 +21,9 @@ languages:
   - slug: "gleam"
   - slug: "go"
   - slug: "haskell"
+  - slug: "java"
+    release_status: "alpha"
+    alpha_tester_usernames: ["andy1li"]
   - slug: "javascript"
   - slug: "kotlin"
   - slug: "python"
