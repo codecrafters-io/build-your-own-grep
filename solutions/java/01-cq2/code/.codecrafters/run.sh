@@ -8,4 +8,4 @@
 
 set -e # Exit on failure
 
-exec java -jar /tmp/codecrafters-build-grep-java/java_grep.jar "$@"
+exec java -jar /tmp/codecrafters-build-grep-java/codecrafters-grep.jar "$@"
