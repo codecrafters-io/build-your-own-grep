@@ -22,8 +22,6 @@ languages:
   - slug: "go"
   - slug: "haskell"
   - slug: "java"
-    release_status: "alpha"
-    alpha_tester_usernames: ["andy1li"]
   - slug: "javascript"
   - slug: "kotlin"
   - slug: "python"
@@ -31,7 +29,7 @@ languages:
   - slug: "typescript"
   - slug: "ruby"
     release_status: "alpha"
-    alpha_tester_usernames: ["rohitpaulk", "sreeram-venkitesh"]
+    alpha_tester_usernames: ["sreeram-venkitesh"]
 
 marketing:
   difficulty: medium
