@@ -1,14 +1,11 @@
 {
-  "name": "@codecrafters/build-your-own-grep",
-  "description": "Build your own Grep challenge, from CodeCrafters",
+  "name": "@codecrafters/grep",
+  "description": "Build your own grep challenge, from CodeCrafters",
   "type": "module",
   "scripts": {
     "dev": "bun run app/main.ts"
   },
-  "dependencies": {
-    "fs-extra": "^11.2.0"
-  },
   "devDependencies": {
-    "@types/node": "^20.12.12"
+    "@types/bun": "latest"
   }
 }
