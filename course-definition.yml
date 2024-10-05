@@ -27,6 +27,7 @@ languages:
   - slug: "python"
   - slug: "rust"
   - slug: "typescript"
+  - slug: "zig"
   - slug: "ruby"
     release_status: "alpha"
     alpha_tester_usernames: ["sreeram-venkitesh"]
