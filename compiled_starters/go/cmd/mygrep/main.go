@@ -47,7 +47,7 @@ func matchLine(line []byte, pattern string) (bool, error) {
 	var ok bool
 
 	// You can use print statements as follows for debugging, they'll be visible when running tests.
-	fmt.Fprintln(os.Stderr, "Logs from your program will appear here!")
+	fmt.Println("Logs from your program will appear here!")
 
 	// Uncomment this to pass the first stage
 	// ok = bytes.ContainsAny(line, pattern)

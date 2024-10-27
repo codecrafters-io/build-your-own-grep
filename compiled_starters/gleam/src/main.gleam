@@ -5,7 +5,7 @@ import gleam/string
 
 pub fn main() {
   // You can use print statements as follows for debugging, they'll be visible when running tests.
-  io.print_error("Logs from your program will appear here!")
+  io.println("Logs from your program will appear here!")
 
   let args = argv.load().arguments
   let assert Ok(input_line) = erlang.get_line("")

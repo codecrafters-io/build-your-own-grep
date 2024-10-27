@@ -17,7 +17,7 @@
    end
 
 -  # You can use print statements as follows for debugging, they'll be visible when running tests.
--  warn "Logs from your program will appear here"
+-  puts "Logs from your program will appear here"
 -  
 -  # Uncomment this block to pass the first stage
 -  # if match_pattern(input_line, pattern)

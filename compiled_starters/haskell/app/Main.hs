@@ -16,7 +16,7 @@ main = do
   input_line <- getLine
 
   -- You can use print statements as follows for debugging, they'll be visible when running tests.
-  hPutStrLn stderr "Logs from your program will appear here"
+  putStrLn "Logs from your program will appear here"
 
   -- Uncomment this block to pass stage 1
   -- if head args /= "-E"
