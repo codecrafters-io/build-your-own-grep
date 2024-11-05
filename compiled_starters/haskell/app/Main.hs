@@ -2,6 +2,7 @@ module Main where
 
 import System.Environment
 import System.Exit
+import System.IO (hSetBuffering, stdout, stderr, BufferMode (NoBuffering))
 
 matchPattern :: String -> String -> Bool
 matchPattern pattern input = do
@@ -11,6 +12,10 @@ matchPattern pattern input = do
 
 main :: IO ()
 main = do
+  -- Disable output buffering
+  hSetBuffering stdout NoBuffering
+  hSetBuffering stderr NoBuffering
+
   args <- getArgs
   let pattern = args !! 1
   input_line <- getLine
