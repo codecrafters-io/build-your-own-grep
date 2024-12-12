@@ -24,6 +24,7 @@ languages:
   - slug: "java"
   - slug: "javascript"
   - slug: "kotlin"
+  - slug: "php"
   - slug: "python"
   - slug: "rust"
   - slug: "typescript"
