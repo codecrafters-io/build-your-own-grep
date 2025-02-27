@@ -1,4 +1,4 @@
-The entry point for your grep implementation is in `cmd/mygrep/main.go`.
+The entry point for your grep implementation is in `app/main.go`.
 
 Study and uncomment the relevant code: 
 
