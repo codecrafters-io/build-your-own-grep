@@ -26,9 +26,6 @@ default-extensions:
   - NamedFieldPuns
   - RecordWildCards
 
-library:
-  source-dirs: app
-
 executables:
   codecrafters-grep-exe:
     main: Main.hs
@@ -37,5 +34,3 @@ executables:
       - -threaded
       - -rtsopts
       - -with-rtsopts=-N
-    dependencies:
-      - codecrafters-grep
