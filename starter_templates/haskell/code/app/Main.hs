@@ -2,7 +2,7 @@ module Main where
 
 import System.Environment
 import System.Exit
-import System.IO (hSetBuffering, stdout, stderr, BufferMode (NoBuffering))
+import System.IO (hPutStrLn, hSetBuffering, stdout, stderr, BufferMode (NoBuffering))
 
 matchPattern :: String -> String -> Bool
 matchPattern pattern input = do

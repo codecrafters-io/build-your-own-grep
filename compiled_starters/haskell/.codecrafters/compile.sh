@@ -8,5 +8,5 @@
 
 set -e # Exit on failure
 
-# This compiles the program into $(stack path --local-install-root)/bin/hs-grep-clone-exe.
+# This compiles the program into $(stack path --local-install-root)/bin/codecrafters-grep-exe.
 stack build

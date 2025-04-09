@@ -8,4 +8,4 @@
 
 set -e # Exit on failure
 
-exec $(stack path --local-install-root)/bin/hs-grep-clone-exe "$@"
+exec $(stack path --local-install-root)/bin/codecrafters-grep-exe "$@"
