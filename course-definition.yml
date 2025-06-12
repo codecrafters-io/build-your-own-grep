@@ -299,7 +299,7 @@ stages:
     name: "End of string anchor"
     difficulty: medium
     description_md: |-
-      In this stage, we'll add support for `$`, the [End of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-).
+      In this stage, we'll add support for `$`, the [End of String or Line anchor](https://learn.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#end-of-string-or-line-).
 
       `$` doesn't match a character, it matches the end of a line.
 
@@ -317,7 +317,7 @@ stages:
       Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
       {{/reader_is_bot}}
     marketing_md: |-
-      In this stage, we'll add support for `$`, the [End of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-).
+      In this stage, we'll add support for `$`, the [End of String or Line anchor](https://learn.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#end-of-string-or-line-).
 
       `$` doesn't match a character, it matches the end of a line.
 
@@ -355,7 +355,7 @@ stages:
     name: "Match zero or one times"
     difficulty: hard
     description_md: |-
-      In this stage, we'll add support for `?`, the [zero or one](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier (also known as the "optional" quantifier).
+      In this stage, we'll add support for `?`, the [zero or one](https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-zero-or-one-time-) quantifier (also known as the "optional" quantifier).
 
       **Example**: `dogs?` should match "dogs" and "dog", but not "cat".
 
@@ -371,7 +371,7 @@ stages:
       Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
       {{/reader_is_bot}}
     marketing_md: |-
-      In this stage, we'll add support for `?`, the [zero or one](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier (also known as the "optional" quantifier).
+      In this stage, we'll add support for `?`, the [zero or one](https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-zero-or-one-time-) quantifier (also known as the "optional" quantifier).
 
       **Example**:
 
