@@ -23,6 +23,7 @@ languages:
   - slug: "java"
   - slug: "javascript"
   - slug: "kotlin"
+  - slug: "odin"
   - slug: "php"
   - slug: "python"
   - slug: "rust"
