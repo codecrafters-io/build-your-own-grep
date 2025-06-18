@@ -49,7 +49,7 @@ main :: proc() {
     }
 
     if !matched {
-        os.exit(1)
+        os.exit(0 if matched else 1)
     }
 
     // default exit code is 0 which means success
