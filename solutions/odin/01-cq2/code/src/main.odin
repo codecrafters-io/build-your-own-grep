@@ -30,7 +30,6 @@ main :: proc() {
     stdin_stream := os.stream_from_handle(os.stdin)
     reader := bufio.Reader{}
     bufio.reader_init(&reader, stdin_stream)
-    defer bufio.reader_destroy(&reader)
 
     line, read_err := bufio.reader_read_string(&reader, 0)
     if read_err != nil && read_err != io.Error.EOF {
