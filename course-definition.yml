@@ -61,6 +61,13 @@ extensions:
       Along the way, you'll learn about how capture groups and backreferences work.
       [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/backreference-constructs-in-regular-expressions#numbered-backreferences
 
+  - slug: "filesearch"
+    name: "File Search"
+    description_markdown: |
+      In this challenge extension, you'll add support for searching files.
+
+      Along the way, you'll learn about how to implement efficient file I/O, directory traversal and pattern matching on file contents.
+
 stages:
   - slug: "cq2"
     name: "Match a literal character"
@@ -442,6 +449,7 @@ stages:
 
       **Example:**
       - `(cat) and \1` should match "cat and cat", but not "cat and dog".
+
   - slug: "tg1"
     primary_extension_slug: "backreferences"
     name: "Multiple Backreferences"
@@ -469,6 +477,7 @@ stages:
 
       **Example:**
       - `(\d+) (\w+) squares and \1 \2 circles` should match "3 red squares and 3 red circles" but should not match "3 red squares and 4 red circles".
+
   - slug: "xe5"
     primary_extension_slug: "backreferences"
     name: "Nested Backreferences"
@@ -478,3 +487,27 @@ stages:
 
       **Example:**
       - `('(cat) and \2') is the same as \1` should match "'cat and cat' is the same as 'cat and cat'".
+
+  - slug: "dr5"
+    name: "Search a single-line file"
+    difficulty: medium
+    marketing_md: |-
+      In this stage, you'll add support for searching the contents of a file with a single line of input.
+
+  - slug: "ol9"
+    name: "Search a multi-line file"
+    difficulty: medium
+    marketing_md: |-
+      In this stage, you'll add support for searching the contents of a file with multiple lines.
+
+  - slug: "is6"
+    name: "Search multiple files"
+    difficulty: medium
+    marketing_md: |-
+      In this stage, you'll add support for searching the contents of multiple files.
+
+  - slug: "yx6"
+    name: "Recursive search"
+    difficulty: hard
+    marketing_md: |-
+      In this stage, you'll add support for searching through files in a given directory and its subdirectories recursively with the -r flag.
