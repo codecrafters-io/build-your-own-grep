@@ -61,7 +61,7 @@ extensions:
       Along the way, you'll learn about how capture groups and backreferences work.
       [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/backreference-constructs-in-regular-expressions#numbered-backreferences
 
-  - slug: "filesearch"
+  - slug: "file-search"
     name: "File Search"
     description_markdown: |
       In this challenge extension, you'll add support for searching files.
@@ -492,7 +492,7 @@ stages:
     name: "Search a single-line file"
     difficulty: medium
     marketing_md: |-
-      In this stage, you'll add support for searching the contents of a file with a single line of input.
+      In this stage, you'll add support for searching the contents of a file with a single line.
 
   - slug: "ol9"
     name: "Search a multi-line file"
