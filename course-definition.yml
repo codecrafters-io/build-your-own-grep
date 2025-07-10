@@ -489,24 +489,28 @@ stages:
       - `('(cat) and \2') is the same as \1` should match "'cat and cat' is the same as 'cat and cat'".
 
   - slug: "dr5"
+    primary_extension_slug: "file-search"
     name: "Search a single-line file"
     difficulty: medium
     marketing_md: |-
       In this stage, you'll add support for searching the contents of a file with a single line.
 
   - slug: "ol9"
+    primary_extension_slug: "file-search"
     name: "Search a multi-line file"
     difficulty: medium
     marketing_md: |-
       In this stage, you'll add support for searching the contents of a file with multiple lines.
 
   - slug: "is6"
+    primary_extension_slug: "file-search"
     name: "Search multiple files"
     difficulty: medium
     marketing_md: |-
       In this stage, you'll add support for searching the contents of multiple files.
 
   - slug: "yx6"
+    primary_extension_slug: "file-search"
     name: "Recursive search"
     difficulty: hard
     marketing_md: |-
