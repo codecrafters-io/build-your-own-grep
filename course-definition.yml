@@ -82,29 +82,6 @@ stages:
   - slug: "oq2"
     name: "Match digits"
     difficulty: very_easy
-    description_md: |-
-      In this stage, we'll implement support for the `\d`
-      [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
-
-      `\d` matches any digit.
-
-      **Example:** `\d` should match "3", but not "c".
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "apple123" | ./your_program.sh -E "\d"
-      ```
-
-      Your program must exit with 0 if a digit is found in the string, and 1 if not.
-
-       ### Notes
-
-      - To learn how Regexes work under the hood, you'll build your own regex implementation from scratch instead of using {{language_name}}'s built-in regex features.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll implement support for the `\d`
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
@@ -118,25 +95,6 @@ stages:
   - slug: "mr9"
     name: "Match alphanumeric characters"
     difficulty: very_easy
-    description_md: |-
-      In this stage, we'll implement support for the `\w`
-      [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
-
-      `\w` matches any alphanumeric character (`a-z`, `A-Z`, `0-9`, `_`).
-
-      **Example:** `\w` should match "foo101", but not "$!?".
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "alpha-num3ric" | ./your_program.sh -E "\w"
-      ```
-
-      Your program must exit with 0 if an alphanumeric character is found in the string, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll implement support for the `\w`
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
@@ -150,24 +108,6 @@ stages:
   - slug: "tl6"
     name: "Positive Character Groups"
     difficulty: medium
-    description_md: |-
-      In this stage, we'll add support for [positive character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#positive-character-group--).
-
-      Positive character groups match any character that is present within a pair of square brackets.
-
-      **Example:** `[abc]` should match "apple", but not "dog".
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "apple" | ./your_program.sh -E "[abc]"
-      ```
-
-      Your program must exit with 0 if an any of the characters are found in the string, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll add support for [positive character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#positive-character-group--).
 
@@ -180,24 +120,6 @@ stages:
   - slug: "rk3"
     name: "Negative Character Groups"
     difficulty: medium
-    description_md: |-
-      In this stage, we'll add support for [negative character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#negative-character-group-).
-
-      Negative character groups match any character that is not present within a pair of square brackets.
-
-      **Example:** `[^abc]` should match "dog", but not "cab" (since all characters are either "a", "b" or "c").
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "apple" | ./your_program.sh -E "[^abc]"
-      ```
-
-      Your program must exit with 0 if the input contains characters that aren't part of the negative character group, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll add support for [negative character groups](https://docs.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions#negative-character-group-).
 
@@ -210,34 +132,6 @@ stages:
   - slug: "sh9"
     name: "Combining Character Classes"
     difficulty: medium
-    description_md: |-
-      In this stage, we'll add support for patterns that combine the character classes we've seen so far.
-
-      This is where your regex matcher will start to _feel_ useful.
-
-      Keep in mind that this stage is harder than the previous ones. You'll likely need to rework your
-      implementation to process user input character-by-character instead of the whole line at once.
-
-      We recommend taking a look at the example code in ["A Regular Expression Matcher"](https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html)
-      by Rob Pike to guide your implementation.
-
-      **Examples:**
-
-      - `\d apple` should match "1 apple", but not "1 orange".
-      - `\d\d\d apple` should match "100 apples", but not "1 apple".
-      - `\d \w\w\ws` should match "3 dogs" and "4 cats" but not "1 dog" (because the "s" is not present at the end).
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "1 apple" | ./your_program.sh -E "\d apple"
-      ```
-
-      Your program must exit with 0 if the pattern matches the input, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll support patterns that combine the character classes we've seen so far.
 
@@ -253,24 +147,6 @@ stages:
   - slug: "rr8"
     name: "Start of string anchor"
     difficulty: medium
-    description_md: |-
-      In this stage, we'll add support for `^`, the [Start of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-).
-
-      `^` doesn't match a character, it matches the start of a line.
-
-      **Example:** `^log` should match "log", but not "slog".
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "log" | ./your_program.sh -E "^log"
-      ```
-
-      Your program must exit with 0 if the input starts with the given pattern, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll add support for `^`, the [Start of String or Line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-).
 
@@ -283,24 +159,6 @@ stages:
   - slug: "ao7"
     name: "End of string anchor"
     difficulty: medium
-    description_md: |-
-      In this stage, we'll add support for `$`, the [End of String or Line anchor](https://learn.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#end-of-string-or-line-).
-
-      `$` doesn't match a character, it matches the end of a line.
-
-      **Example:** `dog$` should match "dog", but not "dogs".
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "dog" | ./your_program.sh -E "dog$"
-      ```
-
-      Your program must exit with 0 if the input matches the given pattern, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll add support for `$`, the [End of String or Line anchor](https://learn.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#end-of-string-or-line-).
 
@@ -313,22 +171,6 @@ stages:
   - slug: "fz7"
     name: "Match one or more times"
     difficulty: hard
-    description_md: |-
-      In this stage, we'll add support for `+`, the [one or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier.
-
-      **Example**: `a+` should match "apple" and "SaaS", but not "dog".
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "caats" | ./your_program.sh -E "ca+ts"
-      ```
-
-      Your program must exit with 0 if the input matches the given pattern, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll add support for `+`, the [one or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-one-or-more-times-) quantifier.
 
@@ -339,22 +181,6 @@ stages:
   - slug: "ny8"
     name: "Match zero or one times"
     difficulty: hard
-    description_md: |-
-      In this stage, we'll add support for `?`, the [zero or one](https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-zero-or-one-time-) quantifier (also known as the "optional" quantifier).
-
-      **Example**: `dogs?` should match "dogs" and "dog", but not "cat".
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "dogs" | ./your_program.sh -E "dogs?"
-      ```
-
-      Your program must exit with 0 if the input matches the given pattern, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll add support for `?`, the [zero or one](https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-zero-or-one-time-) quantifier (also known as the "optional" quantifier).
 
@@ -365,22 +191,6 @@ stages:
   - slug: "zb3"
     name: "Wildcard"
     difficulty: medium
-    description_md: |-
-      In this stage, we'll add support for `.`, which matches any character.
-
-      **Example**: `d.g` should match "dog", but not "cog".
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "dog" | ./your_program.sh -E "d.g"
-      ```
-
-      Your program must exit with 0 if the input matches the given pattern, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll add support for `.`, which matches any character.
 
@@ -391,22 +201,6 @@ stages:
   - slug: "zm7"
     name: "Alternation"
     difficulty: hard
-    description_md: |-
-      In this stage, we'll add support for the `|` keyword, which allows combining multiple patterns in an either/or fashion.
-
-      **Example**: `(cat|dog)` should match "dog" and "cat", but not "apple".
-
-      Your program will be executed like this:
-
-      ```bash
-      $ echo -n "cat" | ./your_program.sh -E "(cat|dog)"
-      ```
-
-      Your program must exit with 0 if the input matches the given pattern, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |-
       In this stage, we'll add support for the `|` keyword, which allows combining multiple patterns in an either/or fashion.
 
@@ -420,30 +214,6 @@ stages:
     primary_extension_slug: "backreferences"
     name: "Single Backreference"
     difficulty: hard
-    description_md: |
-      In this stage, we'll add support for backreferences.
-
-      A backreference lets you reuse a captured group in a regular expression. It is denoted by `\` followed by a number, indicating the position of the captured group.
-
-      **Examples:**
-      - `(cat) and \1` should match "cat and cat", but not "cat and dog".
-        - `\1` refers to the first captured group, which is `(cat)`.
-      - `(\w+) and \1` should match "cat and cat" and "dog and dog", but not "cat and dog".
-        - `\1` refers to the first captured group, which is `(\w+)`.
-
-      Your program will be executed like this:
-
-      ```
-      $ echo -n "<input>" | ./your_program.sh -E "<pattern>"
-      ```
-
-      Your program must exit with 0 if the input matches the given pattern, and 1 if not.
-
-      **Note:** You only need to focus on one backreference and one capturing group in this stage. We'll get to handling multiple backreferences in the next stage.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |
       In this stage, you'll add support for single backreferences. You'll implement support for `\1`.
 
@@ -454,24 +224,6 @@ stages:
     primary_extension_slug: "backreferences"
     name: "Multiple Backreferences"
     difficulty: medium
-    description_md: |
-      In this stage, we'll add support for multiple backreferences.
-
-      Multiple backreferences allow you to refer to several different captured groups within the same regex pattern.
-
-      **Example:** `(\d+) (\w+) squares and \1 \2 circles` should match "3 red squares and 3 red circles" but should not match "3 red squares and 4 red circles".
-
-      Your program will be executed like this:
-
-      ```
-      $ echo -n "<input>" | ./your_program.sh -E "<pattern>"
-      ```
-
-      Your program must exit with 0 if the input matches the given pattern, and 1 if not.
-
-      {{#reader_is_bot}}
-      Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-      {{/reader_is_bot}}
     marketing_md: |
       In this stage, you'll add support for multiple backreferences (`\1`, `\2` etc.) in the same pattern.
 
