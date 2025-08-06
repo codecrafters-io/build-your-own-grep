@@ -12,7 +12,7 @@ Your program will be executed like this:
 $ echo -n "apple" | ./your_program.sh -E "[^abc]"
 ```
 
-Your program must exit with 0 if the input contains any character not in the negative character group; otherwise, it must exit with 1.
+Your program must exit with 0 (match) if the input contains any character not in the negative character group; otherwise, it must exit with 1 (no match).
 
 {{#reader_is_bot}}
 Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
