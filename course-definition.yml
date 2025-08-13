@@ -93,13 +93,13 @@ stages:
       `\d` should match "1", but not "a".
 
   - slug: "mr9"
-    name: "Match alphanumeric characters"
+    name: "Match word characters"
     difficulty: very_easy
     marketing_md: |-
       In this stage, we'll implement support for the `\w`
       [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
 
-      `\w` matches any alphanumeric character (`a-z`, `A-Z`, `0-9`, `_`).
+      `\w` matches any alphanumeric character (`a-z`, `A-Z`, `0-9`) and underscore `_`.
 
       **Example:**
 

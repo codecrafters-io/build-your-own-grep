@@ -1,4 +1,4 @@
-In this stage, we'll implement support for the `\d`
+In this stage, we'll implement support for the digit (`\d`)
 [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
 
 `\d` matches any digit.
