@@ -1,5 +1,6 @@
-@@ -1,38 +1,33 @@
+@@ -1,40 +1,35 @@
  const std = @import("std");
+ var stdin = std.fs.File.stdin().readerStreaming(&.{});
 
  fn matchPattern(input_line: []const u8, pattern: []const u8) bool {
      if (pattern.len == 1) {
@@ -24,22 +25,23 @@
 
 -    // You can use print statements as follows for debugging, they'll be visible when running tests.
 -    std.debug.print("Logs from your program will appear here!\n", .{});
--
++    var input_buffer: [1024]u8 = undefined;
++    const input_len = try stdin.read(&input_buffer);
++    const input_slice = input_buffer[0..input_len];
+
 -    // Uncomment this block to pass the first stage
 -    //
+-    // var input_buffer: [1024]u8 = undefined;
+-    // const input_len = try stdin.read(&input_buffer);
+-    // const input_slice = input_buffer[0..input_len];
+-    //
 -    // const pattern = args[2];
--    // var input_line: [1024]u8 = undefined;
--    // const input_len = try std.io.getStdIn().reader().read(&input_line);
--    // const input_slice = input_line[0..input_len];
 -    // if (matchPattern(input_slice, pattern)) {
 -    //     std.process.exit(0);
 -    // } else {
 -    //     std.process.exit(1);
 -    // }
 +    const pattern = args[2];
-+    var input_line: [1024]u8 = undefined;
-+    const input_len = try std.io.getStdIn().reader().read(&input_line);
-+    const input_slice = input_line[0..input_len];
 +    if (matchPattern(input_slice, pattern)) {
 +        std.process.exit(0);
 +    } else {
