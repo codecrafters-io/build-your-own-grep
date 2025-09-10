@@ -5,9 +5,9 @@ Study and uncomment the relevant code:
 ```zig
 // Uncomment this block to pass the first stage
 
-var line_buffer: [1024]u8 = undefined;
-const input_len = try stdin.read(&line_buffer);
-const input_slice = line_buffer[0..input_len];
+var input_buffer: [1024]u8 = undefined;
+const input_len = try stdin.read(&input_buffer);
+const input_slice = input_buffer[0..input_len];
 
 const pattern = args[2];
 if (matchPattern(input_slice, pattern)) {
