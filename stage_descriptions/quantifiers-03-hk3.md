@@ -7,10 +7,12 @@ The `{n,}` quantifier matches the preceding element at least n times. The elemen
 - `x\d{3,}y` should match "x123y", "x9999y", and "x12345y", but not "x42y".
 - `b[aeiou]{2,}r` should match "baer", "baeiour", and "beeeeer", but not "bar".
 
+## Tests
+
 Your program will be executed like this:
 
 ```bash
-$ echo -n "caat" | ./your_program.sh -E "ca{2,}t"
+$ echo -n "<input>" | ./your_program.sh -E "<pattern>"
 ```
 
 Your program must exit with 0 if the input matches the given pattern, and 1 if not.

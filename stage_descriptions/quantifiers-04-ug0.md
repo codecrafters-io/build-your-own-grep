@@ -7,10 +7,12 @@ The `{n,m}` quantifier matches the preceding element between n and m times (incl
 - `n\d{1,3}m` should match "n1m", "n42m", and "n123m", but not "n1234m".
 - `p[xyz]{2,3}q` should match "pxyq", "pxyzq", and "pzzzq", but not "pxq" or "pxyzyq".
 
+## Tests
+
 Your program will be executed like this:
 
 ```bash
-$ echo -n "caaat" | ./your_program.sh -E "ca{2,4}t"
+$ echo -n "<input>" | ./your_program.sh -E "<pattern>"
 ```
 
 Your program must exit with 0 if the input matches the given pattern, and 1 if not.

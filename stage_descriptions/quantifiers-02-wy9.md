@@ -7,10 +7,12 @@ The `{n}` quantifier matches the preceding element exactly n times. The element 
 - `d\d{2}g` should match "d42g" and "d99g", but not "d1g" or "d123g".
 - `c[xyz]{4}w` should match "cyyyyw" and "czyxzw", but not "cxyzw" or "xyzzzw".
 
+## Tests
+
 Your program will be executed like this:
 
 ```bash
-$ echo -n "caaat" | ./your_program.sh -E "ca{3}t"
+$ echo -n "<input>" | ./your_program.sh -E "<pattern>"
 ```
 
 Your program must exit with 0 if the input matches the given pattern, and 1 if not.
