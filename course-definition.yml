@@ -68,6 +68,14 @@ extensions:
 
       Along the way, you'll learn about how to implement efficient file I/O, directory traversal and pattern matching on file contents.
 
+  - slug: "quantifiers"
+    name: "Quantifiers"
+    description_markdown: |
+      In this challenge extension, you'll add support for [quantifiers][1] to your Grep implementation.
+
+      Along the way, you'll learn about how to implement the `*` quantifier (zero or more), and bounded quantifiers.
+      [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Quantifier
+
 stages:
   - slug: "cq2"
     name: "Match a literal character"
@@ -267,3 +275,32 @@ stages:
     difficulty: hard
     marketing_md: |-
       In this stage, you'll add support for searching through files in a given directory and its subdirectories recursively with the -r flag.
+
+  # Quantifiers
+  - slug: "ai9"
+    primary_extension_slug: "quantifiers"
+    name: "Zero or more times"
+    difficulty: hard
+    marketing_md: |-
+      In this stage, we'll add support for `*`, the [zero or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-zero-or-more-times-) quantifier.
+
+  - slug: "wy9"
+    primary_extension_slug: "quantifiers"
+    name: "Exact repetition"
+    difficulty: hard
+    marketing_md: |-
+      In this stage, we'll add support for `{n}`, the [exact repetition](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-exactly-n-times-n) quantifier.
+
+  - slug: "hk3"
+    primary_extension_slug: "quantifiers"
+    name: "Minimum repetition"
+    difficulty: hard
+    marketing_md: |-
+      In this stage, we'll add support for `{n,}`, the [at least m times](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-at-least-n-times-n) quantifier.
+
+  - slug: "ug0"
+    primary_extension_slug: "quantifiers"
+    name: "Range repetition"
+    difficulty: hard
+    marketing_md: |-
+      In this stage, we'll add support for `{n,m}`, the [between n and m times](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-between-n-and-m-times-nm) quantifier.
