@@ -74,7 +74,7 @@ extensions:
       In this challenge extension, you'll add support for [quantifiers][1] to your Grep implementation.
 
       Along the way, you'll learn about how to implement the `*` quantifier (zero or more), and bounded quantifiers.
-      [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Regular_expressions/Quantifier
+      [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions
 
 stages:
   - slug: "cq2"
