@@ -13,7 +13,7 @@ $ echo -n "apple123" | ./your_program.sh -E "\d"
 
 Your program must exit with 0 if a digit is found in the string, and 1 if not.
 
- ### Notes
+### Notes
 
 - To learn how Regexes work under the hood, you'll build your own regex implementation from scratch instead of using {{language_name}}'s built-in regex features.
 
