@@ -8,4 +8,4 @@
 
 set -e # Exit on failure
 
-exec java -jar /tmp/codecrafters-build-grep-kotlin/build-your-own-grep.jar "$@"
+exec /tmp/codecrafters-build-grep-kotlin/distributions/app/bin/app "$@"
