@@ -5,6 +5,8 @@ In this stage, we'll implement support for the digit (`\d`)
 
 **Example:** `\d` should match "3", but not "c".
 
+### Tests
+
 Your program will be executed like this:
 
 ```bash

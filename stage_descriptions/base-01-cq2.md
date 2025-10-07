@@ -1,5 +1,6 @@
-In this stage, you'll add support for the simplest regex possible: a single character.
+`grep` searches text using regular expressions. In this stage, you’ll implement the simplest regex possible: matching a single literal character.
 
+<!--
 **Example:** `a` should match "apple", but not "dog".
 
 Your program will be executed like this:
@@ -16,6 +17,8 @@ Your program must [exit](https://en.wikipedia.org/wiki/Exit_status) with 0 if th
 ### Notes
 
 - To learn how Regexes work under the hood, you'll build your own regex implementation from scratch instead of using {{language_name}}'s built-in regex features.
+
+-->
 
 {{#reader_is_bot}}
 Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
