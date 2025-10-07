@@ -1,4 +1,4 @@
-In this stage, we'll handle the simplest regex possible: a single character.
+In this stage, you'll add support for the simplest regex possible: a single character.
 
 **Example:** `a` should match "apple", but not "dog".
 
