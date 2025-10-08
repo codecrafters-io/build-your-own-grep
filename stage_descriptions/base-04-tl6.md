@@ -6,7 +6,7 @@ In this stage, you'll add support for positive character groups.
 
 Unlike the predefined character classes like `\d` and `\w`, positive character groups let you define your own custom set of characters to match.
 
-The syntax looks like this: `[characters]`
+The syntax looks like this: `[characters]`.
 
 For example:
 - `[abc]` matches `"apple"` because it contains `a`.
