@@ -1,8 +1,8 @@
-In this stage, you'll implement support for the word (`\w`) [character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
+In this stage, you'll implement support for the word (`\w`) character class.
 
 ### The `\w` Character Class
 
-The `\w` character class matches any alphanumeric character (`a-z`, `A-Z`, `0-9`) and underscore `_`.
+The `\w` [character class](https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions) matches any alphanumeric character (`a-z`, `A-Z`, `0-9`) and underscore `_`.
 
 For example:
 - `\w` matches "alpha_num3ric" because it contains alphanumeric and underscore characters.
