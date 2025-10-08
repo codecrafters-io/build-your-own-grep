@@ -2,7 +2,7 @@ In this stage, you'll add support for the digit (`\d`) character class.
 
 ### Character Classes
 
-[Character classes](https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions) are special patterns in regular expressions that match specific sets of characters. Instead of matching a single literal character (like "a" or "3"), a character class matches any character from a defined group.
+[Character classes](https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions) are special patterns in regular expressions that match specific sets of characters. Instead of matching a single literal character (like `"a"` or `"3"`), a character class matches any character from a defined group.
 
 Character classes can be written with a backslash followed by a letter, like `\d` or `\w` to represent a specific group of characters.
 
@@ -11,10 +11,10 @@ Character classes can be written with a backslash followed by a letter, like `\d
 The `\d` character class matches any single digit character (`0-9`).
 
 For example:
-- `\d` should match "3" 
-- `\d` should match "foo101" 
-- `\d` should not match "c" 
-- `\d` should not match "Art" 
+- `\d` should match `"3"`
+- `\d` should match `"foo101"`
+- `\d` should not match `"c"`
+- `\d` should not match `"Art"` 
 
 When your pattern contains `\d`, you need to check if the input string contains at least one digit character.
 
