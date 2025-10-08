@@ -5,9 +5,9 @@ In this stage, you'll implement support for the word (`\w`) character class.
 The `\w` [character class](https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions) matches any alphanumeric character (`a-z`, `A-Z`, `0-9`) and underscore `_`.
 
 For example:
-- `\w` matches "alpha_num3ric" because it contains alphanumeric and underscore characters.
-- `\w` matches "foo101" because it contains letters and digits.
-- `\w` does not match "$!?" because none of the symbols are word characters.
+- `\w` matches `"alpha_num3ric"` because it contains alphanumeric and underscore characters.
+- `\w` matches `"foo101"` because it contains letters and digits.
+- `\w` does not match `"$!?"` because none of the symbols are word characters.
 
 When your pattern contains `\w`, your program should check if the input string contains at least one word character.
 
