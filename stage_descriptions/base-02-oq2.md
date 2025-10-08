@@ -2,7 +2,7 @@ In this stage, you'll add support for the digit (`\d`) character class.
 
 ### Character Classes
 
-[Character classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes) are special patterns in regular expressions that match specific sets of characters. Instead of matching a single literal character (like "a" or "3"), a character class matches any character from a defined group.
+[Character classes](https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions) are special patterns in regular expressions that match specific sets of characters. Instead of matching a single literal character (like "a" or "3"), a character class matches any character from a defined group.
 
 Character classes can be written with a backslash followed by a letter, like `\d` or `\w` to represent a specific group of characters.
 
