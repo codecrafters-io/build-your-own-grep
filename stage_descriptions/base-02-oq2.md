@@ -4,11 +4,11 @@ In this stage, you'll add support for the digit (`\d`) character class.
 
 [Character classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes) are special patterns in regular expressions that match specific sets of characters. Instead of matching a single literal character (like "a" or "3"), a character class matches any character from a defined group.
 
-Character classes can be written with a backslash followed by a letter, like `\d` or `\w` to represent a specific category of characters.
+Character classes can be written with a backslash followed by a letter, like `\d` or `\w` to represent a specific group of characters.
 
 ### The `\d` Character Class
 
-`\d` is a character class that matches any single digit character (`0-9`).
+The `\d` character class matches any single digit character (`0-9`).
 
 For example:
 - `\d` should match "3" 
