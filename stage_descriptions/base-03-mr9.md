@@ -9,6 +9,8 @@ For example:
 - `\w` matches "foo101" because it contains letters and digits.
 - `\w` does not match "$!?" because none of the symbols are word characters.
 
+When your pattern contains `\w`, your program should check if the input string contains at least one word character.
+
 ### Tests
 
 The tester will execute your program like this:
