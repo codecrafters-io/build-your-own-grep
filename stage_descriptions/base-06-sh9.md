@@ -15,7 +15,7 @@ Here are some examples:
 
 For this stage, you'll likely need to rework your implementation to process the user input character-by-character instead of checking the whole line at once.
 
-We recommend reading the example code in ["A Regular Expression Matcher"](https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html) by Rob Pike to guide your implementation.
+If you're looking for ideas on how to approach this, ["A Regular Expression Matcher"](https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html) by Rob Pike is a great resource for inspiration. It demonstrates an elegant approach to building a regex matcher. However, you're encouraged to work through the problem yourself first.
 
 ### Tests
 
