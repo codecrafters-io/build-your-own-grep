@@ -1,17 +1,28 @@
-In this stage, we'll implement support for the word (`\w`)
-[character class](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes).
+In this stage, you'll implement support for the word (`\w`) character class.
 
-`\w` matches any alphanumeric character (`a-z`, `A-Z`, `0-9`) and underscore `_`.
+### The `\w` Character Class
 
-**Example:** `\w` should match "foo101", but not "$!?".
+The `\w` [character class](https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions) matches any alphanumeric character (`a-z`, `A-Z`, `0-9`) and underscore `_`.
 
-Your program will be executed like this:
+For example:
+- `\w` matches `"alpha_num3ric"` because it contains alphanumeric and underscore characters.
+- `\w` matches `"foo101"` because it contains letters and digits.
+- `\w` does not match `"$!?"` because none of the symbols are word characters.
+
+When your pattern contains `\w`, your program should check if the input string contains at least one word character.
+
+### Tests
+
+The tester will execute your program like this:
 
 ```bash
 $ echo -n "alpha_num3ric" | ./your_program.sh -E "\w"
 ```
 
-Your program must exit with 0 if a word character is found in the string, and 1 if not.
+Your program must:
+
+- Exit with code `0` if it finds a word character in the input string.
+- Exit with code `1` if it finds no word characters in the input string.
 
 ### Notes
 
