@@ -24,8 +24,8 @@ $ echo -n "apple" | ./your_program.sh -E "[^abc]"
 
 Your program must:
 
-- Exit with code `0` if the input contains any character that is **not** listed inside the brackets.
-- Exit with code `1` if all characters in the input are listed inside the brackets.
+- Exit with code `0` if the input contains any character that is **not** in the group.
+- Exit with code `1` if all characters in the input are in the group.
 
 {{#reader_is_bot}}
 Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
