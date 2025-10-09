@@ -1,4 +1,4 @@
-In this stage, we'll add support for the start-of-line anchor (`^`).
+In this stage, you'll add support for the start of string and line anchor (`^`).
 
 ### Anchors
 
