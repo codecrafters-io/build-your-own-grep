@@ -28,7 +28,7 @@ For example:
 The tester will execute your program like this:
 
 ```
-$ echo -n "<input>" | ./your_program.sh -E "<pattern>"
+$ echo -n "cat and cat" | ./your_program.sh -E "(cat) and \1"
 ```
 
 Your program must:
