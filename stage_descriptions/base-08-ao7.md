@@ -7,8 +7,10 @@ The `$` anchor matches patterns at the very end of the input string.
 For example:
 - `dog$` matches `"dog"` (pattern at end)
 - `dog$` matches `"hotdog"` (ends with "dog")
-- `dog$` does not match `"dogs"` (pattern not at end)
-- `\d\d\d$` matches `"abc123"` (three digits at end)
+- `dog$` does not match `"dogs"` (pattern not at the end)
+- `\d\d\d$` matches `"abc123"` (three digits at the end)
+- `\w\w\w$` does not match `"abc123"` (pattern not at the end)
+- `\w\w\w$` matches `"abc123cde"` (three letters at the end)
 
 ### Tests
 
