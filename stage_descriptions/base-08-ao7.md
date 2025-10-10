@@ -2,7 +2,7 @@ In this stage, you'll add support for the end of string or line anchor (`$`).
 
 ### End of String or Line Anchor (`$`)
 
-The `$` anchor matches patterns at the very end of the input string.
+The `$` anchor matches patterns at the very end of an input string.
 
 For example:
 - `dog$` matches `"dog"` (pattern at end)
