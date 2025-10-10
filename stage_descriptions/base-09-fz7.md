@@ -1,4 +1,4 @@
-In this stage, we'll add support for the one or more quantifier (`+`).
+In this stage, you'll add support for the one or more quantifier (`+`).
 
 ### Quantifiers
 
