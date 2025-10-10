@@ -4,6 +4,11 @@ In this stage, you'll add support for the one or more quantifier (`+`).
 
 [Quantifiers](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions) are special operators that specify how many times the preceding element should match.
 
+Common quantifiers include:
+- `+` - matches one or more times
+- `?` - matches zero or one time
+- `*` - matches zero or more times
+
 ### The One or More Quantifier (`+`)
 
 The `+` quantifier matches the preceding character or character class one or more times. It's a [greedy quantifier](https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#greedy-and-lazy-quantifiers), meaning it tries to match the element as many times as possible.
