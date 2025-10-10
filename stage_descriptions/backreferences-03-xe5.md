@@ -3,8 +3,8 @@ In this stage, we'll add support for nested backreferences.
 ### Nested Capturing Groups
 
 When the capturing groups are nested, each group still gets its own backreference based on the position of its opening parenthesis:
-- The outermost group gets numbered first
-- Inner groups get numbered as they appear, left to right
+- The outermost group gets numbered first.
+- Inner groups get numbered as they appear, from left to right.
 
 For example, let's break down the pattern `('(cat) and \2') is the same as \1`:
 
