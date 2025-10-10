@@ -3,7 +3,7 @@ In this stage, you'll add support for alternation.
 
 ### The Alternation Operator (`|`)
 
-The `|` (pipe) operator allows you to match one pattern **or** another. It creates an either/or choice between multiple alternatives.
+The `|` (pipe) operator allows you to match one pattern **or** another.
 
 Alternation is typically used within parentheses to group the alternatives: `(pattern1|pattern2|pattern3)`.
 
