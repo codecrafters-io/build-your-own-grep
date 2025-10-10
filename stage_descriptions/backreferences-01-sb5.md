@@ -25,7 +25,7 @@ For example:
  
 ### Tests
 
-Your program will be executed like this:
+The tester will execute your program like this:
 
 ```
 $ echo -n "<input>" | ./your_program.sh -E "<pattern>"
