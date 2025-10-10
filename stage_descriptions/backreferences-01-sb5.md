@@ -6,8 +6,6 @@ So far, parentheses have been used for grouping alternatives with `|`. However, 
 
 A capturing group is any part of a regex pattern enclosed in parentheses (like `(cat)`). When the pattern matches, the regex engine "captures" (stores) the specific text that matched within those parentheses.
 
-Each capturing group is automatically assigned a number based on the position of its opening parenthesis, counting from left to right and starting at `1`.
-
 ### Backreferences
 
 A backreference lets you reuse a captured group in a regular expression. The syntax is `\N` where `N` is the group number:
