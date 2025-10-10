@@ -1,4 +1,4 @@
-In this stage, you'll add support for the start of string and line anchor (`^`).
+In this stage, you'll add support for the start of string or line anchor (`^`).
 
 ### Anchors
 
@@ -6,9 +6,9 @@ In this stage, you'll add support for the start of string and line anchor (`^`).
 
 Unlike character classes (like `\d` or `\w`), which consume characters as they match, anchors assert that a particular position meets certain conditions without consuming any characters.
 
-### The `^` Anchor
+### Start of String or Line Anchor (`^`)
 
-The `^` anchor is a [start of string or line anchor](https://docs.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#start-of-string-or-line-). It matches the position at the very beginning of the input string.
+The `^` anchor matches patterns at the start of an input string.
 
 For example:
 - `^log` matches `"log"` (pattern at start)
