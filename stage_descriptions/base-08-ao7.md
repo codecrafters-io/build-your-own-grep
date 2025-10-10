@@ -1,8 +1,8 @@
 In this stage, you'll add support for the end of string or line anchor (`$`).
 
-### The `$` Anchor
+### End of String or Line Anchor (`$`)
 
-The `$` anchor is an [end of string or line anchor](https://learn.microsoft.com/en-us/dotnet/standard/base-types/anchors-in-regular-expressions#end-of-string-or-line-). It matches the position at the very end of the input string.
+The `$` anchor matches patterns at the very end of the input string.
 
 For example:
 - `dog$` matches `"dog"` (pattern at end)
