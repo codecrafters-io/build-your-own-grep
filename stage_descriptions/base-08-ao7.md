@@ -24,7 +24,6 @@ Your program must:
 - Exit with code `1` if it doesn't.
 
 ### Notes
-- The `$` anchor constrains where the pattern must end, but the pattern can still match anywhere in the string as long as it ends at the string's end.
 - You can combine `^` and `$` in the same pattern (e.g., `^dog$`) to match the entire string exactly.
 - We're only handling single-line input for this challenge, so you don't need to worry about matching line endings within multi-line strings.
 
