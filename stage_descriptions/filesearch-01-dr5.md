@@ -1,8 +1,8 @@
-In this stage, you'll add support for searching the contents of a file with a single line.
+In this stage, you'll add support for searching a single line of a file's content.
 
-## File Search
+### File Search
 
-When `grep` is given a file as an argument, it searches through the lines in the file and prints out matching lines. Example usage:
+When you give `grep` a file name as an argument, it searches through the lines in the file:
 
 ```bash
 # This prints any lines that match search_pattern
@@ -10,15 +10,16 @@ $ grep -E "search_pattern" any_file.txt
 This is a line that matches search_pattern
 ```
 
-Matching lines are printed to stdout.
+When searching the file, `grep`:
+- Prints each matching line to stdout (the complete line, not just the matched part).
+- Exits with code `0` if any matching lines were found.
+- Exits with code `1` if no matching lines were found.
 
-If any matching lines were found, grep exits with status code 0 (i.e. "success"). If no matching lines were found, grep exits with status code 1.
+For this stage, we'll only handle files that contain a single line. We'll handle multi-line files in later stages.
 
-In this stage, we'll test searching through a file that contains a single line. We'll get to handling multi-line files in later stages.
+### Tests
 
-## Tests
-
-The tester will create some test files and then execute multiple commands to find matches in those files. For example:
+The tester will create test files and search them using your program:
 
 ```bash
 # Create test file
@@ -32,9 +33,13 @@ apple
 $ ./your_program.sh -E "carrot" fruits.txt
 ```
 
-The tester will verify that all matching lines are printed to stdout. It'll also verify that the exit code is 0 if there are matching lines, and 1 if there aren't.
+It will then verify that:
 
-## Notes
+- All matching lines are printed to stdout.
+- The exit code is `0` if there are matching lines.
+- The exit code is `1` if there are no matching lines.
 
-- The file is guaranteed to exist and contain a single line
-- Output should contain the full line that matches the pattern
+### Notes
+
+- The file is guaranteed to exist and contain a single line.
+- Your output should contain the full line that matches the pattern.
