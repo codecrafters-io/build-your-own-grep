@@ -1,8 +1,8 @@
-In this stage, you'll add support for searching the contents of a file with a single line.
+In this stage, you'll add support for searching a single line of a file's content.
 
 ### File Search
 
-When `grep` is given a file as an argument, it searches through the lines in the file and prints out matching lines:
+When you give `grep` a file name as an argument, it searches through the lines in the file:
 
 ```bash
 # This prints any lines that match search_pattern
@@ -10,7 +10,7 @@ $ grep -E "search_pattern" any_file.txt
 This is a line that matches search_pattern
 ```
 
-When searching a file, `grep`:
+When searching the file, `grep`:
 - Prints each matching line to stdout (the complete line, not just the matched part).
 - Exits with code `0` if any matching lines were found.
 - Exits with code `1` if no matching lines were found.
