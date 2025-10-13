@@ -10,12 +10,12 @@ $ grep -E "search_pattern" any_file.txt
 This is a line that matches search_pattern
 ```
 
-When searching a file, grep:
+When searching a file, `grep`:
 - Prints each matching line to stdout (the complete line, not just the matched part).
 - Exits with code `0` if any matching lines were found.
 - Exits with code `1` if no matching lines were found.
 
-For this stage, we'll test searching through a file that contains a single line. We'll handle multi-line files in later stages.
+For this stage, we'll only handle files that contain a single line. We'll handle multi-line files in later stages.
 
 ### Tests
 
