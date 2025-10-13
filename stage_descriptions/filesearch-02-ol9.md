@@ -19,7 +19,7 @@ Just like with single-line files, grep:
 
 ### Tests
 
-The tester will create test files and search them:
+The tester will create test files and search them using your program:
 
 ```bash
 # Create test file
@@ -37,7 +37,7 @@ blueberry
 $ ./your_program.sh -E "carrot" fruits.txt
 ```
 
-The tester will verify that:
+It will then verify that:
 
 - All matching lines are printed to stdout.
 - The exit code is `0` if there are matching lines.
