@@ -2,7 +2,7 @@ In this stage, you'll add support for searching the contents of multiple files.
 
 ### Searching Multiple Files
 
-When searching multiple files, `grep` processes each file individually and prints all matching lines with a `<filename>:` prefix:
+When searching multiple files, `grep` processes each file individually:
 
 ```bash
 # This prints any lines that match search_pattern from multiple files
@@ -11,11 +11,11 @@ file1.txt:This is a line that matches search_pattern
 file2.txt:Another line that matches search_pattern
 ```
 
-The behavior is similar to when searching single files, but with a few differences:
+This behavior is similar to searching a single file, but with a few differences:
 
-- All matching lines are printed to stdout with filename prefixes.
-- Exit with code `0` if any matching lines were found across all files.
-- Exit with code `1` if no matching lines were found in any file.
+- All matching lines are printed to stdout with a `<filename>:` prefix.
+- The program exits with code `0` if any matching lines were found across all files.
+- The program exits with code `1` if no matching lines were found in any file.
 
 ### Tests
 
