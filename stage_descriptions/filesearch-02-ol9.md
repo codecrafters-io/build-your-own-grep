@@ -1,8 +1,8 @@
-In this stage, you'll add support for searching the contents of a file with multiple lines.
+In this stage, you'll add support for searching the content of a file that contains multiple lines.
 
 ### File Search with Multiple Lines
 
-When searching through a multi-line file, `grep` processes each line individually and prints all matching lines to stdout, each on its own line:
+When searching through a file with multiple lines, `grep` processes each line individually:
 
 ```bash
 # This prints any lines that match search_pattern
