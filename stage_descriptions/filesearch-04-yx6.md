@@ -16,8 +16,8 @@ directory/file2.txt:Another line that matches search_pattern
 The behavior is similar to searching multiple files:
 
 - All matching lines are printed to stdout with filepath prefixes.
-- Exit with code `0` if any matching lines were found across all files.
-- Exit with code `1` if no matching lines were found in any file.
+- The program exits with code `0` if any matching lines were found across all files.
+- The program exits with code `1` if no matching lines were found in any file.
 
 ### Tests
 
