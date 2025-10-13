@@ -1,8 +1,10 @@
 In this stage, you'll add support for searching through files in a given directory and its subdirectories recursively with the `-r` flag.
 
-## Recursive search
+### Recursive Search
 
-When `grep` is passed the `-r` flag, it searches through the given directory and its subdirectories recursively. It processes each file line by line and prints all matching lines to stdout with a `<filename>:` prefix. Example usage:
+When `grep` is passed the `-r` flag, it searches through the given directory and its subdirectories recursively. It processes each file line by line and prints all matching lines with a `<filepath>:` prefix.
+
+Here's an example:
 
 ```bash
 # This prints any lines that match search_pattern from multiple files
@@ -11,13 +13,15 @@ directory/file1.txt:This is a line that matches search_pattern
 directory/file2.txt:Another line that matches search_pattern
 ```
 
-Matching lines are printed to stdout with filename prefixes.
+The behavior is similar to searching multiple files:
 
-If any matching lines were found, grep exits with status code 0 (i.e. "success"). If no matching lines were found, grep exits with status code 1.
+- All matching lines are printed to stdout with filepath prefixes.
+- Exit with code `0` if any matching lines were found across all files.
+- Exit with code `1` if no matching lines were found in any file.
 
-## Tests
+### Tests
 
-The tester will create some test files and then multiple commands to find matches in those files. For example:
+The tester will create test files in nested directories and search them using your program:
 
 ```bash
 # Create test files
@@ -44,9 +48,13 @@ dir/subdir/vegetables.txt:carrot
 $ ./your_program.sh -r -E "missing_fruit" dir/
 ```
 
-The tester will verify that all matching lines are printed to stdout. It'll also verify that the exit code is 0 if there are matching lines, and 1 if there aren't.
+It will then verify that:
 
-## Notes
+- All matching lines from all files in the directory tree are printed to stdout with filepath prefixes.
+- The exit code is `0` if there are matching lines in any file.
+- The exit code is `1` if there are no matching lines in any file.
 
-- GNU grep doesn't guarantee the sorting order of output; it processes files in filesystem order. Your `grep` can output matching lines in any order.
-- The filepath prefix is relative to the directory passed as an argument to the `-r` flag
+### Notes
+
+- GNU grep does not guarantee the order of its output. Instead, it processes files in the order they appear in the filesystem. Your `grep` can output matching lines in any order.
+- The filepath prefix should be relative to the directory passed as an argument (e.g., `dir/subdir/file.txt`, not just `file.txt`).
