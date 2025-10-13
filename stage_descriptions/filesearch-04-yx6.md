@@ -1,10 +1,8 @@
-In this stage, you'll add support for searching through files in a given directory and its subdirectories recursively with the `-r` flag.
+In this stage, you'll add support for searching through files in a nested directory with the `-r` flag.
 
 ### Recursive Search
 
-When `grep` is passed the `-r` flag, it searches through the given directory and its subdirectories recursively. It processes each file line by line and prints all matching lines with a `<filepath>:` prefix.
-
-Here's an example:
+When `grep` is passed the `-r` flag, it searches through the given directory and its subdirectories recursively:
 
 ```bash
 # This prints any lines that match search_pattern from multiple files
@@ -13,11 +11,10 @@ directory/file1.txt:This is a line that matches search_pattern
 directory/file2.txt:Another line that matches search_pattern
 ```
 
-The behavior is similar to searching multiple files:
-
-- All matching lines are printed to stdout with filepath prefixes.
-- The program exits with code `0` if any matching lines were found across all files.
-- The program exits with code `1` if no matching lines were found in any file.
+This behaviour is similar to searching multiple files:
+- All matching lines are printed to stdout, but with a `<filepath>:` prefix instead of `<filename>:`.
+- The program exits with code `0` if it finds any matching line in any of the files.
+- The program exits with code `1` if it does not find any matching lines in any file.
 
 ### Tests
 
