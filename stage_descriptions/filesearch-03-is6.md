@@ -1,8 +1,8 @@
 In this stage, you'll add support for searching the contents of multiple files.
 
-## Searching multiple files
+### Searching Multiple Files
 
-When searching multiple files, `grep` processes each file individually and prints all matching lines to stdout with a `<filename>:` prefix. Example usage:
+When searching multiple files, `grep` processes each file individually:
 
 ```bash
 # This prints any lines that match search_pattern from multiple files
@@ -11,19 +11,21 @@ file1.txt:This is a line that matches search_pattern
 file2.txt:Another line that matches search_pattern
 ```
 
-Matching lines are printed to stdout with filename prefixes.
+This behavior is similar to searching a single file, but with a few differences:
 
-If any matching lines were found, grep exits with status code 0 (i.e. "success"). If no matching lines were found, grep exits with status code 1.
+- All matching lines are printed to stdout with a `<filename>:` prefix.
+- The program exits with code `0` if any matching lines were found across all files.
+- The program exits with code `1` if no matching lines were found in any file.
 
-## Tests
+### Tests
 
-The tester will create some test files and then execute multiple commands to find matches in those files. For example:
+The tester will create test files and search them using your program:
 
 ```bash
 # Create test files
 $ echo "banana" > fruits.txt
 $ echo "blueberry" >> fruits.txt
-$ echo "broccoli" >> vegetables.txt
+$ echo "broccoli" > vegetables.txt
 $ echo "carrot" >> vegetables.txt
 
 # This must print the matched lines to stdout and exit with code 0
@@ -36,4 +38,8 @@ vegetables.txt:broccoli
 $ ./your_program.sh -E "missing_fruit" fruits.txt vegetables.txt
 ```
 
-The tester will verify that all matching lines are printed to stdout. It'll also verify that the exit code is 0 if there are matching lines, and 1 if there aren't.
+It will then verify that:
+
+- All matching lines are printed to stdout with filename prefixes.
+- The exit code is `0` if there are matching lines in any file.
+- The exit code is `1` if there are no matching lines in any file.
