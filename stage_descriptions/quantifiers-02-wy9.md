@@ -1,8 +1,8 @@
-In this stage, we'll add support for the exact repetition quantifier (`{n}`).
+In this stage, you'll add support for the `{n}` quantifier.
 
 ### The `{n}` Quantifier
 
-The `{n}` quantifier matches the preceding character or character class exactly `n` times.
+The `{n}` quantifier matches the preceding element exactly `n` times.
 
 For example:
 - `ca{3}t` matches `"caaat"` (exactly three `"a"`s)
