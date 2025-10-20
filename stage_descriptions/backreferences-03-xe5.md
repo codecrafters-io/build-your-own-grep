@@ -1,4 +1,4 @@
-In this stage, we'll add support for nested backreferences.
+In this stage, you'll add support for nested backreferences.
 
 ### Nested Capturing Groups
 
