@@ -1,4 +1,4 @@
-In this stage, we'll add support for the `{n,}` quantifier.
+In this stage, you'll add support for the `{n,}` quantifier.
 
 ### The `{n,}` Quantifier
 
