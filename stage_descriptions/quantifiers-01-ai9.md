@@ -1,10 +1,8 @@
-In this stage, we'll add support for the zero or more quantifier (`*`).
+In this stage, you'll add support for the zero or more quantifier (`*`).
 
 ### The `*` Quantifier
 
 The `*` quantifier matches the preceding element zero or more times. This means the element can be absent entirely or repeated any number of times.
-
-The `*` quantifier is a [greedy quantifier](https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#greedy-and-lazy-quantifiers), similar to the one or more quantifier (`+`).
 
 For example:
 - `ca*t` matches `"ct"` (zero `"a"`s)
