@@ -1,21 +1,30 @@
-In this stage, we'll add support for `{n}`, the [exact repetition](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-exactly-n-times-n) quantifier.
+In this stage, we'll add support for the exact repetition quantifier (`{n}`).
 
-The `{n}` quantifier matches the preceding element exactly n times. The element must appear the exact number of times specified.
+### The `{n}` Quantifier
 
-**Examples**:
-- `ca{3}t` should match "caaat", but not "caat" or "caaaat".
-- `d\d{2}g` should match "d42g" and "d99g", but not "d1g" or "d123g".
-- `c[xyz]{4}w` should match "cyyyyw" and "czyxzw", but not "cxyzw" or "xyzzzw".
+The `{n}` quantifier matches the preceding character or character class exactly `n` times.
 
-## Tests
+For example:
+- `ca{3}t` matches `"caaat"` (exactly three `"a"`s)
+- `ca{3}t` does not match `"caat"` (only two `"a"`s)
+- `ca{3}t` does not match `"caaaat"` (too many `"a"`s)
+- `d\d{2}g` matches `"d42g"` (exactly two digits)
+- `d\d{2}g` does not match `"d1g` (only one digit)
+- `d\d{2}g` does not match `"d123g"` (too many digits)
+- `c[xyz]{4}w` matches `"czyxzw"` (exactly four characters from `[xyz]`)
+- `c[xyz]{4}w` does not match `"cxyzw"` (only three characters from `[xyz]`)
 
-Your program will be executed like this:
+### Tests
+
+The tester will execute your program like this:
 
 ```bash
-$ echo -n "<input>" | ./your_program.sh -E "<pattern>"
+$ echo -n "appleee" | ./your_program.sh -E "applee{2}"
 ```
 
-Your program must exit with 0 if the input matches the given pattern, and 1 if not.
+Your program must:
+- Exit with code `0` if the input matches the pattern.
+- Exit with code `1` if it doesn't.
 
 {{#reader_is_bot}}
 Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
