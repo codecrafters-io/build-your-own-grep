@@ -1,22 +1,20 @@
-In this stage, we'll add support for nested backreferences.
+In this stage, you'll add support for nested backreferences.
 
 ### Nested Capturing Groups
 
-When the capturing groups are nested, each group still gets its own backreference based on the position of its opening parenthesis:
-- The outermost group gets numbered first.
-- Inner groups get numbered as they appear, from left to right.
+When the capturing groups are nested, each group still gets its own backreference based on the position of its opening parenthesis (`(`), counting from left to right.
 
 For example, let's break down the pattern `('(cat) and \2') is the same as \1`:
 
-- Group 1 (outer): `'(cat) and \2'` 
-- Group 2 (inner): `(cat)`
-- `\2` refers to Group 2, so it matches` "cat"`
-- `\1` refers to Group 1, so it matches the entire `"'cat and cat'"`
+- Group one (first `(`): `'(cat) and \2'` 
+- Group two (second `(`): `(cat)`
+- `\2` refers to group two, so it matches `"cat"`
+- `\1` refers to group one, so it matches the entire `"'cat and cat'"`
 
-An example of an input that matches this pattern would be: `"'cat and cat' is the same as 'cat and cat'"`
+An example of an input that would match this pattern is: `"'cat and cat' is the same as 'cat and cat'"`
 
 Here are some more examples:
-- `((dog)-\2)` matches `"dog-dog"` (Group 2 is `"dog"`, Group 1 is `"dog-dog"`)
+- `((dog)-\2)` matches `"dog-dog"` (group two is `"dog"`, group one is `"dog-dog"`)
 - `((\w+) \2) and \1` matches `"cat cat and cat cat"`
 
 ### Tests
