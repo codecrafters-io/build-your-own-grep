@@ -279,28 +279,28 @@ stages:
   # Quantifiers
   - slug: "ai9"
     primary_extension_slug: "quantifiers"
-    name: "Zero or more times"
+    name: "Match zero or more times"
     difficulty: hard
     marketing_md: |-
       In this stage, we'll add support for `*`, the [zero or more](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-zero-or-more-times-) quantifier.
 
   - slug: "wy9"
     primary_extension_slug: "quantifiers"
-    name: "Exact repetition"
+    name: "Match exactly n times"
     difficulty: hard
     marketing_md: |-
       In this stage, we'll add support for `{n}`, the [exact repetition](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-exactly-n-times-n) quantifier.
 
   - slug: "hk3"
     primary_extension_slug: "quantifiers"
-    name: "Minimum repetition"
+    name: "Match at least n times"
     difficulty: hard
     marketing_md: |-
       In this stage, we'll add support for `{n,}`, the [at least m times](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-at-least-n-times-n) quantifier.
 
   - slug: "ug0"
     primary_extension_slug: "quantifiers"
-    name: "Range repetition"
+    name: "Match between n and m times"
     difficulty: hard
     marketing_md: |-
       In this stage, we'll add support for `{n,m}`, the [between n and m times](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-between-n-and-m-times-nm) quantifier.
