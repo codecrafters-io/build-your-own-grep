@@ -5,16 +5,15 @@ In this stage, you'll add support for the range quantifier (`{n,m}`).
 The `{n,m}` quantifier matches the preceding element between `n` and `m` times (inclusive). This means the element must appear at least `n` times and at most `m` times.
 
 For example:
-- `ca{2,4}t` matches "caat"
-- `ca{2,4}t` matches "caaat"
-- `ca{2,4}t` matches "caaaat" 
-- `ca{2,4}t` does not match "caaaaat"
-- `n\d{1,3}m` matches "n123m"
-- `n\d{1,3}m` does not match "n1234m"
-- `p[xyz]{2,3}q` matches "pxyzq"
-- `p[xyz]{2,3}q` does not match "pxq" 
-- `p[xyz]{2,3}q` does not match "pxyzyq"
-
+- `ca{2,4}t` matches `"caat"` (two `"a"`s are within range)
+- `ca{2,4}t` matches `"caaat"` (three `"a"`s are within range)
+- `ca{2,4}t` matches `"caaaat"` (four `"a"`s are within range)
+- `ca{2,4}t` does not match `"caaaaat"` (five `"a"`s are above the maximum)
+- `n\d{1,3}m` matches `"n123m"` (three digits are within range)
+- `n\d{1,3}m` does not match `"n1234m"` (four digits are above the maximum)
+- `p[xyz]{2,3}q` matches `"pzzzq"` (three characters are within range)
+- `p[xyz]{2,3}q` does not match `"pxq"` (one character is below the minimum)
+- `p[xyz]{2,3}q` does not match `"pxyzyq"` (four characters are above the maximum)
   
 ### Tests
 
