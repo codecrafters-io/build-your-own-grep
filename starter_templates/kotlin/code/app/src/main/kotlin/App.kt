@@ -12,7 +12,7 @@ fun main(args: Array<String>) {
     // You can use print statements as follows for debugging, they'll be visible when running tests.
     System.err.println("Logs from your program will appear here!")
 
-    // Uncomment the code below to pass the first stage the first stage
+    // Uncomment this block to pass the first stage
     // if (matchPattern(inputLine, pattern)) {
     //     exitProcess(0)
     // } else {
