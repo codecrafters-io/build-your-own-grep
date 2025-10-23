@@ -25,7 +25,7 @@ fn main() {
 
     io::stdin().read_line(&mut input_line).unwrap();
 
-    // Uncomment this block to pass the first stage
+    // Uncomment the code below to pass the first stage the first stage
     // if match_pattern(&input_line, &pattern) {
     //     process::exit(0)
     // } else {
