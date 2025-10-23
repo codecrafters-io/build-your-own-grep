@@ -25,7 +25,7 @@ pub fn main() !void {
     // You can use print statements as follows for debugging, they'll be visible when running tests.
     std.debug.print("Logs from your program will appear here!\n", .{});
 
-    // Uncomment this block to pass the first stage
+    // Uncomment the code below to pass the first stage the first stage
     //
     // var input_buffer: [1024]u8 = undefined;
     // const input_len = try stdin.read(&input_buffer);

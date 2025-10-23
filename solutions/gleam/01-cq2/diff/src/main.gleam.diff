@@ -11,7 +11,7 @@
    let args = argv.load().arguments
    let assert Ok(input_line) = erlang.get_line("")
 
--  // Uncomment this to pass the first stage
+-  // Uncomment the code below to pass the first stage the first stage
 -  // case args {
 -  //   ["-E", pattern, ..] -> {
 -  //     case match_pattern(input_line, pattern) {
