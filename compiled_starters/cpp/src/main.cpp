@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Uncomment the code below to pass the first stage the first stage
+    // Uncomment this block to pass the first stage
     //
     // std::string input_line;
     // std::getline(std::cin, input_line);

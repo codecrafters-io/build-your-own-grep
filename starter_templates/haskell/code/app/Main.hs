@@ -23,7 +23,7 @@ main = do
   -- You can use print statements as follows for debugging, they'll be visible when running tests.
   hPutStrLn stderr "Logs from your program will appear here"
 
-  -- Uncomment the code below to pass the first stage stage 1
+  -- Uncomment this block to pass stage 1
   -- if head args /= "-E"
   --   then do
   --     putStrLn "Expected first argument to be '-E'"
