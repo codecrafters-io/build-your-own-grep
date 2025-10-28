@@ -1,5 +1,8 @@
 const std = @import("std");
-var stdin = std.fs.File.stdin().readerStreaming(&.{});
+
+var stdin_buffer: [4096]u8 = undefined;
+var stdin_reader = std.fs.File.stdin().readerStreaming(&stdin_buffer);
+const stdin = &stdin_reader.interface;
 
 fn matchPattern(input_line: []const u8, pattern: []const u8) bool {
     if (pattern.len == 1) {
@@ -22,12 +25,10 @@ pub fn main() !void {
         std.process.exit(1);
     }
 
-    var input_buffer: [1024]u8 = undefined;
-    const input_len = try stdin.read(&input_buffer);
-    const input_slice = input_buffer[0..input_len];
+    const input_slice = try stdin.takeDelimiter('\n');
 
     const pattern = args[2];
-    if (matchPattern(input_slice, pattern)) {
+    if (matchPattern(input_slice.?, pattern)) {
         std.process.exit(0);
     } else {
         std.process.exit(1);
