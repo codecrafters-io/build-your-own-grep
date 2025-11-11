@@ -9,8 +9,7 @@ Example usage:
 <html>
 <pre>
 <code>$ echo -n "I have 1 apple" | grep --color=always -E '\d'
-I have <span style="color: red; font-weight: bold;">1</span> apple
-</code>
+I have <span style="color: red; font-weight: bold;">1</span> apple</code>
 </pre>
 </html>
 
@@ -58,8 +57,7 @@ The tester will execute your program like this:
 <html>
 <pre>
 <code>$ echo -n "I have 3 apples" | grep --color=always -E '\d'
-I have <span style="font-weight:bold; color:red;">3</span> apples
-</code>
+I have <span style="font-weight:bold; color:red;">3</span> apples</code>
 </pre>
 </html>
 

@@ -13,8 +13,7 @@ Example usage:
 <html>
 <pre>
 <code>$ echo -n "I have 3 cows" | grep --color=auto -E 'cows'
-I have <span style="font-weight:bold;color:red">3</span> cows
-</code>
+I have <span style="font-weight:bold;color:red">3</span> cows</code>
 </pre>
 </html>
 
@@ -43,8 +42,7 @@ The tester will execute your program like this:
 <html>
 <pre>
 <code>$ echo -n "I have 4 cats" | grep --color=auto -E 'cats'
-I have 4 <span style="color:red; font-weight:bold;">cats</span>
-</code>
+I have 4 <span style="color:red; font-weight:bold;">cats</span></code>
 </pre>
 </html>
 
