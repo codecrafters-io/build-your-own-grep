@@ -80,7 +80,7 @@ If the input text matches the pattern, your program must:
 </pre>
 </html>
 
-Any of the following sequences could be used
+Any of the following sequences can be used
 
 ```
 hello\033[31;01m\033[Kmatched\033[m\033[Kworld

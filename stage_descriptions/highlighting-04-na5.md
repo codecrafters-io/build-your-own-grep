@@ -25,16 +25,16 @@ When the output stream is piped to another command, or redirected to a non-TTY d
 
 ```bash
 # Output stream is piped to another command
-$ echo -n "apple123" | grep --color=auto -E '\d' | hexdump -C
-00000000  61 70 70 6c 65 31 32 33  0a                       |apple123.|
-00000009
+$ echo -n "I have 3 apples" | grep --color=auto -E '\d' | hexdump -C
+00000000  49 20 68 61 76 65 20 33  20 61 70 70 6c 65 73 0a  |I have 3 apples.|
+00000010
 
 # Output stream is redirected to a non-TTY device
-$ echo -n "apple123" | grep --color=auto -E '\d' >> output.txt
+$ echo -n "I have 4 apples" | grep --color=auto -E '\d' >> output.txt
 
 $ hexdump -C output.txt
-00000000  61 70 70 6c 65 31 32 33  0a                       |apple123.|
-00000009
+00000000  49 20 68 61 76 65 20 34  20 61 70 70 6c 65 73 0a  |I have 4 apples.|
+00000010
 ```
 
 ### Tests
@@ -62,10 +62,10 @@ The tester will also execute your program like this:
 
 ```bash
 # Redirection to a non-tty device
-$ echo -n "apple211" | grep --color=auto -E '\d' >> file.txt
+$ echo -n "I have 3 horses" | grep --color=auto -E '\d' >> file.txt
 
 # Piping to another command
-$ echo -n "apple211" | grep --color=auto -E '\d' | another_command
+$ echo -n "He has 9 rabbits" | grep --color=auto -E '\d' | another_command
 ```
 
 For both of these cases,
