@@ -22,7 +22,7 @@ The default color used by grep for the matched text is bold red. The ANSI escape
 \033[m\033[K
 ```
 
-**Opening Sequence: `\033[01;31m\033[K`**
+**Exaple Opening Sequence: `\033[01;31m\033[K`**
 
 | Component | Meaning |
 |-----------|---------|
@@ -35,7 +35,7 @@ The default color used by grep for the matched text is bold red. The ANSI escape
 | `[` | Start marker for SGR parameters |
 | `K` | Erase all characters to the right of the cursor |
 
-**Closing Sequence: `\033[m\033[K`**
+**Example Closing Sequence: `\033[m\033[K`**
 
 | Component | Meaning |
 |-----------|---------|
@@ -79,7 +79,10 @@ If the input text matches the pattern, your program must:
 </pre>
 </html>
 
-Any of the following sequences could be used:
-- `hello\033[01;31m\033[Kmatched\033[m\033[Kworld`
-- `hello\033[31;01m\033[Kmatched\033[m\033[Kworld`
-- `hello\033[31;01m\033[K\033[Kmatched\033[m\033[K\033[Kworld`
+Any of the following sequences could be used
+
+```
+hello\033[31;01m\033[Kmatched\033[m\033[Kworld
+hello\033[31;01m\033[K\033[Kmatched\033[m\033[K\033[Kworld
+hello\033[01;31m\033[Kmatched\033[m\033[Kworld
+```
