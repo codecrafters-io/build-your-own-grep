@@ -22,7 +22,7 @@ The default color used by grep for the matched text is bold red. The ANSI escape
 \033[m\033[K
 ```
 
-#### Opening Sequence: `\033[01;31m\033[K`
+**Opening Sequence: `\033[01;31m\033[K`**
 
 | Component | Meaning |
 |-----------|---------|
@@ -35,7 +35,7 @@ The default color used by grep for the matched text is bold red. The ANSI escape
 | `[` | Start marker for SGR parameters |
 | `K` | Erase all characters to the right of the cursor |
 
-#### Closing Sequence: `\033[m\033[K`
+**Closing Sequence: `\033[m\033[K`**
 
 | Component | Meaning |
 |-----------|---------|
@@ -48,7 +48,7 @@ The default color used by grep for the matched text is bold red. The ANSI escape
 | `[` | Start marker for SGR parameters |
 | `K` | Erase all characters to the right of the cursor |
 
-**Note:** When the SGR parameter is `0` or is not present (empty), it resets all attributes so that the rest of the text will be printed without any highlights.
+When the SGR parameter is `0` or is not present (empty), it resets all attributes so that the rest of the text will be printed without any highlights.
 
 ### Tests
 
@@ -71,4 +71,4 @@ If the input text matches the pattern, your program must:
 
 ### Notes
 
-- You can use any combination of the escape sequences as long as the matched text is highlighted using the bold (`01`) and red (`31`) attributes.
+- The matched text should highlighted using the bold (`01`) and red (`31`) attributes. You may use any sequences of ANSI codes to achieve this highlighting effect.
