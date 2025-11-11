@@ -76,6 +76,16 @@ extensions:
       Along the way, you'll learn about how to implement the `*` quantifier (zero or more), and bounded quantifiers.
       [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions
 
+  - slug: "highlighting"
+    name: "Highlighting"
+    description_markdown: |
+      In this challenge extension, you'll add support for [highlighting][1] to your Grep implementation.
+
+      Along the way, you'll learn about [ANSI escape codes][2], and more.
+
+      [1]: https://linuxcommando.blogspot.com/2007/10/grep-with-color-output.html
+      [2]: https://en.wikipedia.org/wiki/ANSI_escape_code
+
 stages:
   - slug: "cq2"
     name: "Match a literal character"
@@ -304,3 +314,39 @@ stages:
     difficulty: hard
     marketing_md: |-
       In this stage, we'll add support for `{n,m}`, the [between n and m times](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-between-n-and-m-times-nm) quantifier.
+
+  # Highlighting
+  - slug: "bx9"
+    primary_extension_slug: "highlighting"
+    name: "Print matching line to standard output"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for printing the matched line in the standard output of your grep implementation.
+
+  - slug: "bm2"
+    primary_extension_slug: "highlighting"
+    name: "Highlight the matched text"
+    difficulty: hard
+    marketing_md: |-
+      In this stage, you'll add support for highlighting the matched text in your grep implementation.
+
+  - slug: "jk4"
+    primary_extension_slug: "highlighting"
+    name: "The `never` coloring option"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for disabling the highlighting in your grep implementation using the `never` coloring option.
+
+  - slug: "na5"
+    primary_extension_slug: "highlighting"
+    name: "The `auto` coloring option"
+    difficulty: medium
+    marketing_md: |-
+      In this stage, you'll add support for `auto` coloring option in the `--color` flag in your grep implementation.
+      
+  - slug: "nd0"
+    primary_extension_slug: "highlighting"
+    name: "The default behavior"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll implement the `auto` coloring option as the default coloring option when the `--color` flag is not present.
