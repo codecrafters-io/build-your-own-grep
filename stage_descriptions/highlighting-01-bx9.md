@@ -1,8 +1,8 @@
 In this stage, you'll add support for printing the matched line in the standard output of your grep implementation.
 
-### Printing matched line to the standard output
+### Printing the matched line
 
-If a line from the standard intput is matched, grep prints the matched line to the standard output.
+If a line from the standard input is matched, grep prints the matched line to the standard output.
 
 Example usage:
 

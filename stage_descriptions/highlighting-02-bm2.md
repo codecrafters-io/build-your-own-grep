@@ -15,7 +15,8 @@ I have <span style="color: red; font-weight: bold;">1</span> apple</code>
 
 Grep uses [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) to add color to terminal output. These are special character sequences that terminals interpret as formatting commands rather than regular text.
 
-The default color used by grep for the matched text is bold red. The ANSI escape sequence to be used for wrapping the matched text is:
+The default color used by grep for the matched text is bold red. For example, grep uses the following ANSI escape sequences for wrapping the matched text:
+
 ```
 \033[01;31m\033[K
 ...
@@ -27,7 +28,7 @@ The default color used by grep for the matched text is bold red. The ANSI escape
 | Component | Meaning |
 |-----------|---------|
 | `\033` | Escape character that introduces the ANSI control sequence |
-| `[` | Start marker for Select [Graphic Rendition (SGR)](https://vt100.net/docs/vt510-rm/SGR.html) parameters |
+| `[` | Start marker for [Select Graphic Rendition (SGR)](https://vt100.net/docs/vt510-rm/SGR.html) parameters |
 | `01;31` | SGR codes: `01` = bold/bright text, `31` = red foreground color (separated by `;`) |
 | `m` | Terminates the SGR sequence |
 |  |
