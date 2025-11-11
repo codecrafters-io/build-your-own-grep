@@ -27,7 +27,7 @@ The default color used by grep for the matched text is bold red. The ANSI escape
 | Component | Meaning |
 |-----------|---------|
 | `\033` | Escape character that introduces the ANSI control sequence |
-| `[` | Start marker for Select Graphic Rendition (SGR) parameters |
+| `[` | Start marker for Select [Graphic Rendition (SGR)](https://vt100.net/docs/vt510-rm/SGR.html) parameters |
 | `01;31` | SGR codes: `01` = bold/bright text, `31` = red foreground color (separated by `;`) |
 | `m` | Terminates the SGR sequence |
 |  |
@@ -71,4 +71,15 @@ If the input text matches the pattern, your program must:
 
 ### Notes
 
-- The matched text should highlighted using the bold (`01`) and red (`31`) attributes. You may use any sequences of ANSI codes to achieve this highlighting effect.
+1. The matched text should highlighted using the bold (`01`) and red (`31`) attributes. You may use any combination of ANSI codes to achieve this highlighting effect. For example, to produce the following output:
+
+<html>
+<pre>
+<code>hello<span style="color:red; font-weight:bold" >matched</span>world</code>
+</pre>
+</html>
+
+Any of the following sequences could be used:
+- `hello\033[01;31m\033[Kmatched\033[m\033[Kworld`
+- `hello\033[31;01m\033[Kmatched\033[m\033[Kworld`
+- `hello\033[31;01m\033[K\033[Kmatched\033[m\033[K\033[Kworld`

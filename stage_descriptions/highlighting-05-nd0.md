@@ -9,18 +9,28 @@ Example usage:
 <html>
 <pre>
 <code>$ echo -n "I have 3 cows" | grep -E 'cows'
+I have <span style="font-weight:bold;color:red">3</span> cows
+$ echo -n "I have 4 cows" | grep -E 'cows' >> /dev/tty
 I have <span style="font-weight:bold;color:red">3</span> cows</code>
 </pre>
 </html>
 
 The output text is highlighted in this case.
 
-When the output is piped to another command, or if it is being redirected to a file, the ANSI highlighting sequences are not present in the output text.
+When the output stream is piped to another command, or redirected to a non-TTY device, the ANSI highlighting sequences are not placed in the output text.
 
 ```bash
-$ echo -n "I have 3 dogs" | grep -E '\d' | hexdump -C
-00000000  49 20 68 61 76 65 20 33  20 64 6f 67 73 0a        |I have 3 dogs.|
-0000000e
+# Output stream is piped to another command
+$ echo -n "apple123" | grep -E '\d' | hexdump -C
+00000000  61 70 70 6c 65 31 32 33  0a                       |apple123.|
+00000009
+
+# Output stream is redirected to a non-TTY device
+$ echo -n "apple123" | grep -E '\d' >> output.txt
+
+$ hexdump -C output.txt
+00000000  61 70 70 6c 65 31 32 33  0a                       |apple123.|
+00000009
 ```
 
 ### Tests
@@ -42,7 +52,7 @@ If the input text matches the pattern, your program must:
 The tester will also execute your program like this:
 
 ```bash
-# Redirection to a file
+# Redirection to a non-tty device
 $ echo -n "apple211" | grep -E '\d' >> file.txt
 
 # Piping to another command

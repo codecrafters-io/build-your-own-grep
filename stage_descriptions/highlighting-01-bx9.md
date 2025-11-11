@@ -2,7 +2,7 @@ In this stage, you'll add support for printing the matched line in the standard 
 
 ### Printing matched line to the standard output
 
-When a line is matched, grep prints the matched line to the standard output.
+If a line from the standard intput is matched, grep prints the matched line to the standard output.
 
 Example usage:
 
