@@ -28,8 +28,7 @@ If none of the lines match the specified pattern
 If at least one line matches the specified pattern:
 
 - The exit code of the program should be 0
-- All the matching lines should be printed
-- There should not be more than the `max-count` number of lines in the output. The search should stop after encountering first `max-count` number of lines.
+- Print matching lines until reaching the max-count; do not print more than the max-count lines
 
 ### Notes
 

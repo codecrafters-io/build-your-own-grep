@@ -12,14 +12,14 @@ $ echo -ne "dogs\ncat\ndog" | grep -n -E "dogs?"
 3:dog
 ```
 
-The output is the line number, followed by a colon, followed by that line's text.
+When the -n option is used, the output is the line number, followed by a colon, followed by that line's text.
 
 ### Tests
 
 The tester will execute your program like this:
 
 ```bash
-$ echo -e "line1\nline2\nline3" | ./your_program.sh -E "pattern"
+$ echo -e "line1\nline2\nline3" | ./your_program.sh -n -E "pattern"
 ```
 
 If none of the lines match the specified pattern:
@@ -30,8 +30,8 @@ If none of the lines match the specified pattern:
 If at least one line matches the specified pattern:
 
 - The exit code of your program should be 0.
-- All the matching lines should be printed, each preceeded by its number and a colon separator.
+- All the matching lines should be printed, each preceded by its number and a colon separator.
 
 ### Notes
 
-1. The line numbering start from 1, not 0.
+1. The line numbering starts from 1, not 0.

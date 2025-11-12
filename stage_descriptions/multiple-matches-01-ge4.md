@@ -22,7 +22,7 @@ echo -e "line1text1text2\nline2 | grep -c -E '\d'
 The tester will execute your program like this:
 
 ```bash
-$ echo -e "line1\nline2\nline3" | ./your_program.sh -E "pattern"
+$ echo -e "line1\nline2\nline3" | ./your_program.sh -c -E "pattern"
 ```
 
 If none of the lines match the specified pattern:

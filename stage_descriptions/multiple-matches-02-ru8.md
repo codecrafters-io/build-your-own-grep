@@ -1,6 +1,6 @@
 In this stage, you'll add support for printing the matching lines.
 
-### Printing the matching line
+### Printing the matching lines
 
 If a line from the standard input is matched, grep prints all the matching lines to the standard output.
 
