@@ -316,13 +316,6 @@ stages:
       In this stage, we'll add support for `{n,m}`, the [between n and m times](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-between-n-and-m-times-nm) quantifier.
 
   # Highlighting
-  - slug: "bx9"
-    primary_extension_slug: "highlighting"
-    name: "Print matching line to standard output"
-    difficulty: easy
-    marketing_md: |-
-      In this stage, you'll add support for printing the matched line in the standard output of your grep implementation.
-
   - slug: "bm2"
     primary_extension_slug: "highlighting"
     name: "Highlight the matched text"
