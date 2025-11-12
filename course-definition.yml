@@ -76,6 +76,13 @@ extensions:
       Along the way, you'll learn about how to implement the `*` quantifier (zero or more), and bounded quantifiers.
       [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions
 
+  - slug: "multiple-matches"
+    name: "Multiple Matches"
+    description_markdown: |
+      In this challenge extension, you'll add support for printing the multiple matching results to your Grep implementation.
+
+      Along the way, you'll learn about how to implement the `-c` flag, `-o` flag, and more.
+
 stages:
   - slug: "cq2"
     name: "Match a literal character"
@@ -304,3 +311,39 @@ stages:
     difficulty: hard
     marketing_md: |-
       In this stage, we'll add support for `{n,m}`, the [between n and m times](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-between-n-and-m-times-nm) quantifier.
+
+  # Multiple matches
+  - slug: "ge4"
+    primary_extension_slug: "multiple-matches"
+    name: "Count matching lines"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for printing the count of matching lines.
+
+  - slug: "ru8"
+    primary_extension_slug: "multiple-matches"
+    name: "Print matching lines"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for printing the matching lines.
+
+  - slug: "cy4"
+    primary_extension_slug: "multiple-matches"
+    name: "Print line numbers"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for displaying the line numbers of the matching lines.
+
+  - slug: "vq9"
+    primary_extension_slug: "multiple-matches"
+    name: "Limit matching lines"
+    difficulty: medium
+    marketing_md: |-
+      In this stage, you'll add support for stopping the pattern search after a specified number of lines have been matched.
+
+  - slug: "ss2"
+    primary_extension_slug: "multiple-matches"
+    name: "Print individual matches"
+    difficulty: hard
+    marketing_md: |-
+      In this stage, you'll add support for printing only the matching texts.
