@@ -64,6 +64,7 @@ I have <span style="font-weight:bold; color:red;">3</span> apples</code>
 
 If the input does not match the pattern, your program must:
 - Exit with the code 1
+- Exit with no printed output
 
 If the input text matches the pattern, your program must:
 - Exit with the code 0

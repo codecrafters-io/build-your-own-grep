@@ -71,6 +71,7 @@ $ echo -n "He has 9 rabbits" | grep --color=auto -E '\d' | another_command
 For both of these cases,
 If the input does not match the pattern, your program must:
 - Exit with the code 1
+- Exit with no printed output
 
 If the input text matches the pattern, your program must exit with the code 0 and
 - The input text should be written to the file `file.txt`, or be supplied to another command, depending on the case.

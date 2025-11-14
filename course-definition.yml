@@ -343,3 +343,10 @@ stages:
     difficulty: easy
     marketing_md: |-
       In this stage, you'll implement the `auto` coloring option as the default coloring option when the `--color` flag is not present.
+
+  - slug: "eq0"
+    primary_extension_slug: "highlighting"
+    name: "Highlight multiple matches"
+    difficulty: medium
+    marketing_md: |-
+      In this stage, you'll add support for highlighting multiple matches in your grep implementation.

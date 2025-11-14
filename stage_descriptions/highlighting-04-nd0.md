@@ -38,11 +38,12 @@ $ hexdump -C output.txt
 The tester will execute your program like this:
 
 ```bash
-$ echo -n "I have 10 horses" | grep -E '\d'
+$ echo -n "I have 3 horses" | grep -E '\d'
 ```
 
 If the input does not match the pattern, your program must:
 - Exit with the code 1
+- Exit with no printed output
 
 If the input text matches the pattern, your program must:
 - Exit with the code 0

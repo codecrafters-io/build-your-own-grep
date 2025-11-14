@@ -27,3 +27,4 @@ If the input matches the pattern, your program must:
 
 If the input does not match the pattern, your program must:
 - Exit with the code 1
+- Exit with no printed output
