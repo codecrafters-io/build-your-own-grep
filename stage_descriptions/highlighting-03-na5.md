@@ -15,7 +15,7 @@ Example usage:
 <code>$ echo -n "I have 3 cows" | grep --color=auto -E 'cows'
 I have <span style="font-weight:bold;color:red">3</span> cows
 $ echo -n "I have 4 cows" | grep --color=auto -E 'cows' >> /dev/tty
-I have <span style="font-weight:bold;color:red">3</span> cows</code>
+I have <span style="font-weight:bold;color:red">4</span> cows</code>
 </pre>
 </html>
 

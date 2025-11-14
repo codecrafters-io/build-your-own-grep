@@ -11,7 +11,7 @@ Example usage:
 <code>$ echo -n "I have 3 cows" | grep -E 'cows'
 I have <span style="font-weight:bold;color:red">3</span> cows
 $ echo -n "I have 4 cows" | grep -E 'cows' >> /dev/tty
-I have <span style="font-weight:bold;color:red">3</span> cows</code>
+I have <span style="font-weight:bold;color:red">4</span> cows</code>
 </pre>
 </html>
 
@@ -54,10 +54,10 @@ The tester will also execute your program like this:
 
 ```bash
 # Redirection to a non-tty device
-$ echo -n "I have 3 horses" | grep --color=auto -E '\d' >> file.txt
+$ echo -n "I have 3 horses" | grep -E '\d' >> file.txt
 
 # Piping to another command
-$ echo -n "He has 9 rabbits" | grep --color=auto -E '\d' | another_command
+$ echo -n "He has 9 rabbits" | grep -E '\d' | another_command
 ```
 
 For both of these cases,
