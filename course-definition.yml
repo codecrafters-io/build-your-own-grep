@@ -76,6 +76,13 @@ extensions:
       Along the way, you'll learn about how to implement the `*` quantifier (zero or more), and bounded quantifiers.
       [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions
 
+  - slug: "printing-matches"
+    name: "Printing Matches"
+    description_markdown: |
+      In this challenge extension, you'll add support for printing matching lines to your Grep implementation.
+
+      Along the way, you'll learn about extracting matched lines, formatting output, and managing line-by-line processing.
+
 stages:
   - slug: "cq2"
     name: "Match a literal character"
@@ -304,3 +311,17 @@ stages:
     difficulty: hard
     marketing_md: |-
       In this stage, we'll add support for `{n,m}`, the [between n and m times](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-between-n-and-m-times-nm) quantifier.
+
+  - slug: "ku5"
+    primary_extension_slug: "printing-matches"
+    name: "Print a single matching line"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for printing a single input line if it matches the pattern.
+
+  - slug: "pz6"
+    primary_extension_slug: "printing-matches"
+    name: "Print multiple matching lines"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for printing multiple input lines if they match the pattern.
