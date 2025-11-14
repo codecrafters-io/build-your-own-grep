@@ -11,10 +11,12 @@ $ echo -ne "I have one cow" | grep -o -E 'cow'
 cow
 ```
 
+### Tests
+
 The tester will execute your program like this:
 
 ```bash
-$ echo -n "The king had 7 daughters" | ./your_program.sh -E "\d"
+$ echo -n "The king had 7 daughters" | ./your_program.sh -o -E "\d"
 7
 ```
 
