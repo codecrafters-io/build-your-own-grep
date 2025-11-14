@@ -3,7 +3,7 @@ In this stage, you'll add support for printing multiple matching texts from a si
 
 ### Printing multiple matches
 
-If there are multiple matches present in the same line, each of them are printed on a separate line.
+If there are multiple matches present in the same line, each of them is printed on a separate line.
 
 ```bash
 # The '\d' pattern matches 1 and 0 separately
@@ -30,11 +30,11 @@ If none of the lines match the specified pattern, your program must:
 - Exit with the code 1
 - Exit with no printed output
 
-If at least one line matches the pattern, your program must
+If at least one line matches the pattern, your program must:
 
 - Exit with the code 0
 - Print all the matching parts to the standard output
 
 ### Notes
 
-- You only need the handle the case of single input line. We'll get to processing multiple input lines in the next stage.
+- You only need to handle the case of a single input line. We will get to processing multiple input lines in the next stage.
