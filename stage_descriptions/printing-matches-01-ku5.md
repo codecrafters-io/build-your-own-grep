@@ -19,7 +19,7 @@ The tester will execute your program like this:
 $ echo -n "dog" | ./your_program.sh -E "dog$"
 ```
 
-If the input line does not match the specified pattern, you program must:
+If the input line does not match the specified pattern, your program must:
 - Exit with the code 1
 - Exit with no printed output
 
