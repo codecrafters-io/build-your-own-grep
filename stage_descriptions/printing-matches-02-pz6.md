@@ -1,6 +1,6 @@
 In this stage, you'll add support for printing multiple input lines if they match the pattern.
 
-### Printing multiple input lines
+### Printing multiple matching lines
 
 If multiple input lines are provided, grep prints all the matching lines to the standard output.
 
