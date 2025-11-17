@@ -315,14 +315,14 @@ stages:
   # Multiple matches
   - slug: "cj0"
     primary_extension_slug: "multiple-matches"
-    name: "Print a single matching text"
+    name: "Print single match"
     difficulty: medium
     marketing_md: |-
       In this stage, you'll add support for printing a single matching text to your grep implementation.
 
   - slug: "ss2"
     primary_extension_slug: "multiple-matches"
-    name: "Print multiple matching texts"
+    name: "Print multiple matches"
     difficulty: medium
     marketing_md: |-
       In this stage, you'll add support for printing multiple matching texts from a single line to your grep implementation.
