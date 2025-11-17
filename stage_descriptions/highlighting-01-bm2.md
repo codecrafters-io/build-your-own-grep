@@ -1,4 +1,4 @@
-In this stage, you'll add support for highlighting the matched text in your grep implementation.
+In this stage, you'll add support for highlighting a single match in your grep implementation.
 
 ### Highlighting the matched text
 
@@ -73,7 +73,9 @@ If the input text matches the pattern, your program must:
 
 ### Notes
 
-1. The matched text should highlighted using the bold (`01`) and red (`31`) attributes. You may use any combination of ANSI codes to achieve this highlighting effect. For example, to produce the following output:
+1. You only need to handle the case of single match. We'll get to highlighting multiple matches in the next stage.
+
+2. The matched text should highlighted using the bold (`01`) and red (`31`) attributes. You may use any combination of ANSI codes to achieve this highlighting effect. For example, to produce the following output:
 
 <html>
 <pre>

@@ -318,35 +318,35 @@ stages:
   # Highlighting
   - slug: "bm2"
     primary_extension_slug: "highlighting"
-    name: "Highlight the matched text"
+    name: "Highlighting a single match"
     difficulty: hard
     marketing_md: |-
-      In this stage, you'll add support for highlighting the matched text in your grep implementation.
+      In this stage, you'll add support for highlighting a single match in your grep implementation.
+
+  - slug: "eq0"
+    primary_extension_slug: "highlighting"
+    name: "Highlighting multiple matches"
+    difficulty: hard
+    marketing_md: |-
+      In this stage, you'll add support for highlighting multiple matches in your grep implementation.
 
   - slug: "jk4"
     primary_extension_slug: "highlighting"
-    name: "The `never` coloring option"
+    name: "Disabling highlighting"
     difficulty: easy
     marketing_md: |-
       In this stage, you'll add support for disabling the highlighting in your grep implementation using the `never` coloring option.
 
   - slug: "na5"
     primary_extension_slug: "highlighting"
-    name: "The `auto` coloring option"
+    name: "Auto highlighting option"
     difficulty: medium
     marketing_md: |-
       In this stage, you'll add support for `auto` coloring option in the `--color` flag in your grep implementation.
       
   - slug: "nd0"
     primary_extension_slug: "highlighting"
-    name: "The default behavior"
+    name: "Default highlighting behavior"
     difficulty: easy
     marketing_md: |-
       In this stage, you'll implement the `auto` coloring option as the default coloring option when the `--color` flag is not present.
-
-  - slug: "eq0"
-    primary_extension_slug: "highlighting"
-    name: "Highlight multiple matches"
-    difficulty: hard
-    marketing_md: |-
-      In this stage, you'll add support for highlighting multiple matches in your grep implementation.
