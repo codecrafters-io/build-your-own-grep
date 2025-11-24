@@ -83,6 +83,14 @@ extensions:
 
       Along the way, you'll learn about extracting matched lines, formatting output, and managing line-by-line processing.
 
+  - slug: "multiple-matches"
+    name: "Multiple Matches"
+    description_markdown: |
+      In this challenge extension, you'll add support for printing the multiple matching results to your Grep implementation.
+
+      Along the way, you'll learn about how to implement the `-o` flag.
+      
+
 stages:
   - slug: "cq2"
     name: "Match a literal character"
@@ -312,6 +320,7 @@ stages:
     marketing_md: |-
       In this stage, we'll add support for `{n,m}`, the [between n and m times](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#match-between-n-and-m-times-nm) quantifier.
 
+  # Printing Matches
   - slug: "ku5"
     primary_extension_slug: "printing-matches"
     name: "Print a single matching line"
@@ -325,3 +334,25 @@ stages:
     difficulty: easy
     marketing_md: |-
       In this stage, you'll add support for printing multiple input lines if they match the pattern.
+
+  # Multiple matches
+  - slug: "cj0"
+    primary_extension_slug: "multiple-matches"
+    name: "Print single match"
+    difficulty: medium
+    marketing_md: |-
+      In this stage, you'll add support for printing a single matching text to your grep implementation.
+
+  - slug: "ss2"
+    primary_extension_slug: "multiple-matches"
+    name: "Print multiple matches"
+    difficulty: medium
+    marketing_md: |-
+      In this stage, you'll add support for printing multiple matching texts from a single line to your grep implementation.
+
+  - slug: "bo4"
+    primary_extension_slug: "multiple-matches"
+    name: "Process multiple input lines"
+    difficulty: medium
+    marketing_md: |-
+      In this stage, you'll add support for processing multiple input lines to print all matching texts.
