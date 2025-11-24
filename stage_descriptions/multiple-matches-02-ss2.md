@@ -37,4 +37,4 @@ If at least one line matches the pattern, your program must:
 
 ### Notes
 
-- You only need to handle the case of a single input line. We will get to processing multiple input lines in the next stage.
+- You only need to handle the case of a single input line. We will get to processing multiple input lines in later stages.
