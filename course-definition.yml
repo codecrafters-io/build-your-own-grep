@@ -53,13 +53,19 @@ marketing:
         Didn't even know that was possible!
 
 extensions:
-  - slug: "backreferences"
-    name: "Backreferences"
+  - slug: "printing-matches"
+    name: "Printing Matches"
     description_markdown: |
-      In this challenge extension, you'll add support for [backreferences][1] to your Grep implementation.
+      In this challenge extension, you'll add support for printing matching lines to your Grep implementation.
 
-      Along the way, you'll learn about how capture groups and backreferences work.
-      [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/backreference-constructs-in-regular-expressions#numbered-backreferences
+      Along the way, you'll learn about extracting matched lines, formatting output, and managing line-by-line processing.
+
+  - slug: "multiple-matches"
+    name: "Multiple Matches"
+    description_markdown: |
+      In this challenge extension, you'll add support for printing the multiple matching results to your Grep implementation.
+
+      Along the way, you'll learn about how to implement the `-o` flag.
 
   - slug: "file-search"
     name: "File Search"
@@ -76,20 +82,13 @@ extensions:
       Along the way, you'll learn about how to implement the `*` quantifier (zero or more), and bounded quantifiers.
       [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions
 
-  - slug: "printing-matches"
-    name: "Printing Matches"
+  - slug: "backreferences"
+    name: "Backreferences"
     description_markdown: |
-      In this challenge extension, you'll add support for printing matching lines to your Grep implementation.
+      In this challenge extension, you'll add support for [backreferences][1] to your Grep implementation.
 
-      Along the way, you'll learn about extracting matched lines, formatting output, and managing line-by-line processing.
-
-  - slug: "multiple-matches"
-    name: "Multiple Matches"
-    description_markdown: |
-      In this challenge extension, you'll add support for printing the multiple matching results to your Grep implementation.
-
-      Along the way, you'll learn about how to implement the `-o` flag.
-      
+      Along the way, you'll learn about how capture groups and backreferences work.
+      [1]: https://learn.microsoft.com/en-us/dotnet/standard/base-types/backreference-constructs-in-regular-expressions#numbered-backreferences
 
 stages:
   - slug: "cq2"
