@@ -17,8 +17,8 @@ Here, grep prints the line `"apple"` because it matches the pattern `[^abc]` (co
 
 Grep also uses its exit code to indicate whether any matches were found:
 
-- If the input line matches the pattern, your program should exit with code `0` (success)
-- If the input line does not match the pattern, your program should exit with code `1` (no match)
+- If the input line matches the pattern, the program exits with code `0` (success).
+- If the input line does not match the pattern, the program exits with code `1` (no match).
 
 ### Tests
 
