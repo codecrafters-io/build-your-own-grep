@@ -395,10 +395,3 @@ stages:
     difficulty: medium
     marketing_md: |-
       In this stage, you'll add support for `auto` coloring option in the `--color` flag in your grep implementation.
-      
-  - slug: "nd0"
-    primary_extension_slug: "highlighting"
-    name: "Default highlighting behavior"
-    difficulty: easy
-    marketing_md: |-
-      In this stage, you'll implement the `auto` coloring option as the default coloring option when the `--color` flag is not present.
