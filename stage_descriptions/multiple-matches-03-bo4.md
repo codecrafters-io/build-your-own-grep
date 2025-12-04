@@ -1,8 +1,10 @@
 In this stage, you'll add support for processing multiple input lines to print all matching texts.
 
-### Printing multiple matches from multiple lines
+### Printing Multiple Matches from Multiple Lines
 
-If there are multiple lines in the input, matches from all lines are printed, each on their own line.
+When the input contains multiple lines, the `-o` flag prints all matches from all lines, with each match on its own line.
+
+For example:
 
 ```bash
 # The '\d' pattern matches 1 and 0 separately in multiple lines
@@ -22,6 +24,8 @@ $ echo -ne "Line01: 50\nLine02: 42" | grep -o -P '\d\d'
 42
 ```
 
+The output appears in the same order as the input: all matches from line 1, then all matches from line 2, and so on.
+
 ### Tests
 
 The tester will execute your program like this:
@@ -33,10 +37,8 @@ hyde
 mouse
 ```
 
-If none of the lines match the specified pattern,
-- Your program should exit with the code 1
-- No output should be printed
-
-If at least one line matches the pattern,
-- Your program should exit with the code 0
-- All the matching parts from all lines should be printed on their separate lines
+The tester will verify that:
+- All matches from all lines are printed (one per line)
+- Matches are printed in order (line by line, match by match)
+- Your program exits with code `0` when at least one match is found
+- Your program prints nothing and exits with code `1` when no matches are found
