@@ -2,7 +2,7 @@ In this stage, you'll add support for printing multiple matching texts from a si
 
 ### Printing multiple matches
 
-When a single line contains multiple matches for the pattern, the `-o` flag prints each match on its own line.
+When a single line contains multiple matches for a pattern, the `-o` flag prints each match on its own line.
 
 For example:
 
