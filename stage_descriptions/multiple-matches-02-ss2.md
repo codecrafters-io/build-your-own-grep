@@ -1,9 +1,10 @@
-In this stage, you'll add support for printing multiple matching texts from a single line to your grep implementation.
-
+In this stage, you'll add support for printing multiple matching texts from a single line.
 
 ### Printing multiple matches
 
-If there are multiple matches present in the same line, each of them is printed on a separate line.
+When a single line contains multiple matches for the pattern, the `-o` flag prints each match on its own line.
+
+For example:
 
 ```bash
 # The '\d' pattern matches 1 and 0 separately
@@ -26,15 +27,11 @@ jekyll
 hyde
 ```
 
-If none of the lines match the specified pattern, your program must:
-- Exit with the code 1
-- Exit with no printed output
-
-If at least one line matches the pattern, your program must:
-
-- Exit with the code 0
-- Print all the matching parts to the standard output
-
+The tester will verify that:
+- All matches from the line are printed (one per line)
+- Your program exits with code `0` when at least one match is found
+- Your program prints nothing and exits with code `1` when no matches are found
+  
 ### Notes
 
 - You only need to handle the case of a single input line. We will get to processing multiple input lines in later stages.
