@@ -2,7 +2,7 @@ In this stage, you'll add support for processing multiple input lines to print a
 
 ### Printing Multiple Matches from Multiple Lines
 
-When the input contains multiple lines, the `-o` flag prints all matches from all lines, with each match on its own line.
+When an input contains multiple lines, the `-o` flag prints all matches from all lines, with each match on its own line.
 
 For example:
 
