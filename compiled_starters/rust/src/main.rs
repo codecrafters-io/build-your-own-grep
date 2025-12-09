@@ -2,9 +2,10 @@ use std::env;
 use std::io;
 use std::process;
 
+#[allow(dead_code)] // Feel free to remove this line once you uncomment the code below
 fn match_pattern(input_line: &str, pattern: &str) -> bool {
     if pattern.chars().count() == 1 {
-        return input_line.contains(pattern);
+        input_line.contains(pattern)
     } else {
         panic!("Unhandled pattern: {}", pattern)
     }
@@ -20,6 +21,7 @@ fn main() {
         process::exit(1);
     }
 
+    #[allow(unused_variables)] // Feel free to remove this line once you uncomment the code below
     let pattern = env::args().nth(2).unwrap();
     let mut input_line = String::new();
 
