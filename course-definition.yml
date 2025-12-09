@@ -15,6 +15,7 @@ short_description_md: |-
 completion_percentage: 30
 
 languages:
+  - slug: "c"
   - slug: "cpp"
   - slug: "csharp"
   - slug: "gleam"
