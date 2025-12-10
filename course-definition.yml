@@ -15,6 +15,7 @@ short_description_md: |-
 completion_percentage: 30
 
 languages:
+  - slug: "c"
   - slug: "cpp"
   - slug: "csharp"
   - slug: "gleam"
@@ -388,7 +389,6 @@ stages:
     difficulty: easy
     marketing_md: |-
       In this stage, you'll add support for highlighting matches in multiple lines.
-
 
   - slug: "jk4"
     primary_extension_slug: "highlighting"

@@ -4,8 +4,8 @@
 # unless you really need them.
 debug: false
 
-# Use this to change the Ruby version used to run your code
+# Use this to change the C version used to run your code
 # on Codecrafters.
 #
-# Available versions: ruby-3.4
-buildpack: ruby-3.4
+# Available versions: c-23
+buildpack: c-23
