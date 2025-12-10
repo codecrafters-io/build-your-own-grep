@@ -18,12 +18,12 @@ Grep uses [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code
 The default color used by grep for the matched text is bold red. For example, grep uses the following ANSI escape sequences for wrapping the matched text:
 
 ```
-\033[01;31m\033[K
+\033[01;31m
 ...
-\033[m\033[K
+\033[m
 ```
 
-**Exaple Opening Sequence: `\033[01;31m\033[K`**
+**Exaple Opening Sequence: `\033[01;31m`**
 
 | Component | Meaning |
 |-----------|---------|
@@ -31,12 +31,8 @@ The default color used by grep for the matched text is bold red. For example, gr
 | `[` | Start marker for [Select Graphic Rendition (SGR)](https://vt100.net/docs/vt510-rm/SGR.html) parameters |
 | `01;31` | SGR codes: `01` = bold/bright text, `31` = red foreground color (separated by `;`) |
 | `m` | Terminates the SGR sequence |
-|  |
-| `\033` | Escape character that introduces the ANSI control sequence |
-| `[` | Start marker for SGR parameters |
-| `K` | Erase all characters to the right of the cursor |
 
-**Example Closing Sequence: `\033[m\033[K`**
+**Example Closing Sequence: `\033[m`**
 
 | Component | Meaning |
 |-----------|---------|
@@ -44,12 +40,6 @@ The default color used by grep for the matched text is bold red. For example, gr
 | `[` | Start marker for SGR parameters |
 | *(empty)* | No parameters = reset all attributes to default |
 | `m` | Terminates the SGR sequence |
-|   |
-| `\033` | Escape character that introduces the ANSI control sequence
-| `[` | Start marker for SGR parameters |
-| `K` | Erase all characters to the right of the cursor |
-
-When the SGR parameter is `0` or is not present (empty), it resets all attributes so that the rest of the text will be printed without any highlights.
 
 ### Tests
 
@@ -86,7 +76,6 @@ If the input text matches the pattern, your program must:
 Any of the following sequences can be used
 
 ```
-hello\033[31;01m\033[Kmatched\033[m\033[Kworld
-hello\033[31;01m\033[K\033[Kmatched\033[m\033[K\033[Kworld
-hello\033[01;31m\033[Kmatched\033[m\033[Kworld
+hello\033[31;01mmatched\033[mworld
+hello\033[01;31mmatched\033[mworld
 ```

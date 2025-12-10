@@ -371,16 +371,24 @@ stages:
   - slug: "bm2"
     primary_extension_slug: "highlighting"
     name: "Highlighting a single match"
-    difficulty: hard
+    difficulty: easy
     marketing_md: |-
       In this stage, you'll add support for highlighting a single match in your grep implementation.
 
   - slug: "eq0"
     primary_extension_slug: "highlighting"
     name: "Highlighting multiple matches"
-    difficulty: hard
+    difficulty: easy
     marketing_md: |-
       In this stage, you'll add support for highlighting multiple matches in your grep implementation.
+
+  - slug: "wg2"
+    primary_extension_slug: "highlighting"
+    name: "Highlighting in multiple lines"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for highlighting matches in multiple lines.
+
 
   - slug: "jk4"
     primary_extension_slug: "highlighting"
