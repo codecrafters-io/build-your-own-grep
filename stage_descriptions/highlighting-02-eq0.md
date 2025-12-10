@@ -37,6 +37,8 @@ If the input text matches the pattern, your program must:
 
 ### Notes
 
+- You only need to handle the case of single line. We'll get to highlighting matches in multiple lines in the next stage.
+
 - The tester accepts multiple valid ANSI-encoded representations of the same highlighted text. To display the bold red text: <span style="color: red; font-weight: bold;">2025</span>, any equivalent combination is acceptable. Example of valid ANSI sequences:
     - `\033[01;31m2025\033[m`
     - `\033[31;01m2025\033[m`
