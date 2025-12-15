@@ -68,6 +68,17 @@ extensions:
 
       Along the way, you'll learn about how to implement the `-o` flag.
 
+  - slug: "highlighting"
+    name: "Highlighting"
+    description_markdown: |
+      In this challenge extension, you'll add support for [highlighting][1] to your Grep implementation.
+
+      Along the way, you'll learn about [ANSI escape codes][2], and more.
+
+      [1]: https://linuxcommando.blogspot.com/2007/10/grep-with-color-output.html
+      [2]: https://en.wikipedia.org/wiki/ANSI_escape_code
+      
+
   - slug: "file-search"
     name: "File Search"
     description_markdown: |
@@ -356,3 +367,39 @@ stages:
     difficulty: medium
     marketing_md: |-
       In this stage, you'll add support for processing multiple input lines to print all matching texts.
+
+  # Highlighting
+  - slug: "bm2"
+    primary_extension_slug: "highlighting"
+    name: "Highlighting a single match"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for highlighting a single match in your grep implementation.
+
+  - slug: "eq0"
+    primary_extension_slug: "highlighting"
+    name: "Highlighting multiple matches"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for highlighting multiple matches in your grep implementation.
+
+  - slug: "wg2"
+    primary_extension_slug: "highlighting"
+    name: "Highlighting in multiple lines"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for highlighting matches in multiple lines.
+
+  - slug: "jk4"
+    primary_extension_slug: "highlighting"
+    name: "Disabling highlighting"
+    difficulty: easy
+    marketing_md: |-
+      In this stage, you'll add support for disabling the highlighting in your grep implementation using the `never` coloring option.
+
+  - slug: "na5"
+    primary_extension_slug: "highlighting"
+    name: "Auto highlighting option"
+    difficulty: medium
+    marketing_md: |-
+      In this stage, you'll add support for `auto` coloring option in the `--color` flag in your grep implementation.
