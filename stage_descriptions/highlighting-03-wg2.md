@@ -8,10 +8,9 @@ Example usage:
 
 <html>
 <pre>
-<code>$ echo -n "dogs and cats are pets\ndogs are nice" | grep --color=always -E '(dogs|cats)'
+$ echo -n "dogs and cats are pets\ndogs are nice" | grep --color=always -E '(dogs|cats)'
 <span style="color: red; font-weight: bold;">dogs</span> and <span style="color: red; font-weight: bold;">cats</span> are pets
 <span style="color:red; font-weight: bold;">dogs</span> are nice
-</code>
 </pre>
 </html>
 
@@ -21,13 +20,12 @@ The tester will execute your program like this:
 
 <html>
 <pre>
-<code>$ echo -n "Tiger in the wild\nBird in the sky" | grep --color=always -E '(Tiger|Bird)'
+$ echo -n "Tiger in the wild\nBird in the sky" | grep --color=always -E '(Tiger|Bird)'
 <span style="color: red; font-weight: bold;">Tiger</span> in the wild
 <span style="color: red; font-weight: bold;">Bird</span> in the sky
 $ echo -n "Now: 2025\nNext: 2026" | grep --color=always -E '\d\d\d\d'
 Now: <span style="color: red; font-weight: bold;">2025</span>
 Next: <span style="color: red; font-weight: bold;">2026</span>
-</code>
 </pre>
 </html>
 

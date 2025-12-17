@@ -8,8 +8,8 @@ Example usage:
 
 <html>
 <pre>
-<code>$ echo -n "dogs and cats are pets" | grep --color=always -E '(dogs|cats)'
-<span style="color: red; font-weight: bold;">dogs</span> and <span style="color: red; font-weight: bold;">cats</span> are pets</code>
+$ echo -n "dogs and cats are pets" | grep --color=always -E '(dogs|cats)'
+<span style="color: red; font-weight: bold;">dogs</span> and <span style="color: red; font-weight: bold;">cats</span> are pets
 </pre>
 </html>
 
@@ -19,11 +19,11 @@ The tester will execute your program like this:
 
 <html>
 <pre>
-<code>$ echo -n "jekyll and hyde" | grep --color=always -E '(jekyll|hyde)'
+$ echo -n "jekyll and hyde" | grep --color=always -E '(jekyll|hyde)'
 <span style="color: red; font-weight: bold;">jekyll</span> and <span style="color: red; font-weight: bold;">hyde</span>
-<br />
 $ echo -n "2025" | grep --color=always -E '\d'
-<span style="color: red; font-weight: bold;">2025</span></code></pre>
+<span style="color: red; font-weight: bold;">2025</span>
+</pre>
 </html>
 
 If the input does not match the pattern, your program must:

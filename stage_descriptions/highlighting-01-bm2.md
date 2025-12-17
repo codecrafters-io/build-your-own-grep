@@ -8,8 +8,8 @@ Example usage:
 
 <html>
 <pre>
-<code>$ echo -n "I have 1 apple" | grep --color=always -E '\d'
-I have <span style="color: red; font-weight: bold;">1</span> apple</code>
+$ echo -n "I have 1 apple" | grep --color=always -E '\d'
+I have <span style="color: red; font-weight: bold;">1</span> apple
 </pre>
 </html>
 
@@ -54,8 +54,8 @@ The tester will execute your program like this:
 
 <html>
 <pre>
-<code>$ echo -n "I have 3 apples" | grep --color=always -E '\d'
-I have <span style="font-weight:bold; color:red;">3</span> apples</code>
+$ echo -n "I have 3 apples" | grep --color=always -E '\d'
+I have <span style="font-weight:bold; color:red;">3</span> apples
 </pre>
 </html>
 
@@ -76,7 +76,7 @@ If the input text matches the pattern, your program must:
 
 <html>
 <pre>
-<code>hello<span style="color:red; font-weight:bold" >matched</span>world</code>
+hello<span style="color:red; font-weight:bold" >matched</span>world
 </pre>
 </html>
 
