@@ -6,7 +6,7 @@ When a line is matched, grep only prints the matched line to the standard output
 
 Example usage:
 
-```bash
+```
 $ echo -n "Sally has 3 parrots" | grep --color=never -E "par+ots?"
 Sally has 3 parrots
 ```
@@ -15,7 +15,7 @@ Sally has 3 parrots
 
 The tester will execute your program like this:
 
-```bash
+```
 $ echo -n "I have 5 vegetables" | grep --color=never -E '\d'
 I have 5 vegetables
 ```

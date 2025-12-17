@@ -2,7 +2,7 @@ In this stage, you'll add support for highlighting a single match in your grep i
 
 ### Highlighting the matched text
 
-When `--color=always` option is used with grep, it always highlights the matched text in its output.
+When the `--color=always` option is used with grep, it highlights the matched text in its output.
 
 Example usage:
 
@@ -15,8 +15,15 @@ I have <span style="color: red; font-weight: bold;">1</span> apple</code>
 
 Grep uses [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) to add color to terminal output. These are special character sequences that terminals interpret as formatting commands rather than regular text.
 
-The default color used by grep for the matched text is bold red. For example, grep uses the following ANSI escape sequences for wrapping the matched text:
+The default color used by grep for the matched text is bold red. Grep wraps the matched text using the following ANSI escape sequences:
 
+```
+\033[01;31m\033[K
+...
+\033[m\033[K
+```
+
+For simplicity, you can wrap the matched text using the following ANSI escape sequences:
 ```
 \033[01;31m
 ...
@@ -59,13 +66,13 @@ If the input does not match the pattern, your program must:
 If the input text matches the pattern, your program must:
 - Exit with the code 0
 - Print the input text to the standard output
-- Highlight the matched text in the input using the grep's default color.
+- Highlight the matched text using grep's default color.
 
 ### Notes
 
-1. You only need to handle the case of single match. We'll get to highlighting multiple matches in the later stages.
+1. You only need to handle the case of a single match. We'll get to highlighting multiple matches in the later stages.
 
-2. The matched text should highlighted using the bold (`01`) and red (`31`) attributes. You may use any combination of ANSI codes to achieve this highlighting effect. For example, to produce the following output:
+2. The matched text should be highlighted using the bold (`01`) and red (`31`) attributes. You may use any combination of ANSI codes to achieve this highlighting effect. For example, to produce the following output:
 
 <html>
 <pre>
@@ -73,7 +80,7 @@ If the input text matches the pattern, your program must:
 </pre>
 </html>
 
-Any of the following sequences can be used
+Any of the following sequences can be used:
 
 ```
 hello\033[31;01mmatched\033[mworld
