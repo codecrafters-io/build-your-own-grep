@@ -25,8 +25,8 @@ The tester will execute your program like this:
 <span style="color: red; font-weight: bold;">Tiger</span> in the wild
 <span style="color: red; font-weight: bold;">Bird</span> in the sky
 $ echo -n "Now: 2025\nNext: 2026" | grep --color=always -E '\d\d\d\d'
-<span style="color: red; font-weight: bold;">2025</span>
-<span style="color: red; font-weight: bold;">2026</span>
+Now: <span style="color: red; font-weight: bold;">2025</span>
+Next: <span style="color: red; font-weight: bold;">2026</span>
 </code>
 </pre>
 </html>
