@@ -12,8 +12,8 @@ Example usage:
 
 <html>
 <pre>
-<code>$ echo -n "I have 3 cows" | grep --color=auto -E 'cows'
-I have 3 <span style="font-weight:bold;color:red">cows</span></code>
+$ echo -n "I have 3 cows" | grep --color=auto -E 'cows'
+I have 3 <span style="font-weight:bold;color:red">cows</span>
 </pre>
 </html>
 
@@ -41,9 +41,8 @@ The tester will execute your program like this inside a TTY:
 
 <html>
 <pre>
-<code>$ echo -n "I have 4 cats" | grep --color=auto -E 'cats'
-I have 4 <span style="color:red; font-weight:bold;">cats</span>
-</code>
+$ echo -n "I have 4 cats" | grep --color=auto -E 'cats'
+I have 4 <span style="color:red; font-weight:bold;">cats
 </pre>
 </html>
 
