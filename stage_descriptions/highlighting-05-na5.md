@@ -68,8 +68,8 @@ If the input does not match the pattern, your program must:
 - Exit with no printed output
 
 If the input text matches the pattern, your program must exit with the code 0 and
-- The output text should be supplied to another command, depending on the case.
-- The ANSI escape sequence for highlighting should not be supplied to another command, depending on the case.
+- The output text should be supplied to another command.
+- The output text should not contain the ANSI sequences used for highlighting the matches.
 
 ### Notes
 
