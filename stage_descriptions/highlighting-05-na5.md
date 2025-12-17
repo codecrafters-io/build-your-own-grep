@@ -13,9 +13,7 @@ Example usage:
 <html>
 <pre>
 <code>$ echo -n "I have 3 cows" | grep --color=auto -E 'cows'
-I have <span style="font-weight:bold;color:red">3</span> cows
-$ echo -n "I have 4 cows" | grep --color=auto -E 'cows' >> /dev/tty
-I have <span style="font-weight:bold;color:red">4</span> cows</code>
+I have <span style="font-weight:bold;color:red">3</span> cows</code>
 </pre>
 </html>
 
@@ -45,8 +43,7 @@ The tester will execute your program like this:
 <pre>
 <code>$ echo -n "I have 4 cats" | grep --color=auto -E 'cats'
 I have 4 <span style="color:red; font-weight:bold;">cats</span>
-$ echo -n "I have 5 cats" | grep --color=auto -E 'cats' >> /dev/tty
-I have 5 <span style="color:red; font-weight:bold;">cats</span></code>
+</code>
 </pre>
 </html>
 
@@ -61,9 +58,6 @@ If the input text matches the pattern, your program must:
 The tester will also execute your program like this:
 
 ```bash
-# Redirection to a non-tty device
-$ echo -n "I have 3 horses" | grep --color=auto -E '\d' >> file.txt
-
 # Piping to another command
 $ echo -n "He has 9 rabbits" | grep --color=auto -E '\d' | another_command
 ```
@@ -74,8 +68,8 @@ If the input does not match the pattern, your program must:
 - Exit with no printed output
 
 If the input text matches the pattern, your program must exit with the code 0 and
-- The input text should be written to the file `file.txt`, or be supplied to another command, depending on the case.
-- The ANSI escape sequence for highlighting should not be present inside the file, or supplied to another command, depending on the case.
+- The output text should be supplied to another command, depending on the case.
+- The ANSI escape sequence for highlighting should not be supplied to another command, depending on the case.
 
 ### Notes
 
