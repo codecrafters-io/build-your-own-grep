@@ -1,19 +1,19 @@
-In this stage, you'll add support for `auto` coloring option in the `--color` flag in your grep implementation.
+In this stage, you'll add support for the `auto` color option in the `--color` flag of your grep implementation.
 
 ### The `auto` color option
 
-When `--color=auto` option is used with grep, it behaves in the following manner:
+When the `--color=auto` option is used with grep, it behaves in the following manner:
 
 - If the output stream is a [TTY device](https://www.ibm.com/docs/en/aix/7.1.0?topic=communications-tty-terminal-device), like the terminal, highlighting is enabled.
 
-- If the output stream is not a TTY device, for example, the output is piped to another command, or being redirected to a non-TTY device, highlighting is disabled.
+- If the output stream is not a TTY device, for example, if the output is piped to another command or redirected to a non-TTY device, highlighting is disabled.
 
 Example usage:
 
 <html>
 <pre>
 <code>$ echo -n "I have 3 cows" | grep --color=auto -E 'cows'
-I have <span style="font-weight:bold;color:red">3</span> cows</code>
+I have 3 <span style="font-weight:bold;color:red">cows</span></code>
 </pre>
 </html>
 
@@ -53,7 +53,7 @@ If the input does not match the pattern, your program must:
 If the input text matches the pattern, your program must:
 - Exit with the code 0
 - Print the input text to the standard output
-- The matched text in the output should be highlighted because the
+- The matched text in the output should be highlighted because the output stream is a TTY device.
 
 The tester will also execute your program like this:
 
@@ -62,7 +62,6 @@ The tester will also execute your program like this:
 $ echo -n "He has 9 rabbits" | grep --color=auto -E '\d' | another_command
 ```
 
-For both of these cases,
 If the input does not match the pattern, your program must:
 - Exit with the code 1
 - Exit with no printed output

@@ -59,13 +59,13 @@ If the input does not match the pattern, your program must:
 If the input text matches the pattern, your program must:
 - Exit with the code 0
 - Print the input text to the standard output
-- Highlight the matched text in the input using the grep's default color.
+- Highlight the matched text using grep's default color.
 
 ### Notes
 
 1. You only need to handle the case of a single match. We'll get to highlighting multiple matches in the later stages.
 
-2. The matched text should highlighted using the bold (`01`) and red (`31`) attributes. You may use any combination of ANSI codes to achieve this highlighting effect. For example, to produce the following output:
+2. The matched text should be highlighted using the bold (`01`) and red (`31`) attributes. You may use any combination of ANSI codes to achieve this highlighting effect. For example, to produce the following output:
 
 <html>
 <pre>

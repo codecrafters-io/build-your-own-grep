@@ -402,4 +402,4 @@ stages:
     name: "Auto highlighting option"
     difficulty: medium
     marketing_md: |-
-      In this stage, you'll add support for `auto` coloring option in the `--color` flag in your grep implementation.
+      In this stage, you'll add support for the `auto` color option in the `--color` flag of your grep implementation.
