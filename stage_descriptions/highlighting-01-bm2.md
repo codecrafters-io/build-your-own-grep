@@ -2,7 +2,7 @@ In this stage, you'll add support for highlighting a single match in your grep i
 
 ### Highlighting the matched text
 
-When `--color=always` option is used with grep, it always highlights the matched text in its output.
+When the `--color=always` option is used with grep, it highlights the matched text in its output.
 
 Example usage:
 
@@ -63,7 +63,7 @@ If the input text matches the pattern, your program must:
 
 ### Notes
 
-1. You only need to handle the case of single match. We'll get to highlighting multiple matches in the later stages.
+1. You only need to handle the case of a single match. We'll get to highlighting multiple matches in the later stages.
 
 2. The matched text should highlighted using the bold (`01`) and red (`31`) attributes. You may use any combination of ANSI codes to achieve this highlighting effect. For example, to produce the following output:
 
@@ -73,7 +73,7 @@ If the input text matches the pattern, your program must:
 </pre>
 </html>
 
-Any of the following sequences can be used
+Any of the following sequences can be used:
 
 ```
 hello\033[31;01mmatched\033[mworld

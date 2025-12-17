@@ -17,7 +17,7 @@ I have <span style="font-weight:bold;color:red">3</span> cows</code>
 </pre>
 </html>
 
-The output text is highlighted in this case since the output in both cases is a TTY device.
+The output text is highlighted in this case since the output stream is a TTY device.
 
 When the output stream is piped to another command, or redirected to a non-TTY device, the ANSI highlighting sequences are not placed in the output text.
 
@@ -37,7 +37,7 @@ $ hexdump -C output.txt
 
 ### Tests
 
-The tester will execute your program like this:
+The tester will execute your program like this inside a TTY:
 
 <html>
 <pre>
@@ -53,7 +53,7 @@ If the input does not match the pattern, your program must:
 If the input text matches the pattern, your program must:
 - Exit with the code 0
 - Print the input text to the standard output
-- The matched text in the output should be highlighted
+- The matched text in the output should be highlighted because the
 
 The tester will also execute your program like this:
 
