@@ -34,7 +34,7 @@ To highlight matched text, you need to:
 1. Insert an opening sequence before the matched text to add style and color formatting.
 2. Insert a closing sequence after the matched text to reset formatting back to normal.
 
-You can make the matched text bold red by using the following ANSI escape sequences:
+You can make a matched text bold red by using the following ANSI escape sequences:
 
 ```bash
 \033[01;31m
