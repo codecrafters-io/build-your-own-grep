@@ -2,9 +2,14 @@ In this stage, you'll add support for disabling the highlighting in your grep im
 
 ### The `--color=never` option
 
-When a line is matched, grep only prints the matched line to the standard output. It does not highlight the matched text.
+When a user passes the `--color=never` option:
+- Matching lines are still printed.
+- No ANSI escape sequences are added.
+- The output is plain text without any formatting.
 
-Example usage:
+This is essentially the behavior from earlier stages before you added highlighting support.
+
+For example:
 
 ```
 $ echo -n "Sally has 3 parrots" | grep --color=never -E "par+ots?"
@@ -20,11 +25,8 @@ $ echo -n "I have 5 vegetables" | grep --color=never -E '\d'
 I have 5 vegetables
 ```
 
-If the input matches the pattern, your program must:
-- Exit with the code 0
-- Print the input line to the standard output
-- No highlights should be placed in the output text because `--color=never` option is being used.
-
-If the input does not match the pattern, your program must:
-- Exit with the code 1
-- Exit with no printed output
+The tester will verify that:
+- Matching lines are printed without any ANSI escape sequences.
+- The output is plain text.
+- Your program exits with code `0` when a match is found.
+- Your program prints nothing and exits with code `1` when no match is found.
