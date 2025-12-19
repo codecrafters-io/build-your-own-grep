@@ -3,7 +3,7 @@ In this stage, you'll add support for highlighting a single match.
 ### The `--color` Flag
 
 The `--color` flag tells grep to highlight matching text in its output. It accepts three values:
-- `always`: Always use colors, even when output is redirected
+- `always`: Always use colors
 - `auto`: Use colors only when outputting to a terminal
 - `never`: Never use colors
 
