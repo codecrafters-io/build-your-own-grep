@@ -1,4 +1,4 @@
-In this stage, you'll add support for highlighting a single match in your grep implementation.
+In this stage, you'll add support for highlighting a single match.
 
 ### The `--color` Flag
 
