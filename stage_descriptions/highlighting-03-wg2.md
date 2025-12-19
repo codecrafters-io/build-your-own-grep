@@ -1,10 +1,10 @@
 In this stage, you'll add support for highlighting matches in multiple lines.
 
-### Highlighting multiple matches
+### Highlighting Matches in Multiple Lines
 
-Grep highlights all the matching texts it can find in each line.
+Grep highlights all matching text it finds on each line.
 
-Example usage:
+For example:
 
 <html>
 <pre>
@@ -13,6 +13,8 @@ $ echo -n "dogs and cats are pets\ndogs are nice" | grep --color=always -E '(dog
 <span style="color:red; font-weight: bold;">dogs</span> are nice
 </pre>
 </html>
+
+Here, both lines are printed with their matches highlighted.
 
 ### Tests
 
