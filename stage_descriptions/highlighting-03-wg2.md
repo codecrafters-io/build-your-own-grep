@@ -14,7 +14,7 @@ $ echo -n "dogs and cats are pets\ndogs are nice" | grep --color=always -E '(dog
 </pre>
 </html>
 
-Here, both lines contain printed with their matches highlighted.
+Here, both lines are printed with their matches highlighted.
 
 ### Tests
 
