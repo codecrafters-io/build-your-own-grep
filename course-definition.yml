@@ -30,8 +30,6 @@ languages:
   - slug: "rust"
   - slug: "typescript"
   - slug: "ruby"
-    release_status: "alpha"
-    alpha_tester_usernames: ["sreeram-venkitesh"]
   - slug: "zig"
 
 marketing:
@@ -77,7 +75,6 @@ extensions:
 
       [1]: https://linuxcommando.blogspot.com/2007/10/grep-with-color-output.html
       [2]: https://en.wikipedia.org/wiki/ANSI_escape_code
-      
 
   - slug: "file-search"
     name: "File Search"
