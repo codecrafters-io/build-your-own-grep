@@ -27,7 +27,7 @@ main :: proc() {
 
     pattern := os.args[2]
 
-    stdin_stream := os.stream_from_handle(os.stdin)
+    stdin_stream := os.stdin.stream
     reader := bufio.Reader{}
     bufio.reader_init(&reader, stdin_stream)
 
