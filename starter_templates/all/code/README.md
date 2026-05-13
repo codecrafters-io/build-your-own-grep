@@ -15,10 +15,11 @@ parsers/lexers work, and how regular expressions are evaluated.
 # Passing the first stage
 
 The entry point for your `grep` implementation is in `{{ user_editable_file }}`. Study and uncomment the relevant code, and
-then run the command below to execute the tests on our servers:
+push your changes to pass the first stage:
 
 ```sh
-codecrafters submit
+git commit -am "pass 1st stage" # any msg
+git push origin master
 ```
 
 Time to move on to the next stage!
