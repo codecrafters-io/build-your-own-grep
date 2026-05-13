@@ -17,9 +17,9 @@
 -
    let args = argv.load().arguments
    let assert Ok(input_line) = get_line("")
-
-   // Remove the next line when you uncomment the case below (it only silences unused warnings).
-   let _ = #(args, input_line, match_pattern)
+-
+-  // Remove the next line when you uncomment the case below (it only silences unused warnings).
+-  let _ = #(args, input_line, match_pattern)
 
 -  // TODO: Uncomment the code below to pass the first stage
 -  // case args {
