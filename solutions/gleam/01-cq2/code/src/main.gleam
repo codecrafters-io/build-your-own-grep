@@ -14,9 +14,6 @@ pub fn main() {
   let args = argv.load().arguments
   let assert Ok(input_line) = get_line("")
 
-  // Remove the next line when you uncomment the case below (it only silences unused warnings).
-  let _ = #(args, input_line, match_pattern)
-
   case args {
     ["-E", pattern, ..] -> {
       case match_pattern(input_line, pattern) {
