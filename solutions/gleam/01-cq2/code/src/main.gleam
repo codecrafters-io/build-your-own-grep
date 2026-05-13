@@ -1,11 +1,21 @@
 import argv
-import gleam/erlang
 import gleam/io
 import gleam/string
 
+pub type GetLineError {
+  Eof
+  NoData
+}
+
+@external(erlang, "main_ffi", "get_line")
+pub fn get_line(prompt prompt: String) -> Result(String, GetLineError)
+
 pub fn main() {
   let args = argv.load().arguments
-  let assert Ok(input_line) = erlang.get_line("")
+  let assert Ok(input_line) = get_line("")
+
+  // Remove the next line when you uncomment the case below (it only silences unused warnings).
+  let _ = #(args, input_line, match_pattern)
 
   case args {
     ["-E", pattern, ..] -> {

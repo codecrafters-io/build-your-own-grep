@@ -1,14 +1,24 @@
 import argv
-import gleam/erlang
 import gleam/io
 import gleam/string
+
+pub type GetLineError {
+  Eof
+  NoData
+}
+
+@external(erlang, "main_ffi", "get_line")
+pub fn get_line(prompt prompt: String) -> Result(String, GetLineError)
 
 pub fn main() {
   // You can use print statements as follows for debugging, they'll be visible when running tests.
   io.print_error("Logs from your program will appear here!")
 
   let args = argv.load().arguments
-  let assert Ok(input_line) = erlang.get_line("")
+  let assert Ok(input_line) = get_line("")
+
+  // Remove the next line when you uncomment the case below (it only silences unused warnings).
+  let _ = #(args, input_line, match_pattern)
 
   // TODO: Uncomment the code below to pass the first stage
   // case args {
