@@ -1,11 +1,10 @@
 import argv
-import gleam/erlang
 import gleam/io
 import gleam/string
 
 pub fn main() {
   let args = argv.load().arguments
-  let assert Ok(input_line) = erlang.get_line("")
+  let input_line = get_line("")
 
   case args {
     ["-E", pattern, ..] -> {
@@ -30,6 +29,9 @@ fn match_pattern(input_line: String, pattern: String) -> Bool {
     }
   }
 }
+
+@external(erlang, "io", "get_line")
+fn get_line(prompt prompt: String) -> String
 
 @external(erlang, "erlang", "halt")
 pub fn exit(code: Int) -> Int
