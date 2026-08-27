@@ -1,9 +1,5 @@
 const std = @import("std");
 
-var stdin_buffer: [4096]u8 = undefined;
-var stdin_reader = std.fs.File.stdin().readerStreaming(&stdin_buffer);
-const stdin = &stdin_reader.interface;
-
 fn matchPattern(input_line: []const u8, pattern: []const u8) bool {
     if (pattern.len == 1) {
         return std.mem.indexOf(u8, input_line, pattern) != null;
@@ -12,20 +8,18 @@ fn matchPattern(input_line: []const u8, pattern: []const u8) bool {
     }
 }
 
-pub fn main() !void {
-    var buffer: [1024]u8 = undefined;
-    var fba = std.heap.FixedBufferAllocator.init(&buffer);
-    const allocator = fba.allocator();
-
-    const args = try std.process.argsAlloc(allocator);
-    defer std.process.argsFree(allocator, args);
+pub fn main(init: std.process.Init) !void {
+    const io = init.io;
+    const args = try init.minimal.args.toSlice(init.arena.allocator());
 
     if (args.len < 3 or !std.mem.eql(u8, args[1], "-E")) {
         std.debug.print("Expected first argument to be '-E'\n", .{});
         std.process.exit(1);
     }
 
-    const input_slice = try stdin.takeDelimiter('\n');
+    var stdin_buffer: [4096]u8 = undefined;
+    var stdin_reader = std.Io.File.stdin().readerStreaming(io, &stdin_buffer);
+    const input_slice = try stdin_reader.interface.takeDelimiter('\n');
 
     const pattern = args[2];
     if (matchPattern(input_slice.?, pattern)) {
