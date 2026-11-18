@@ -1,8 +1,11 @@
-In this stage, you'll add support for searching the content of a file that contains multiple lines.
+Your program can search a file containing one line. In this stage, you'll match
+each line of a multiline file independently and print every matching line in its
+original order.
 
-### File Search with Multiple Lines
+### File search with multiple lines
 
-When searching through a file with multiple lines, `grep` processes each line individually:
+When searching through a file with multiple lines, `grep` processes each line
+individually:
 
 ```bash
 # This prints any lines that match search_pattern
@@ -45,5 +48,6 @@ It will then verify that:
 
 ### Notes
 
-- You'll need to read the file line by line and check each line independently against the pattern.
+- Match each line independently, regardless of how you read the file. Anchors
+  such as `^` and `$` now apply to each individual line.
 - The file is guaranteed to exist and contain multiple lines for this stage.

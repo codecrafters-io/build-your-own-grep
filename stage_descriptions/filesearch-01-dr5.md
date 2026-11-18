@@ -1,8 +1,11 @@
-In this stage, you'll add support for searching a single line of a file's content.
+The File Search extension lets your matcher search saved files instead of
+standard input. In this stage, you'll read a file containing one line and print
+that line if it matches.
 
-### File Search
+### File search
 
-When you give `grep` a file name as an argument, it searches through the lines in the file:
+When you give `grep` a file name as an argument, it searches through the lines
+in the file:
 
 ```bash
 # This prints any lines that match search_pattern
@@ -11,11 +14,19 @@ This is a line that matches search_pattern
 ```
 
 When searching the file, `grep`:
-- Prints each matching line to stdout (the complete line, not just the matched part).
+
+- Prints each complete matching line to stdout.
 - Exits with code `0` if any matching lines were found.
 - Exits with code `1` if no matching lines were found.
 
-For this stage, we'll only handle files that contain a single line. We'll handle multi-line files in later stages.
+For this stage, we'll only handle files that contain a single line. We'll handle
+multi-line files in later stages.
+
+Reuse the character classes, anchors and alternatives you already support. The
+examples below also use `*`, which repeats the preceding element zero or more
+times. Thus `.*` can match any number of non-newline characters. The Quantifiers
+extension explores that operator further, but the new file-input and line-output
+behavior is taught here.
 
 ### Tests
 

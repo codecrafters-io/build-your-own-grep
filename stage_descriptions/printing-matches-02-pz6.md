@@ -1,18 +1,23 @@
-In this stage, you'll add support for printing multiple input lines if they match the pattern.
+Your program can print a matching input line. In this stage, you'll check each
+line of multiline input independently and print the matching lines in input
+order.
 
-### Printing Multiple Matching Lines
+### Printing multiple matching lines
 
-When grep receives multiple lines of input, it checks each line against the pattern and prints all lines that match.
+When grep receives multiple lines of input, it checks each line against the
+pattern and prints all lines that match.
 
 For example:
 
 ```bash
-$ echo -ne "line1\nline_two\nline3" | grep -E "\d"
+$ echo -ne "line1\nline_two\nline3" | ./your_program.sh -E "\d"
 line1
 line3
 ```
 
-Here, grep receives three lines of input. It prints `"line1"` and `"line3"` because they contain digits. `"line_two"` does not contain any digits, so it is not printed.
+Here, your program receives three lines of input. It prints `"line1"` and
+`"line3"` because they contain digits. `"line_two"` does not contain any digits,
+so it is not printed.
 
 Grep's exit code indicates whether any matches were found:
 

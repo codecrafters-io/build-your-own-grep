@@ -1,13 +1,16 @@
-In this stage, you'll add support for disabling the highlighting in your grep implementation using the `never` coloring option.
+Your program supports highlighting, but callers may need plain text. In this
+stage, you'll add `--color=never` to print matching lines without color.
 
 ### The `--color=never` option
 
 When a user passes the `--color=never` option:
+
 - Matching lines are still printed.
 - No ANSI escape sequences are added.
 - The output is plain text without any formatting.
 
-This is essentially the behavior from earlier stages before you added highlighting support.
+Keep the match selection and exit status unchanged. This option changes only the
+formatting bytes added to stdout.
 
 For example:
 
@@ -21,11 +24,12 @@ Sally has 3 parrots
 The tester will execute your program like this:
 
 ```
-$ echo -n "I have 5 vegetables" | grep --color=never -E '\d'
+$ echo -n "I have 5 vegetables" | ./your_program.sh --color=never -E '\d'
 I have 5 vegetables
 ```
 
 The tester will verify that:
+
 - Matching lines are printed without any ANSI escape sequences.
 - The output is plain text.
 - Your program exits with code `0` when a match is found.
