@@ -1,6 +1,7 @@
-In this stage, you'll add support for searching the contents of multiple files.
+Your program can search one file. In this stage, you'll accept several file
+arguments and identify the source of each matching line with a filename prefix.
 
-### Searching Multiple Files
+### Searching multiple files
 
 When searching multiple files, `grep` processes each file individually:
 
@@ -14,8 +15,13 @@ file2.txt:Another line that matches search_pattern
 This behavior is similar to searching a single file, but with a few differences:
 
 - All matching lines are printed to stdout with a `<filename>:` prefix.
-- The program exits with code `0` if any matching lines were found across all files.
+- The program exits with code `0` if any matching lines were found across all
+  files.
 - The program exits with code `1` if no matching lines were found in any file.
+
+Keep each filename prefix attached to its complete matching line, with no space
+after the colon. A match in one file is enough for exit code `0`, even if every
+other file has no match.
 
 ### Tests
 

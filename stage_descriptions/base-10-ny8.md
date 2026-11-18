@@ -1,8 +1,11 @@
-In this stage, you'll add support for the zero or one quantifier (`?`).
+An optional element can match without consuming a character, unlike an element
+followed by `+`. In this stage, you'll add `?` to make the preceding character
+or character class optional.
 
-### The `?` Quantifier
+### The `?` quantifier
 
-The `?` quantifier makes the preceding character or character class optional, meaning it can appear either once or not at all.
+The `?` quantifier makes the preceding character or character class optional,
+meaning it can appear either once or not at all.
 
 For example:
 
@@ -13,6 +16,9 @@ For example:
 - `colou?r` matches `"colour"` (one `"u"`)
 - `\d?` matches `"5"` (one digit)
 - `\d?` matches `""` (zero digits)
+
+The complete pattern must still match. For example, `a?a` matches `a` when the
+optional first `a` consumes nothing and the final `a` consumes the character.
 
 ### Tests
 
@@ -27,6 +33,5 @@ Your program must:
 - Exit with code `0` if the input matches the given pattern.
 - Exit with code `1` if it doesn't.
 
-{{#reader_is_bot}}
-Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-{{/reader_is_bot}}
+{{#reader_is_bot}} Do not use `grep` or the regex utilities available in the
+standard library. Implement the regex matcher yourself. {{/reader_is_bot}}

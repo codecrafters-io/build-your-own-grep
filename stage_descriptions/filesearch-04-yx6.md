@@ -1,8 +1,11 @@
-In this stage, you'll add support for searching through files in a nested directory with the `-r` flag.
+Your program can search a list of files. In this stage, you'll add `-r` to
+search directories and their subdirectories, with each result labeled by its
+path.
 
-### Recursive Search
+### Recursive search
 
-When `grep` is passed the `-r` flag, it searches through the given directory and its subdirectories recursively:
+When `grep` is passed the `-r` flag, it searches through the given directory and
+its subdirectories recursively:
 
 ```bash
 # This prints any lines that match search_pattern from multiple files
@@ -12,13 +15,18 @@ directory/file2.txt:Another line that matches search_pattern
 ```
 
 This behaviour is similar to searching multiple files:
-- All matching lines are printed to stdout, but with a `<filepath>:` prefix instead of `<filename>:`.
-- The program exits with code `0` if it finds any matching line in any of the files.
-- The program exits with code `1` if it does not find any matching lines in any file.
+
+- All matching lines are printed to stdout, but with a `<filepath>:` prefix
+  instead of `<filename>:`.
+- The program exits with code `0` if it finds any matching line in any of the
+  files.
+- The program exits with code `1` if it does not find any matching lines in any
+  file.
 
 ### Tests
 
-The tester will create test files in nested directories and search them using your program:
+The tester will create test files in nested directories and search them using
+your program:
 
 ```bash
 # Create test files
@@ -47,11 +55,16 @@ $ ./your_program.sh -r -E "missing_fruit" dir/
 
 It will then verify that:
 
-- All matching lines from all files in the directory tree are printed to stdout with filepath prefixes.
+- All matching lines from all files in the directory tree are printed to stdout
+  with filepath prefixes.
 - The exit code is `0` if there are matching lines in any file.
 - The exit code is `1` if there are no matching lines in any file.
 
 ### Notes
 
-- GNU grep does not guarantee the order of its output. Instead, it processes files in the order they appear in the filesystem. Your `grep` can output matching lines in any order.
-- The filepath prefix should be relative to the directory passed as an argument (e.g., `dir/subdir/file.txt`, not just `file.txt`).
+- GNU grep does not guarantee the order of its output. Instead, it processes
+  files in the order they appear in the filesystem. Your `grep` can output
+  matching lines in any order.
+- Include the supplied directory prefix in each path. For the argument `dir/`, a
+  nested result uses `dir/subdir/file.txt:`. This distinguishes files with the
+  same basename in different subdirectories.

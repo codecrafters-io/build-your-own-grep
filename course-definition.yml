@@ -4,9 +4,11 @@ short_name: "grep"
 release_status: "live"
 
 description_md: |-
-  Regular expressions (or Regexes) are patterns used to match character combinations in strings. In this challenge, you'll build a Regex engine from scratch by recreating grep, a CLI tool for regex-based searching.
+  How can a short pattern find text whose length you don't know in advance?
 
-  Along the way you'll learn about Regex syntax, character classes, quantifiers and more.
+  A regex combines rules for which characters can match and how often they may repeat. You'll build that matching engine inside a grep-style command-line tool. You'll start with character classes, anchors and alternatives. Extensions add repetition bounds, remembered text through backreferences, file and directory searches, matching-line or substring output, and terminal highlighting.
+
+  You'll practice interpreting pattern syntax, tracking match positions and captured text, traversing files, and controlling terminal output without using a built-in regex engine.
 
 # Keep this under 70 characters
 short_description_md: |-

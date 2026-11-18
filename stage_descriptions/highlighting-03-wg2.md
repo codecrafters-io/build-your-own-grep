@@ -1,8 +1,10 @@
-In this stage, you'll add support for highlighting matches in multiple lines.
+Your program highlights matches on one input line. In this stage, you'll print
+matching lines in input order, with every match highlighted within its own line.
 
-### Highlighting Matches in Multiple Lines
+### Highlighting matches in multiple lines
 
 When grep processes multiple lines:
+
 - Each line is processed independently
 - Only lines that contain at least one match are printed
 - All matches within each printed line are highlighted
@@ -11,7 +13,7 @@ For example:
 
 <html>
 <pre>
-$ echo -n "dogs and cats are pets\ndogs are nice" | grep --color=always -E '(dogs|cats)'
+$ echo -ne "dogs and cats are pets\ndogs are nice" | grep --color=always -E '(dogs|cats)'
 <span style="color: red; font-weight: bold;">dogs</span> and <span style="color: red; font-weight: bold;">cats</span> are pets
 <span style="color:red; font-weight: bold;">dogs</span> are nice
 </pre>
@@ -22,6 +24,8 @@ Here, both lines are printed with their matches highlighted.
 ### Tests
 
 The tester will execute your program like this:
+
+<!-- prettier-ignore-start -->
 
 <html>
 <pre>
@@ -35,14 +39,20 @@ Next: <span style="color: red; font-weight: bold;">2026</span>
 </pre>
 </html>
 
+<!-- prettier-ignore-end -->
+
 If the input does not match the pattern, your program must:
+
 - Exit with the code `1`.
 - Exit with no printed output.
 
 If the input text matches the pattern, your program must:
+
 - Exit with the code `0`.
 - Print each line that contains the match.
 - Highlight every match in each line.
 
 ### Notes
-- The order of the SGR codes doesn't matter: `\033[31;01m` and `\033[01;31m` both produce the same bold red effect.
+
+- The order of the SGR codes doesn't matter: `\033[31;01m` and `\033[01;31m`
+  both produce the same bold red effect.

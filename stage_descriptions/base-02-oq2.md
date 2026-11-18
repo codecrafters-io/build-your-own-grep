@@ -1,22 +1,29 @@
-In this stage, you'll add support for the digit (`\d`) character class.
+Your matcher can search for a literal character. In this stage, you'll add `\d`
+so one pattern element can match any digit from `0` to `9`.
 
-### Character Classes
+### Character classes
 
-[Character classes](https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions) are special patterns in regular expressions that match specific sets of characters. Instead of matching a single literal character (like `"a"` or `"3"`), a character class matches any character from a defined group.
+[Character classes](https://learn.microsoft.com/en-us/dotnet/standard/base-types/character-classes-in-regular-expressions)
+are special patterns in regular expressions that match specific sets of
+characters. Instead of matching a single literal character (like `"a"` or
+`"3"`), a character class matches any character from a defined group.
 
-Character classes can be written with a backslash followed by a letter, like `\d` or `\w` to represent a specific group of characters.
+Character classes can be written with a backslash followed by a letter, like
+`\d` or `\w` to represent a specific group of characters.
 
-### The `\d` Character Class
+### The `\d` character class
 
 The `\d` character class matches any single digit character (`0-9`).
 
 For example:
+
 - `\d` should match `"3"`
 - `\d` should match `"foo101"`
 - `\d` should not match `"c"`
-- `\d` should not match `"Art"` 
+- `\d` should not match `"Art"`
 
-When your pattern contains `\d`, you need to check if the input string contains at least one digit character.
+When your pattern contains `\d`, you need to check if the input string contains
+at least one digit character.
 
 ### Tests
 
@@ -33,8 +40,9 @@ Your program must:
 
 ### Notes
 
-- To learn how regexes work under the hood, you should build your own regex implementation from scratch instead of using {{language_name}}'s built-in regex features.
+- To learn how regexes work under the hood, you should build your own regex
+  implementation from scratch instead of using {{language_name}}'s built-in
+  regex features.
 
-{{#reader_is_bot}}
-Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-{{/reader_is_bot}}
+{{#reader_is_bot}} Do not use `grep` or the regex utilities available in the
+standard library. Implement the regex matcher yourself. {{/reader_is_bot}}

@@ -1,8 +1,10 @@
-In this stage, you'll add support for printing multiple matching texts from a single line.
+Your `-o` output handles one match. In this stage, you'll print every
+non-overlapping match in a single input line, in left-to-right order.
 
 ### Printing multiple matches
 
-When a single line contains multiple matches for a pattern, the `-o` flag prints each match on its own line.
+When a single line contains multiple matches for a pattern, the `-o` flag prints
+each match on its own line.
 
 For example:
 
@@ -17,6 +19,11 @@ $ echo -n "The king had 10 children" | grep -o -P '\d\d'
 10
 ```
 
+Matches cannot overlap. For example, searching `aaaaa` for `aa` produces two
+`aa` lines. The final character cannot form another complete match. The system
+`grep` examples above use `-P` for `\d`. Your program continues to use `-E` for
+the syntax taught in this challenge.
+
 ### Tests
 
 The tester will execute your program like this:
@@ -28,10 +35,12 @@ hyde
 ```
 
 The tester will verify that:
+
 - All matches from the line are printed (one per line)
 - Your program exits with code `0` when at least one match is found
 - Your program prints nothing and exits with code `1` when no matches are found
-  
+
 ### Notes
 
-- You only need to handle the case of a single input line. We will get to processing multiple input lines in later stages.
+- You only need to handle the case of a single input line. We will get to
+  processing multiple input lines in later stages.

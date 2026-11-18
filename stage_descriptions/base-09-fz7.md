@@ -1,19 +1,28 @@
-In this stage, you'll add support for the one or more quantifier (`+`).
+Your patterns currently specify each character position separately. In this
+stage, you'll add `+` to match one or more consecutive occurrences of the
+preceding character or character class.
 
 ### Quantifiers
 
-[Quantifiers](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions) are special operators that specify how many times the preceding element should match.
+[Quantifiers](https://docs.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions)
+are special operators that specify how many times the preceding element should
+match.
 
 Common quantifiers include:
+
 - `+` - matches one or more times
 - `?` - matches zero or one time
 - `*` - matches zero or more times
 
-### The One or More Quantifier (`+`)
+### The one or more quantifier (`+`)
 
-The `+` quantifier matches the preceding character or character class one or more times. It's a [greedy quantifier](https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#greedy-and-lazy-quantifiers), meaning it tries to match the element as many times as possible.
+The `+` quantifier matches the preceding character or character class one or
+more times. It's a
+[greedy quantifier](https://learn.microsoft.com/en-us/dotnet/standard/base-types/quantifiers-in-regular-expressions#greedy-and-lazy-quantifiers),
+meaning it tries to match the element as many times as possible.
 
 For example:
+
 - `a+` matches `"apple"` (one `"a"`)
 - `a+` matches `"SaaS"` (two consecutive `"a"`s)
 - `a+` does not match `"dog"` (no `"a"`)
@@ -21,6 +30,11 @@ For example:
 - `ca+ts` matches `"caats"` (two `"a"`)
 - `ca+ts` does not match `"cts"` (needs at least one `"a"`)
 - `\d+` matches `"123"` (three digits)
+
+Greediness still has to allow the rest of the pattern to match. For example,
+`ca+at` matches `caaat`: `a+` matches two `a` characters, leaving the third for
+the following literal `a`. A repetition that consumes every `a` would make the
+whole pattern fail.
 
 ### Tests
 
@@ -37,9 +51,8 @@ Your program must:
 
 ### Notes
 
-- The `+` quantifier applies only to the immediately preceding element e.g., in `ca+ts`, only the `"a"` is quantified, not the entire `"ca"`.
-- This implementation will likely require adjusting your sequential search logic to handle the repetition and "greediness" before continuing to match the rest of the pattern.
+- The `+` quantifier applies only to the immediately preceding element. In
+  `ca+ts`, it repeats `a`. The `c` still appears once.
 
-{{#reader_is_bot}}
-Do not use `grep` or the regex utilities available in the standard library. Implement the regex matcher yourself.
-{{/reader_is_bot}}
+{{#reader_is_bot}} Do not use `grep` or the regex utilities available in the
+standard library. Implement the regex matcher yourself. {{/reader_is_bot}}
